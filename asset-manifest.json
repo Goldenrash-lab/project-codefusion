@@ -1,13 +1,19 @@
 {
   "files": {
-    "main.css": "/project-codefusion/static/css/main.2d709f4f.css",
-    "main.js": "/project-codefusion/static/js/main.9b953539.js",
+    "main.css": "/project-codefusion/static/css/main.c440c14b.css",
+    "main.js": "/project-codefusion/static/js/main.d69a17c0.js",
+    "static/media/deskRegister.jpg": "/project-codefusion/static/media/deskRegister.75d916277e1e1072b976.jpg",
+    "static/media/tabletRegister.jpg": "/project-codefusion/static/media/tabletRegister.89c95658c5cf7f253023.jpg",
+    "static/media/Poppins-Regular.ttf": "/project-codefusion/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
+    "static/media/Poppins-SemiBold.ttf": "/project-codefusion/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
+    "static/media/Poppins-Bold.ttf": "/project-codefusion/static/media/Poppins-Bold.cdb29a5d7ccf57ff05a3.ttf",
+    "static/media/mobileRegister.jpg": "/project-codefusion/static/media/mobileRegister.dd56fb99d56db77de57d.jpg",
     "index.html": "/project-codefusion/index.html",
-    "main.2d709f4f.css.map": "/project-codefusion/static/css/main.2d709f4f.css.map",
-    "main.9b953539.js.map": "/project-codefusion/static/js/main.9b953539.js.map"
+    "main.c440c14b.css.map": "/project-codefusion/static/css/main.c440c14b.css.map",
+    "main.d69a17c0.js.map": "/project-codefusion/static/js/main.d69a17c0.js.map"
   },
   "entrypoints": [
-    "static/css/main.2d709f4f.css",
-    "static/js/main.9b953539.js"
+    "static/css/main.c440c14b.css",
+    "static/js/main.d69a17c0.js"
   ]
 }
