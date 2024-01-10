@@ -1,4 +1,4 @@
-@import-normalize; /* bring in normalize.css styles */
+@import url('../node_modules/modern-normalize/modern-normalize.css'); /* bring in normalize.css styles */
 
 body {
   margin: 0;
