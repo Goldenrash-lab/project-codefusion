@@ -26,6 +26,12 @@ a {
   color: inherit;
 }
 
+body{
+     font-family: 'Poppins-Regular';
+  font-weight: 400;
+  font-size: 18px;
+}
+
 `;
 
 export default Global;
