@@ -1,10 +1,13 @@
 import React from 'react';
 import { Outlet } from 'react-router';
+import { Container } from './Layout.styled';
 
 const Layout = () => {
   return (
     <>
-      <Outlet />
+      <Container>
+        <Outlet />
+      </Container>
     </>
   );
 };
