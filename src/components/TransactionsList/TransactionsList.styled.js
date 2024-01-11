@@ -8,16 +8,22 @@ export const TableWrap = styled.div`
   min-height: 90vh;
   padding-left: 69px;
   padding-right: 16px;
-  background: radial-gradient(at 100% 0, #20033e 0, transparent 50%) repeat scroll 0 0, radial-gradient(at 0 0, #33184e 0, transparent 100%) repeat scroll 0 0, radial-gradient(at 80% 90%, #702686 0, transparent 50%) repeat scroll 0 0, radial-gradient(at 42% 20%, #6d54eb 0, transparent 50%) repeat scroll 0 0, #302e8e;
+  background: radial-gradient(at 100% 0, #20033e 0, transparent 50%) repeat
+      scroll 0 0,
+    radial-gradient(at 0 0, #33184e 0, transparent 100%) repeat scroll 0 0,
+    radial-gradient(at 80% 90%, #702686 0, transparent 50%) repeat scroll 0 0,
+    radial-gradient(at 42% 20%, #6d54eb 0, transparent 50%) repeat scroll 0 0,
+    #302e8e;
 `;
+
 export const StyledTable = styled.div`
   color: var(--white);
 `;
 
 export const StyledThead = styled.div`
-display: flex;
-justify-content: space-between;
-align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 715px;
   height: 56px;
   border-radius: 8px;
