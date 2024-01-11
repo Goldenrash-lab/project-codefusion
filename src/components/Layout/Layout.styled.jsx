@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+// import background from '../../images/iMac.jpg';
+
 export const Container = styled.div`
   /* containers */
 
