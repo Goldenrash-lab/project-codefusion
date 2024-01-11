@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 const NavigationHome = props => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -7,9 +5,12 @@ const NavigationHome = props => (
     height="38"
     viewBox="0 0 38 38"
     fill="none"
+    // style={{
+    //   filter: 'drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.50))',
+    // }}
   >
     <g filter="url(#filter0_d_1_145)">
-      <rect x="10" y="7" width="18" height="18" rx="2" fill="#FBFBFB" />
+      <rect x="10" y="7" width="15" height="15" rx="4" fill="#FBFBFB" />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -17,7 +18,43 @@ const NavigationHome = props => (
         fill="#734AEF"
       />
     </g>
-    <defs></defs>
+    <defs>
+      <filter
+        id="filter0_d_1_145"
+        x="-3"
+        y="-3"
+        width="44"
+        height="44"
+        filterUnits="userSpaceOnUse"
+        colorInterpolationFilters="sRGB"
+        primitiveUnits="userSpaceOnUse"
+      >
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          result="hardAlpha"
+        />
+        <feOffset dy="3" />
+        <feGaussianBlur stdDeviation="5" />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0.290196 0 0 0 0 0.337255 0 0 0 0 0.886275 0 0 0 0.5 0"
+        />
+        <feBlend
+          mode="normal"
+          in2="BackgroundImageFix"
+          result="effect1_dropShadow_1_145"
+        />
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="effect1_dropShadow_1_145"
+          result="shape"
+        />
+      </filter>
+    </defs>
   </svg>
 );
 export default NavigationHome;

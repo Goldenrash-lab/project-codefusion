@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  HeaderDivContainer,
   HeaderDivExit,
   HeaderDivLogo,
   HeaderImgLogo,
@@ -14,15 +15,17 @@ const Header = () => {
 
   return (
     <HeaderSection>
-      <HeaderDivLogo>
-        <HeaderImgLogo src={headerLogo}></HeaderImgLogo>
-        <span>Money Guard</span>
-      </HeaderDivLogo>
-      <HeaderDivExit>
-        <span>Name</span>
-        <i>|</i>
-        <button>Exit</button>
-      </HeaderDivExit>
+      <HeaderDivContainer>
+        <HeaderDivLogo>
+          <HeaderImgLogo src={headerLogo}></HeaderImgLogo>
+          <span>Money Guard</span>
+        </HeaderDivLogo>
+        <HeaderDivExit>
+          <span>Name</span>
+          <i>|</i>
+          <button>Exit</button>
+        </HeaderDivExit>
+      </HeaderDivContainer>
     </HeaderSection>
   );
 };
