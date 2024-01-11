@@ -22,10 +22,16 @@ const StatisticsTab = () => {
 const StyledTitle = styled.h2`
   display: flex;
   justify-content: flex-start;
-  padding-left: 85px;
+  padding-left: 60px;
   font-size: 34px;
   margin-bottom: 20px;
   margin-top: 32px;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `;
 
 const StyledContainer = styled.div`

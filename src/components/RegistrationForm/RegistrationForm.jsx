@@ -15,8 +15,17 @@ import EmailIcon from 'images/Register/EmailIcon';
 import LockIcon from 'images/Register/LockIcon';
 import { InputWrapper } from './RegistrationForm.styled';
 import { TestDiv } from './RegistrationForm.styled';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { registerThunk } from 'store/Auth/thunk';
 
 const RegistrationForm = () => {
+  const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
+  function submit(data) {
+    console.log(data);
+    dispatch(registerThunk(data));
+  }
   return (
     <WrapperReg>
       <WrapperForm>
@@ -25,18 +34,33 @@ const RegistrationForm = () => {
           <Logo />
           <TextLogo>Money Guard</TextLogo>
         </WrapperLogo>
-        <Form>
+        <Form onSubmit={handleSubmit(submit)}>
           <InputWrapper>
             <UserIcon />
-            <Input type="text" name="name" placeholder="Name" />
+            <Input
+              {...register('name')}
+              type="text"
+              name="name"
+              placeholder="Name"
+            />
           </InputWrapper>
           <InputWrapper>
             <EmailIcon />
-            <Input type="email" name="email" placeholder="E-mail" />
+            <Input
+              {...register('email')}
+              type="email"
+              name="email"
+              placeholder="E-mail"
+            />
           </InputWrapper>
           <InputWrapper>
             <LockIcon />
-            <Input type="password" name="password" placeholder="Password" />
+            <Input
+              {...register('password')}
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
           </InputWrapper>
           <InputWrapper>
             <LockIcon />
@@ -46,11 +70,13 @@ const RegistrationForm = () => {
               placeholder="Confirm password"
             />
           </InputWrapper>
+          <ButtonsDiv>
+            <Button $gradient={true} type="submit">
+              REGISTER
+            </Button>
+            <Button>LOG IN</Button>
+          </ButtonsDiv>
         </Form>
-        <ButtonsDiv>
-          <Button $gradient={true}>REGISTER</Button>
-          <Button>LOG IN</Button>
-        </ButtonsDiv>
       </WrapperForm>
     </WrapperReg>
   );

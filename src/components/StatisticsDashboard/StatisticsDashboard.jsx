@@ -28,6 +28,7 @@ const StyledContainer = styled.div`
   height: 50px;
   gap: 32px;
   margin-bottom: 20px;
+  margin-right: 12px;
 `;
 
 const StyledSelect = styled.select`
