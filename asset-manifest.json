@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project-codefusion/static/css/main.c440c14b.css",
-    "main.js": "/project-codefusion/static/js/main.1d020fcf.js",
+    "main.js": "/project-codefusion/static/js/main.0f43284b.js",
     "static/media/deskRegister.jpg": "/project-codefusion/static/media/deskRegister.75d916277e1e1072b976.jpg",
     "static/media/tabletRegister.jpg": "/project-codefusion/static/media/tabletRegister.89c95658c5cf7f253023.jpg",
     "static/media/iMac.jpg": "/project-codefusion/static/media/iMac.c1445d787c6e6e90bc8c.jpg",
@@ -11,10 +11,10 @@
     "static/media/mobileRegister.jpg": "/project-codefusion/static/media/mobileRegister.dd56fb99d56db77de57d.jpg",
     "index.html": "/project-codefusion/index.html",
     "main.c440c14b.css.map": "/project-codefusion/static/css/main.c440c14b.css.map",
-    "main.1d020fcf.js.map": "/project-codefusion/static/js/main.1d020fcf.js.map"
+    "main.0f43284b.js.map": "/project-codefusion/static/js/main.0f43284b.js.map"
   },
   "entrypoints": [
     "static/css/main.c440c14b.css",
-    "static/js/main.1d020fcf.js"
+    "static/js/main.0f43284b.js"
   ]
 }
