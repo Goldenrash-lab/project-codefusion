@@ -13,6 +13,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { currencyReducer } from './currency/currencySlice';
 import { transactionsReducer } from './Transactions/transactionsSlice';
+import { categoriesReducer } from './Categories/categoriesSlice';
 
 const persistConfig = {
   key: 'api/token',
@@ -34,6 +35,7 @@ export const store = configureStore({
     auth: persistedReducer,
     currency: persistReducer(currencyPersistConfig, currencyReducer),
     transactions: transactionsReducer,
+    categories: categoriesReducer,
   },
   // reducer: {
   //   auth: authReducer,
