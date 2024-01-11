@@ -54,27 +54,30 @@ const ModalAddTransactions = () => {
           </SwitcherContainer>
 
           {isExpense && (
-            <select name="" id="" required>
-              <option value="" disabled selected hidden>
+            <select name="" id="" required defaultValue={1}>
+              <option value={1} disabled hidden>
                 Select a category
               </option>
             </select>
           )}
 
           <SumDateContainer>
-            <input type="text" name="sum" placeholder="0.00" />
+            <input
+              type="text"
+              name="sum"
+              placeholder="0.00"
+              autoComplete="off"
+            />
             <DatePickerWrapper>
               <CalendarImg alt="" src={calendar}></CalendarImg>
               <ReactDatePicker
                 selected={startDate}
                 onChange={date => setStartDate(date)}
                 dateFormat="dd.MM.yyyy"
-                calendarContainer={Calendar}
-                popperContainer={Popper}
               />
             </DatePickerWrapper>
           </SumDateContainer>
-          <CommentInput type="text" placeholder="Comment" />
+          <CommentInput type="text" placeholder="Comment" autoComplete="off" />
           <ButtonsContainer>
             <button type="submit">Add</button>
             <button>Cancel</button>

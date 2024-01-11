@@ -73,13 +73,17 @@ export const Modal = styled.div`
       width: 280px;
     }
   }
-  select:required:invalid {
+  select:required {
     color: rgba(255, 255, 255, 0.6);
+    padding-left: 8px;
+    padding-bottom: 8px;
   }
   input {
     background: transparent;
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-left: 8px;
+    padding-bottom: 8px;
   }
 `;
 
@@ -142,6 +146,15 @@ export const SumDateContainer = styled.div`
   display: flex;
   gap: 32px;
   margin-bottom: 40px;
+
+  & > :first-child {
+    text-align: center;
+    color: #fbfbfb;
+    font-size: 18px;
+
+    font-weight: 600;
+  }
+
   @media only screen and (max-width: 480px) {
     flex-direction: column;
     align-items: center;
@@ -150,10 +163,12 @@ export const SumDateContainer = styled.div`
   input {
     width: 181px;
     outline: transparent;
+
     @media only screen and (max-width: 480px) {
       width: 280px;
     }
   }
+
   input::placeholder {
     color: rgba(255, 255, 255, 0.6);
     text-align: center;
@@ -200,6 +215,10 @@ export const CommentInput = styled.input`
   width: 394px;
   margin-bottom: 40px;
   outline: transparent;
+  color: #fbfbfb;
+  font-size: 18px;
+
+  font-weight: 600;
   &::placeholder {
     color: rgba(255, 255, 255, 0.6);
     font-size: 18px;
@@ -226,19 +245,6 @@ export const CheckedIncome = styled.p`
   color: #ffb627;
   font-size: 16px;
   font-weight: 600;
-`;
-
-export const Calendar = styled.div`
-  border-radius: 10px;
-  box-shadow: 0 6px 12px rgba(27, 37, 86, 0.16);
-  overflow: hidden;
-`;
-
-export const Popper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
 `;
 
 export const DatePickerWrapper = styled.div`
