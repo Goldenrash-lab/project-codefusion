@@ -2,12 +2,7 @@ import React from 'react';
 
 import NavigationHome from '../../images/Navigation/NavigationHomeIcon';
 import StatisticsHome from 'images/Navigation/StatisticsHomeIcon';
-import {
-  NavigationNavLink,
-  NavigationSection,
-  NavigationSpanHome,
-  NavigationSpanStatistics,
-} from './NavigationStyles';
+import { NavigationNavLink, NavigationSection } from './NavigationStyles';
 
 const Navigation = () => {
   return (

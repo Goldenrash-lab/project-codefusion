@@ -46,4 +46,10 @@ export const NavigationSpanStatistics = styled.span`
   &.active {
     font-weight: 700;
   }
+
+  &.active + .homeNavigation {
+    fill: aqua;
+    stroke: aqua;
+    color: aqua;
+  }
 `;
