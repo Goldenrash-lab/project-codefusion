@@ -9,10 +9,8 @@ import {
   DatePickerWrapper,
   Modal,
   Popper,
-  StyledExpense,
   Switcher,
   SwitcherContainer,
-  UncheckedExpense,
   UncheckedText,
 } from './ModalAddTransaction.styled';
 import { SumDateContainer } from './ModalAddTransaction.styled';
