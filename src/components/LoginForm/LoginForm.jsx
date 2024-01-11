@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useLocation } from 'react-router';
+import { useDispatch } from 'react-redux';
+
 import {
   InputDiv,
   LoginButton,
@@ -25,8 +25,6 @@ const LoginForm = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
 
-  const location = useLocation();
-
   function submit(data) {
     console.log(data);
     dispatch(loginThunk(data))
@@ -34,12 +32,6 @@ const LoginForm = () => {
         console.log("You're logged in!");
       })
       .catch(() => console.log('Something went wrong!'));
-  }
-
-  const isAuthenticated = useSelector(state => !!state.auth.user);
-
-  if (isAuthenticated) {
-    return <Navigate to={location.state?.from || '/Home'} />;
   }
 
   return (
