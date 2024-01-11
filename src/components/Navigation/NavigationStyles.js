@@ -11,6 +11,11 @@ export const NavigationSection = styled.nav`
   gap: 12px;
 `;
 
+export const NavigationDivTest = styled.div`
+  width: 18px;
+  height: 18px;
+`;
+
 export const NavigationNavLink = styled(NavLink)`
   display: flex;
   align-content: center;
@@ -23,6 +28,16 @@ export const NavigationNavLink = styled(NavLink)`
 
   &.active {
     font-weight: 700;
+    div {
+      width: 18px !important;
+      height: 18px !important;
+      background-color: #fff;
+      border-radius: 3px;
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+      svg > path {
+        fill: #734aef;
+      }
+    }
   }
 `;
 
