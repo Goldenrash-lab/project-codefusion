@@ -4,14 +4,14 @@ import {
   HeaderDivContainer,
   HeaderDivExit,
   HeaderDivLogo,
-  HeaderImgLogo,
   HeaderSection,
   HeaderSpanExit,
   HeaderSpanName,
 } from './HeaderStyled';
 import HeaderExitIcon from '../../images/Header/HeaderExitIcon';
 import HeaderIconI from '../../images/Header/HeaderIconI';
-import headerLogo from '../../images/Header/logoMoneyGuard.png';
+
+import HeaderLogo from '../../images/Header/HeaderLogo';
 // import { useSelector } from 'react-redux';
 
 const Header = () => {
@@ -22,7 +22,7 @@ const Header = () => {
     <HeaderSection>
       <HeaderDivContainer>
         <HeaderDivLogo>
-          <HeaderImgLogo src={headerLogo}></HeaderImgLogo>
+          <HeaderLogo />
           <span>Money Guard</span>
         </HeaderDivLogo>
         <HeaderDivExit>
