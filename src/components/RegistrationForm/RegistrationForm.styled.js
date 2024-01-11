@@ -27,7 +27,9 @@ export const WrapperReg = styled.div`
   }
 `;
 export const WrapperForm = styled.div`
+  /* display: none; */
   @media only screen and (min-width: 480px) {
+    display: block;
     border-radius: 8px;
     background: var(--Form-color, rgba(255, 255, 255, 0.1));
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
@@ -104,10 +106,14 @@ export const InputWrapper = styled.div`
 export const TestDiv = styled.div`
   border-radius: 454px;
   background: rgba(47, 21, 176, 0.73);
-  width: 454px;
+  max-width: 454px;
   height: 454px;
+  overflow: hidden;
   position: absolute;
   z-index: -1;
 
   filter: blur(100px);
+  @media only screen and (min-width: 480px) {
+    width: 454px;
+  }
 `;
