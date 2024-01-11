@@ -21,6 +21,7 @@ const authSlice = createSlice({
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
         state.user.name = payload.name;
         state.user.email = payload.email;
+        state.user.balance = payload.balance;
         state.isLoggedIn = true;
         state.isRefresh = false;
       })
@@ -36,6 +37,7 @@ const authSlice = createSlice({
           state.user = payload.user;
           state.token = payload.token;
           state.isLoggedIn = true;
+          state.isLoading = false;
         }
       )
       .addMatcher(
