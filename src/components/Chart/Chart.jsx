@@ -2,7 +2,7 @@ import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { formatCurrency } from 'pages/StatisticsTab';
-import { StyledChartContainer } from './Chart.styled';
+import { StyledChartContainer, TextInsideDoughnut } from './Chart.styled';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -13,13 +13,17 @@ export const Chart = ({ expensesData, totalExpenses }) => {
         data: expensesData.map(expence => expence.sum),
         backgroundColor: expensesData.map(expence => expence.color),
         borderColor: expensesData.map(expence => expence.color),
-        borderWidth: 1,
+        borderWidth: 2,
       },
     ],
   };
   return (
     <StyledChartContainer>
-      <div style={{ position: 'relative' }}>
+      <div
+        style={{
+          position: 'relative',
+        }}
+      >
         <Doughnut
           data={data}
           width={288}
@@ -42,26 +46,5 @@ export const Chart = ({ expensesData, totalExpenses }) => {
         <TextInsideDoughnut text={`₴ ${formatCurrency(totalExpenses)}`} />
       </div>
     </StyledChartContainer>
-  );
-};
-
-const TextInsideDoughnut = ({ text }) => {
-  return (
-    <div
-      style={{
-        position: 'absolute',
-        textAlign: 'center',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        fontFamily: 'Poppins',
-        fontSize: '18px',
-        fontStyle: 'normal',
-        fontWeight: '600',
-        lineHeight: 'normal',
-      }}
-    >
-      {text}
-    </div>
   );
 };
