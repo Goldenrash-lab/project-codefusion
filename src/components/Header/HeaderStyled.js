@@ -42,7 +42,9 @@ export const HeaderSpanName = styled.span`
   font-weight: 400;
   line-height: normal;
 `;
-export const HeaderIName = styled.i``;
+export const HeaderExitDivIcon = styled.div`
+  opacity: 0.6;
+`;
 export const HeaderSpanExit = styled.span`
   color: var(--white-60, rgba(255, 255, 255, 0.6));
 
@@ -71,8 +73,8 @@ export const HeaderButtonExit = styled.button`
       transition: font-weight 0.5s ease;
       color: #ffffff;
     }
-    ${HeaderExitIcon} > g > path {
-      fill-opacity: 0.01;
+    ${HeaderExitDivIcon} {
+      opacity: 10;
     }
   }
 `;
