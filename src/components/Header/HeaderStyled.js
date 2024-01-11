@@ -15,7 +15,14 @@ export const HeaderDivLogo = styled.div`
   align-items: center;
   justify-content: center;
 `;
-export const HeaderDivExit = styled.div``;
+export const HeaderDivExit = styled.div`
+  display: flex;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+`;
 export const HeaderDivContainer = styled.div`
   padding-top: 16px;
   padding-right: 16px;
@@ -24,4 +31,35 @@ export const HeaderDivContainer = styled.div`
   align-content: center;
   justify-content: space-between;
   align-items: center;
+`;
+export const HeaderSpanName = styled.span`
+  color: var(--white-60, rgba(255, 255, 255, 0.6));
+  text-align: right;
+  padding-right: 12px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+export const HeaderIName = styled.i``;
+export const HeaderSpanExit = styled.span`
+  color: var(--white-60, rgba(255, 255, 255, 0.6));
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+export const HeaderButtonExit = styled.button`
+  text-decoration: none;
+
+  border: none;
+  outline: transparent;
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin-left: 6px;
 `;

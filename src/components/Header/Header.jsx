@@ -1,11 +1,16 @@
 import React from 'react';
 import {
+  HeaderButtonExit,
   HeaderDivContainer,
   HeaderDivExit,
   HeaderDivLogo,
   HeaderImgLogo,
   HeaderSection,
+  HeaderSpanExit,
+  HeaderSpanName,
 } from './HeaderStyled';
+import HeaderExitIcon from '../../images/Header/HeaderExitIcon';
+import HeaderIconI from '../../images/Header/HeaderIconI';
 import headerLogo from '../../images/Header/logoMoneyGuard.png';
 // import { useSelector } from 'react-redux';
 
@@ -21,9 +26,12 @@ const Header = () => {
           <span>Money Guard</span>
         </HeaderDivLogo>
         <HeaderDivExit>
-          <span>Name</span>
-          <i>|</i>
-          <button>Exit</button>
+          <HeaderSpanName>Name</HeaderSpanName>
+          <HeaderIconI />
+          <HeaderButtonExit>
+            <HeaderExitIcon />
+            <HeaderSpanExit>Exit</HeaderSpanExit>
+          </HeaderButtonExit>
         </HeaderDivExit>
       </HeaderDivContainer>
     </HeaderSection>
