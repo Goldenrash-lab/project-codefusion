@@ -8,12 +8,8 @@ import RegistrationPage from 'pages/RegistrationPage';
 import StatisticsTab from 'pages/StatisticsTab';
 import { Route, Routes } from 'react-router';
 import Global from 'styles/global';
-<<<<<<< Updated upstream
-
-=======
 import EditTransaction from 'components/EditTransactionForm/EditTransactionForm';
 // тест ввапапвапва
->>>>>>> Stashed changes
 export const App = () => {
   return (
     <>
