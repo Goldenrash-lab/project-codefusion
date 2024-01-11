@@ -4,6 +4,7 @@ import {
   HeaderDivContainer,
   HeaderDivExit,
   HeaderDivLogo,
+  HeaderExitDivIcon,
   HeaderSection,
   HeaderSpanExit,
   HeaderSpanName,
@@ -29,7 +30,9 @@ const Header = () => {
           <HeaderSpanName>Name</HeaderSpanName>
           <HeaderIconI />
           <HeaderButtonExit>
-            <HeaderExitIcon />
+            <HeaderExitDivIcon>
+              <HeaderExitIcon />
+            </HeaderExitDivIcon>
             <HeaderSpanExit>Exit</HeaderSpanExit>
           </HeaderButtonExit>
         </HeaderDivExit>

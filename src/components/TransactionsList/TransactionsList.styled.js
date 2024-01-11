@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const TableWrap = styled.div`
   width: 800px;
   margin: 0 auto;
-  border-left: 1px solid #d9d9d9;
+  /* border-left: 1px solid #d9d9d9; */
   min-height: 60vh;
   padding-left: 69px;
   padding-right: 16px;
