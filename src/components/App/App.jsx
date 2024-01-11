@@ -1,3 +1,4 @@
+// import Currency from 'components/Currency/Currency';
 import Layout from 'components/Layout/Layout';
 import DashboardPage from 'pages/DashboardPage';
 import LoginPage from 'pages/LoginPage';
