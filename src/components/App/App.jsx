@@ -1,4 +1,3 @@
-// import Currency from 'components/Currency/Currency';
 import Layout from 'components/Layout/Layout';
 import DashboardPage from 'pages/DashboardPage';
 import LoginPage from 'pages/LoginPage';
@@ -18,7 +17,6 @@ export const App = () => {
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
-        
       </Routes>
     </>
   );
