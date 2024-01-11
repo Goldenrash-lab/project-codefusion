@@ -1,15 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
+import {
+  SelectedOption,
+  StyledContainer,
+  StyledSelect,
+} from './StatisticsDashboard.styled';
 
 export const StatisticsDashboard = () => {
   return (
     <StyledContainer>
       <StyledSelect name="month" id="month" defaultValue="March">
-        <option value="" disabled>
+        <SelectedOption value="March" disabled>
           Please select a month
-        </option>
-        <option value="March">March</option>
-        <option value="April">April</option>
+        </SelectedOption>
+        <SelectedOption value="March">March</SelectedOption>
+        <SelectedOption value="April">April</SelectedOption>
       </StyledSelect>
       <StyledSelect name="year" id="year" defaultValue="2023">
         <option value="" disabled>
@@ -21,18 +25,3 @@ export const StatisticsDashboard = () => {
     </StyledContainer>
   );
 };
-
-const StyledContainer = styled.div`
-  display: flex;
-  width: 395px;
-  height: 50px;
-  gap: 32px;
-  margin-bottom: 20px;
-  margin-right: 12px;
-`;
-
-const StyledSelect = styled.select`
-  width: 182px;
-  height: 50px;
-  border-radius: 8px;
-`;
