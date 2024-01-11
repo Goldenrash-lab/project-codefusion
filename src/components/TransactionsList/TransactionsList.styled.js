@@ -3,10 +3,10 @@ import styled from 'styled-components';
 export const TableWrap = styled.div`
   width: 800px;
   margin: 0 auto;
-  border-left: 1px solid #d9d9d9;
+  /* border-left: 1px solid #d9d9d9; */
   min-height: 60vh;
-  padding-left: 69px;
-  padding-right: 16px;
+  /* padding-left: 69px;
+  padding-right: 16px; */
   padding-top: 46px;
 
   /* background: radial-gradient(at 100% 0, #20033e 0, transparent 50%) repeat
