@@ -4,7 +4,7 @@ export const StyledTable = styled.div`
   width: 395px;
   height: 607px;
 
-  @media only screen and (max-width: 767px) {
+  @media only screen and (min-width: 768px) {
     width: 336px;
   }
 
@@ -28,7 +28,7 @@ export const StyledTitleContainer = styled.h3`
   font-family: 'Poppins-SemiBold';
   font-size: 16px;
 
-  @media only screen and (max-width: 767px) {
+  @media only screen and (min-width: 768px) {
     width: 336px;
   }
 

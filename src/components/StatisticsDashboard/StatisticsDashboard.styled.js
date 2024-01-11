@@ -7,7 +7,7 @@ export const StyledContainer = styled.div`
   gap: 30px;
   margin-bottom: 20px;
 
-  @media only screen and (max-width: 767px) {
+  @media only screen and (min-width: 768px) {
     gap: 16px;
   }
 
@@ -30,7 +30,7 @@ export const StyledSelect = styled.select`
   border: 1px solid var(--white-60, rgba(255, 255, 255, 0.6));
   background: rgba(74, 86, 226, 0.1);
 
-  @media only screen and (max-width: 767px) {
+  @media only screen and (min-width: 768px) {
     width: 160px;
   }
 

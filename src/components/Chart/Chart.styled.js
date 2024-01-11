@@ -33,17 +33,10 @@ export const StyledStatsInfo = styled.div`
 
 export const StyledChartContainer = styled.div`
   margin-right: 32px;
-  width: 288px;
-  height: 288px;
-
-  @media only screen and (max-width: 767px) {
-    width: 336px;
-    height: 336px;
-  }
+  width: ${props => `${props.$doughnutSize}px`};
+  height: ${props => `${props.$doughnutSize}px`};
 
   @media only screen and (max-width: 480px) {
-    width: 280px;
-    height: 280px;
     margin-bottom: 32px;
   }
 `;
