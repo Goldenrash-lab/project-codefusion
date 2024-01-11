@@ -3,10 +3,9 @@ import React from 'react';
 import NavigationHome from '../../images/Navigation/NavigationHomeIcon';
 import StatisticsHome from 'images/Navigation/StatisticsHomeIcon';
 import {
+  NavigationDivTest,
   NavigationNavLink,
   NavigationSection,
-  NavigationSpanHome,
-  NavigationSpanStatistics,
 } from './NavigationStyles';
 
 const Navigation = () => {
@@ -15,19 +14,15 @@ const Navigation = () => {
       <div>
         <NavigationSection>
           <NavigationNavLink to="/">
-            <div
-              style={{
-                width: '18px',
-                height: '18px',
-                filter: 'drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.50))',
-              }}
-            >
+            <NavigationDivTest>
               <NavigationHome />
-            </div>
+            </NavigationDivTest>
             Home
           </NavigationNavLink>
           <NavigationNavLink to="/statistics">
-            <StatisticsHome />
+            <NavigationDivTest>
+              <StatisticsHome />
+            </NavigationDivTest>
             Statistics
           </NavigationNavLink>
         </NavigationSection>
