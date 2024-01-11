@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import switcherExpense from '../../images/Switcher/switcherExpense.svg';
 import switcherIncome from '../../images/Switcher/switcherIncome.svg';
+import background from '../../images/ModalAddTransaction/background.png';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -21,6 +22,9 @@ export const Modal = styled.div`
   width: 540px;
   max-height: 589px;
   overflow: hidden;
+  background-image: url(${background});
+  background-position: center;
+  background-repeat: no-repeat;
 
   padding: 40px 73px;
   position: absolute;
@@ -43,11 +47,8 @@ export const Modal = styled.div`
       align-items: center;
     }
 
-    /* width: 320px;
-
-    /* form effects
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(50px); */
+    backdrop-filter: blur(50px);
   }
   /* width: calc(100% - 40px); */
   h1 {
@@ -260,4 +261,14 @@ export const CalendarImg = styled.img`
   position: absolute;
   top: -4px;
   right: 11px;
+`;
+
+export const CloseBtn = styled.button`
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 `;
