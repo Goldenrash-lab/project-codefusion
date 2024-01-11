@@ -7,7 +7,8 @@ import RegistrationPage from 'pages/RegistrationPage';
 import StatisticsTab from 'pages/StatisticsTab';
 import { Route, Routes } from 'react-router';
 import Global from 'styles/global';
-
+import EditTransaction from 'components/EditTransactionForm/EditTransactionForm';
+// тест ввапапвапва
 export const App = () => {
   return (
     <>
@@ -20,6 +21,7 @@ export const App = () => {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegistrationPage />} />
       </Routes>
+      <EditTransaction />
     </>
   );
 };
