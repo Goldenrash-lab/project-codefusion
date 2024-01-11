@@ -25,6 +25,17 @@ export const signInThunk = createAsyncThunk(
       return data;
     } catch (error) {
       console.error('Error during sign in:', error);
+    }
+  }
+);
+export const loginThunk = createAsyncThunk(
+  'auth/login',
+  async (credentials, thunkApi) => {
+    try {
+      const { data } = await api.post('api/auth/sign-in', credentials);
+      setToken(data.token);
+      return data;
+    } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
   }
