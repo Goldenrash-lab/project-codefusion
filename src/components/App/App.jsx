@@ -1,5 +1,6 @@
 import Layout from 'components/Layout/Layout';
 import LoginForm from 'components/LoginForm/LoginForm';
+import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
 import DashboardPage from 'pages/DashboardPage';
 
 import RegistrationPage from 'pages/RegistrationPage';
@@ -18,7 +19,9 @@ export const App = () => {
         </Route>
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegistrationPage />} />
+        
       </Routes>
+      <ModalAddTransactions></ModalAddTransactions>
     </>
   );
 };
