@@ -3,18 +3,20 @@ import React from 'react';
 import TransactionsItem from './TransactionsItem/TransactionsItem';
 import {
   StyledAddTransactionButton,
+  StyledSvg,
   StyledTable,
   StyledThead,
+  StyledTheadItem,
   TableWrap,
+  WrapTable,
 } from './TransactionsList.styled';
-
 
 const transactions = [
   {
     id: 1,
     date: '04.01.23',
     category: 'other',
-    comment: 'gift',
+    comment: 'gift for a wife',
     sum: 300,
     type: '-',
   },
@@ -22,7 +24,39 @@ const transactions = [
     id: 2,
     date: '05.01.23',
     category: 'income',
+    comment: 'salary from work',
+    sum: 4300,
+    type: '+',
+  },
+  {
+    id: 3,
+    date: '04.01.23',
+    category: 'other stuff',
+    comment: 'gift',
+    sum: 300,
+    type: '-',
+  },
+  {
+    id: 4,
+    date: '05.01.23',
+    category: 'income',
     comment: 'salary',
+    sum: 4300,
+    type: '+',
+  },
+  {
+    id: 5,
+    date: '04.01.23',
+    category: 'other',
+    comment: 'gift for a wife',
+    sum: 300,
+    type: '-',
+  },
+  {
+    id: 6,
+    date: '05.01.23',
+    category: 'income',
+    comment: 'salary from work',
     sum: 4300,
     type: '+',
   },
@@ -30,17 +64,17 @@ const transactions = [
 const TransactionsList = () => {
   return (
     <TableWrap>
-      <StyledTable>
-        <StyledThead>
-          
-            <span>Date</span>
-            <span>Type</span>
-            <span>Category</span>
-            <span>Comment</span>
-            <span>Sum</span>
-        
-        </StyledThead>
-        <div>
+      <WrapTable>
+        <StyledTable>
+          <StyledThead>
+            <StyledTheadItem>Date</StyledTheadItem>
+            <StyledTheadItem type={true}>Type</StyledTheadItem>
+            <StyledTheadItem>Category</StyledTheadItem>
+            <StyledTheadItem>Comment</StyledTheadItem>
+            <StyledTheadItem sum={true}>Sum</StyledTheadItem>
+            <StyledTheadItem></StyledTheadItem>
+          </StyledThead>
+
           {transactions.map(transaction => {
             return (
               <TransactionsItem
@@ -49,8 +83,8 @@ const TransactionsList = () => {
               />
             );
           })}
-        </div>
-      </StyledTable>
+        </StyledTable>
+      </WrapTable>
       <StyledAddTransactionButton>
         <svg
           width="20"
