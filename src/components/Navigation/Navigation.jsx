@@ -17,17 +17,18 @@ const Navigation = () => {
           <NavigationNavLink to="/">
             <div
               style={{
+                width: '18px',
+                height: '18px',
                 filter: 'drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.50))',
               }}
             >
               <NavigationHome />
             </div>
-
-            <NavigationSpanHome>Home</NavigationSpanHome>
+            Home
           </NavigationNavLink>
           <NavigationNavLink to="/statistics">
             <StatisticsHome />
-            <NavigationSpanStatistics>Statistics</NavigationSpanStatistics>
+            Statistics
           </NavigationNavLink>
         </NavigationSection>
       </div>
