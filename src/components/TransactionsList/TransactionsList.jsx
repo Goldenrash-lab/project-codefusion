@@ -3,7 +3,6 @@ import React from 'react';
 import TransactionsItem from './TransactionsItem/TransactionsItem';
 import {
   StyledAddTransactionButton,
-  StyledSvg,
   StyledTable,
   StyledThead,
   StyledTheadItem,
@@ -75,14 +74,18 @@ const TransactionsList = () => {
             <StyledTheadItem></StyledTheadItem>
           </StyledThead>
 
-          {transactions.map(transaction => {
-            return (
-              <TransactionsItem
-                key={transaction.id}
-                transaction={transaction}
-              />
-            );
-          })}
+          {transactions.length !== 0 ? (
+            transactions?.map(transaction => {
+              return (
+                <TransactionsItem
+                  key={transaction.id}
+                  transaction={transaction}
+                />
+              );
+            })
+          ) : (
+            <h1>No transactions yet </h1>
+          )}
         </StyledTable>
       </WrapTable>
       <StyledAddTransactionButton>
