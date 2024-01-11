@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-
+import background from '../images/iMac.jpg';
 export const Global = createGlobalStyle`
 
 h1,
@@ -30,6 +30,13 @@ body{
      font-family: 'Poppins-Regular';
   font-weight: 400;
   font-size: 18px;
+  height: 100vh;
+  color: var(--white);
+  background: url(${background});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 
 `;

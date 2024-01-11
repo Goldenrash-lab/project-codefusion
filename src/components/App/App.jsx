@@ -5,7 +5,7 @@ import RegistrationPage from 'pages/RegistrationPage';
 import StatisticsTab from 'pages/StatisticsTab';
 import { Route, Routes } from 'react-router';
 import Global from 'styles/global';
-
+// тест ввапапвапва
 export const App = () => {
   return (
     <>
