@@ -1,4 +1,3 @@
-// import Currency from 'components/Currency/Currency';
 import Layout from 'components/Layout/Layout';
 import LoginForm from 'components/LoginForm/LoginForm';
 import DashboardPage from 'pages/DashboardPage';
@@ -7,9 +6,6 @@ import RegistrationPage from 'pages/RegistrationPage';
 import StatisticsTab from 'pages/StatisticsTab';
 import { Route, Routes } from 'react-router';
 import Global from 'styles/global';
-import EditTransaction from 'components/EditTransactionForm/EditTransactionForm';
-import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
-// тест ввапапвапва
 export const App = () => {
   return (
     <>
