@@ -11,7 +11,7 @@ import {
   StyledTdBox,
 } from './CurrencyStyled';
 import { useDispatch, useSelector } from 'react-redux';
-import { useMediaQuery } from 'react-responsive';
+
 import { currencyThunk } from 'store/currency/currencyThunk';
 import { currencySelector } from 'store/currency/currencySelector';
 

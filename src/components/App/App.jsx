@@ -1,14 +1,14 @@
 // import Currency from 'components/Currency/Currency';
 import Layout from 'components/Layout/Layout';
 import LoginForm from 'components/LoginForm/LoginForm';
-import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
 import DashboardPage from 'pages/DashboardPage';
 
 import RegistrationPage from 'pages/RegistrationPage';
 import StatisticsTab from 'pages/StatisticsTab';
 import { Route, Routes } from 'react-router';
 import Global from 'styles/global';
-
+import EditTransaction from 'components/EditTransactionForm/EditTransactionForm';
+// тест ввапапвапва
 export const App = () => {
   return (
     <>
@@ -21,6 +21,7 @@ export const App = () => {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegistrationPage />} />
       </Routes>
+      <EditTransaction />
     </>
   );
 };

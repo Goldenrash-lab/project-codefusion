@@ -1,5 +1,5 @@
 import React from 'react';
-
+// import { useSelector } from 'react-redux';
 import TransactionsItem from './TransactionsItem/TransactionsItem';
 import {
   StyledAddTransactionButton,
@@ -9,6 +9,7 @@ import {
   TableWrap,
   WrapTable,
 } from './TransactionsList.styled';
+// import { transactionsData } from 'store/Transactions/selectors';
 
 const transactions = [
   {
@@ -61,30 +62,37 @@ const transactions = [
   },
 ];
 const TransactionsList = () => {
+  // const transactions = useSelector(transactionsData);
+  // console.log(transactions);
+
   return (
     <TableWrap>
       <WrapTable>
         <StyledTable>
-          <StyledThead>
-            <StyledTheadItem>Date</StyledTheadItem>
-            <StyledTheadItem type={true}>Type</StyledTheadItem>
-            <StyledTheadItem>Category</StyledTheadItem>
-            <StyledTheadItem>Comment</StyledTheadItem>
-            <StyledTheadItem sum={true}>Sum</StyledTheadItem>
-            <StyledTheadItem></StyledTheadItem>
-          </StyledThead>
-          {transactions.length !== 0 ? (
-            transactions?.map(transaction => {
-              return (
-                <TransactionsItem
-                  key={transaction.id}
-                  transaction={transaction}
-                />
-              );
-            })
-          ) : (
-            <h1>No transactions yet </h1>
-          )}
+          <thead>
+            <StyledThead>
+              <StyledTheadItem>Date</StyledTheadItem>
+              <StyledTheadItem type={true}>Type</StyledTheadItem>
+              <StyledTheadItem>Category</StyledTheadItem>
+              <StyledTheadItem>Comment</StyledTheadItem>
+              <StyledTheadItem sum={true}>Sum</StyledTheadItem>
+              <StyledTheadItem></StyledTheadItem>
+            </StyledThead>
+          </thead>
+          <tbody>
+            {transactions.length !== 0 ? (
+              transactions?.map(transaction => {
+                return (
+                  <TransactionsItem
+                    key={transaction.id}
+                    transaction={transaction}
+                  />
+                );
+              })
+            ) : (
+              <h1>No transactions yet </h1>
+            )}
+          </tbody>
         </StyledTable>
       </WrapTable>
       <StyledAddTransactionButton>
