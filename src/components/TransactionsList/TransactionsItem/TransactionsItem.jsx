@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import {
   StyledButton,
   StyledSvg,
@@ -9,7 +9,7 @@ import {
 import { deleteTransactionThunk } from 'store/Transactions/operations';
 
 const TransactionsItem = ({ transaction }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const normalFontValue = 'true';
   return (
     <StyledTransaction normalfont={normalFontValue}>

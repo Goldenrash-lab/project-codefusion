@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import TransactionsItem from './TransactionsItem/TransactionsItem';
 import {
   StyledAddTransactionButton,
@@ -9,7 +9,7 @@ import {
   TableWrap,
   WrapTable,
 } from './TransactionsList.styled';
-import { transactionsData } from 'store/Transactions/selectors';
+// import { transactionsData } from 'store/Transactions/selectors';
 
 const transactions = [
   {
