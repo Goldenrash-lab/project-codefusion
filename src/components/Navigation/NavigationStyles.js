@@ -8,6 +8,7 @@ export const NavigationSection = styled.nav`
   padding-top: 40px;
   padding-bottom: 28px;
   padding-left: 16px;
+  gap: 12px;
 `;
 
 export const NavigationNavLink = styled(NavLink)`
@@ -15,6 +16,14 @@ export const NavigationNavLink = styled(NavLink)`
   align-content: center;
   align-items: center;
   gap: 20px;
+  &:hover,
+  &:focus {
+    font-weight: 700;
+  }
+
+  &.active {
+    font-weight: 700;
+  }
 `;
 
 export const NavigationSpanHome = styled.span`
@@ -24,11 +33,17 @@ export const NavigationSpanHome = styled.span`
   &:focus {
     font-weight: 700;
   }
+  &.active {
+    font-weight: 700;
+  }
 `;
 export const NavigationSpanStatistics = styled.span`
   font-weight: 400;
   &:hover,
   &:focus {
+    font-weight: 700;
+  }
+  &.active {
     font-weight: 700;
   }
 `;
