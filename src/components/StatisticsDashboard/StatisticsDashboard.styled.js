@@ -18,6 +18,11 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledSelect = styled.select`
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins-Regular';
+  color: white;
+  font-size: 12px;
   width: 182px;
   height: 50px;
   padding: 13px 20px;
@@ -32,11 +37,4 @@ export const StyledSelect = styled.select`
   @media only screen and (max-width: 480px) {
     width: 280px;
   }
-`;
-
-export const SelectedOption = styled.option`
-  display: flex;
-  align-items: center;
-  color: white;
-  font-size: 12px;
 `;

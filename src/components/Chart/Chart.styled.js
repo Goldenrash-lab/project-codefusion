@@ -8,7 +8,6 @@ export const StyledTitle = styled.h2`
   margin-bottom: 20px;
   margin-top: 32px;
   text-align: center;
-  font-family: Poppins;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
@@ -48,3 +47,22 @@ export const StyledChartContainer = styled.div`
     margin-bottom: 32px;
   }
 `;
+
+export const TextInsideDoughnut = ({ text }) => {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        textAlign: 'center',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        fontFamily: 'Poppins-SemiBold',
+        fontSize: '18px',
+        fontStyle: 'normal',
+      }}
+    >
+      {text}
+    </div>
+  );
+};

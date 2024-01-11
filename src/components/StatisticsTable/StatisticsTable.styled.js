@@ -25,11 +25,8 @@ export const StyledTitleContainer = styled.h3`
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(50px);
   color: var(--white, #fbfbfb);
-  font-family: Poppins;
+  font-family: 'Poppins-SemiBold';
   font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
 
   @media only screen and (max-width: 767px) {
     width: 336px;
@@ -45,20 +42,19 @@ export const StyledText = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 29px 16px 28px;
-  font-family: Poppins;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
   line-height: 1.28;
   gap: 19px;
 `;
 
 export const StyledSpanExpenses = styled.span`
   color: var(--dashboard-text, #ff868d);
+  font-family: 'Poppins-SemiBold';
 `;
 
 export const StyledSpanIncome = styled.span`
   color: var(--yellow, #ffb627);
+  font-family: 'Poppins-SemiBold';
 `;
 
 export const StyledList = styled.ul`
@@ -71,6 +67,8 @@ export const StyledListItem = styled.li`
   display: flex;
   justify-content: space-between;
   padding: 16px 29px 16px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.41);
+  position: relative;
 `;
 
 export const StyledColorItem = styled.div`
@@ -87,7 +85,6 @@ export const ColorIndicator = styled.span`
 
 export const StyledCategory = styled.p`
   color: var(--white, #fbfbfb);
-  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -97,7 +94,6 @@ export const StyledCategory = styled.p`
 export const StyledSum = styled.p`
   color: var(--white, #fbfbfb);
   text-align: right;
-  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
