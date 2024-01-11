@@ -6,10 +6,8 @@ import { styled } from 'styled-components';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const data = {
-  //   labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
   datasets: [
     {
-      //   label: '# of Votes',
       data: [12, 19, 3, 5, 2, 3],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
@@ -34,15 +32,52 @@ export const data = {
   ],
 };
 
+const TextInsideDoughnut = ({ text }) => {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        textAlign: 'center',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        fontFamily: 'Poppins',
+        fontSize: '18px',
+        fontStyle: 'normal',
+        fontWeight: '600',
+        lineHeight: 'normal',
+      }}
+    >
+      {text}
+    </div>
+  );
+};
+
 export const Chart = () => {
   return (
     <StyledChartContainer>
-      <Doughnut
-        data={data}
-        width={288}
-        height={288}
-        options={{ maintainAspectRatio: false }}
-      />
+      <div style={{ position: 'relative' }}>
+        <Doughnut
+          data={data}
+          width={288}
+          height={288}
+          options={{
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: true,
+                position: 'bottom',
+              },
+              title: {
+                display: true,
+                text: 'Doughnut Chart',
+              },
+            },
+            cutout: 100,
+          }}
+        />
+        <TextInsideDoughnut text="₴ 24 000.00" />
+      </div>
     </StyledChartContainer>
   );
 };

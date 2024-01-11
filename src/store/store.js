@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { currencyReducer } from './currency/currencySlice';
 
 const persistConfig = {
   key: 'api/token',
@@ -19,11 +20,18 @@ const persistConfig = {
   whitelist: ['token'],
 };
 
+const currencyPersistConfig = {
+  key: 'currency',
+  storage,
+  whitelist: ['data'],
+};
+
 const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
   reducer: {
     auth: persistedReducer,
+    currency: persistReducer(currencyPersistConfig, currencyReducer),
   },
   // reducer: {
   //   auth: authReducer,
