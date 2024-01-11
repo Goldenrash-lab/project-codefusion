@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const StyledTable = styled.div`
   width: 395px;
-  height: 607px;
 
   @media only screen and (min-width: 768px) {
     width: 336px;
@@ -59,7 +58,7 @@ export const StyledSpanIncome = styled.span`
 
 export const StyledList = styled.ul`
   padding-left: 0;
-  max-height: 200px;
+  max-height: 435px;
   overflow-y: auto;
 `;
 

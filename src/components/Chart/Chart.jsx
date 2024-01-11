@@ -11,8 +11,6 @@ export const Chart = ({ expensesData, totalExpenses }) => {
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const isTablet = useMediaQuery({ minWidth: 614, maxWidth: 818 });
   const isMobile = useMediaQuery({ maxWidth: 480 });
-  //   const isTablet = useMediaQuery({ query: '(max-width: 1224px)' });
-  //   const isMobile = useMediaQuery({ query: '(max-width: 767)' });
 
   let doughnutSize = 288;
 
@@ -34,13 +32,6 @@ export const Chart = ({ expensesData, totalExpenses }) => {
       },
     ],
   };
-
-  console.log('isDesktop: ' + isDesktop);
-  console.log('isTablet: ' + isTablet);
-  console.log('isMobile: ' + isMobile);
-  console.log('doughnutSize: ' + doughnutSize);
-  //   console.log('window.innerWidth: ' + window.innerWidth);
-  //   console.log('window.innerHeight: ' + window.innerHeight);
 
   return (
     <StyledChartContainer $doughnutSize={doughnutSize}>

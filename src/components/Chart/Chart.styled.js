@@ -3,27 +3,38 @@ import styled from 'styled-components';
 export const StyledTitle = styled.h2`
   display: flex;
   justify-content: flex-start;
-  padding-left: 60px;
+  width: 640px;
   font-size: 34px;
   margin-bottom: 20px;
   margin-top: 32px;
+  margin-left: 84px;
   text-align: center;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
+  @media only screen and (max-width: 767px) {
+    margin-left: 32px;
+  }
+
+  @media only screen and (max-width: 480px) {
+  }
 `;
 
 export const StyledContainer = styled.div`
   display: flex;
   width: 715px;
-  height: 677px;
+  margin-left: 69px;
 
   @media only screen and (max-width: 767px) {
+    width: 336px;
+    margin-left: 32px;
   }
 
   @media only screen and (max-width: 480px) {
     flex-direction: column;
+    width: 280px;
   }
 `;
 
