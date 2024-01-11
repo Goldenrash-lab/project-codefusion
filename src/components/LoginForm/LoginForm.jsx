@@ -15,7 +15,7 @@ import {
   LoginNavLinkSpan,
   LoginSpanLogo,
 } from './LoginFormStyded';
-import { signInThunk } from 'store/Auth/thunk';
+import { loginThunk } from 'store/Auth/thunk';
 
 import EmailLogo from '../../images/Login/EmailLogo';
 import PasswordLogo from '../../images/Login/PasswordLogo';
@@ -29,7 +29,7 @@ const LoginForm = () => {
 
   function submit(data) {
     console.log(data);
-    dispatch(signInThunk(data))
+    dispatch(loginThunk(data))
       .then(() => {
         console.log("You're logged in!");
       })
