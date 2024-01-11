@@ -1,24 +1,8 @@
+import { formatCurrency } from 'pages/StatisticsTab';
 import React from 'react';
 import styled from 'styled-components';
 
-export const StatisticsTable = () => {
-  const expensesData = [
-    { category: 'Main expenses', sum: 9700.0, color: '#FFD700' },
-    { category: 'Products', sum: 3800.74, color: '#FFC0CB' },
-    { category: 'Car', sum: 1500.0, color: '#E75480' },
-    { category: 'Self care', sum: 800.0, color: '#9999FF' },
-    { category: 'Child care', sum: 2208.5, color: '#6A5ACD' },
-    { category: 'Household products', sum: 300.0, color: '#6495ED' },
-    { category: 'Education', sum: 3400.0, color: '#ADD8E6' },
-    { category: 'Leisure', sum: 1230.0, color: '#90EE90' },
-    { category: 'Other expenses', sum: 610.0, color: '#98FB98' },
-  ];
-
-  const totalExpenses = expensesData.reduce(
-    (total, item) => total + parseFloat(item.sum),
-    0
-  );
-
+export const StatisticsTable = ({ expensesData, totalExpenses }) => {
   return (
     <StyledTable>
       <StyledTitleContainer>
@@ -32,19 +16,18 @@ export const StatisticsTable = () => {
               <ColorIndicator color={expense.color} />
               <StyledCategory>{expense.category}</StyledCategory>
             </StyledColorItem>
-            <StyledSum>
-              {expense.sum.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ')}
-            </StyledSum>
+            <StyledSum>{formatCurrency(expense.sum)}</StyledSum>
           </StyledListItem>
         ))}
         <StyledText>
           <p>Expenses:</p>{' '}
           <StyledSpanExpenses>
-            {totalExpenses.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ')}
+            {formatCurrency(totalExpenses)}
           </StyledSpanExpenses>
         </StyledText>
         <StyledText>
-          <p>Income:</p> <StyledSpanIncome>27 350.00</StyledSpanIncome>{' '}
+          <p>Income:</p>{' '}
+          <StyledSpanIncome>{formatCurrency(27350)}</StyledSpanIncome>{' '}
         </StyledText>
       </StyledList>
     </StyledTable>
