@@ -1,3 +1,4 @@
+import HeaderExitIcon from 'images/Header/HeaderExitIcon';
 import styled from 'styled-components';
 
 export const HeaderSection = styled.header`
@@ -49,6 +50,7 @@ export const HeaderSpanExit = styled.span`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  padding-left: 8px;
 `;
 
 export const HeaderButtonExit = styled.button`
@@ -62,4 +64,15 @@ export const HeaderButtonExit = styled.button`
   justify-content: center;
   align-items: center;
   margin-left: 6px;
+  &:hover,
+  &:focus {
+    ${HeaderSpanExit} {
+      font-weight: 700;
+      transition: font-weight 0.5s ease;
+      color: #ffffff;
+    }
+    ${HeaderExitIcon} > g > path {
+      fill-opacity: 0.01;
+    }
+  }
 `;
