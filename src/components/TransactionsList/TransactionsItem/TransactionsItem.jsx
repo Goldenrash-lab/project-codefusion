@@ -1,16 +1,23 @@
 import React from 'react';
-import { StyledButton } from './TrancactionsItem.styled';
+import {
+  StyledButton,
+  StyledSvg,
+  StyledTh,
+  StyledTransaction,
+} from './TransactionsItem.styled';
 
 const TransactionsItem = ({ transaction }) => {
   return (
-    <div>
-      <span>{transaction.date}</span>
-      <span>{transaction.type}</span>
-      <span>{transaction.category}</span>
-      <span>{transaction.comment}</span>
-      <span>{transaction.sum}</span>
-      <span>
-        <svg
+    <StyledTransaction normalFont={true}>
+      <StyledTh>{transaction.date}</StyledTh>
+      <StyledTh type={true}>{transaction.type}</StyledTh>
+      <StyledTh>{transaction.category}</StyledTh>
+      <StyledTh>{transaction.comment}</StyledTh>
+      <StyledTh type={transaction.type} sum={transaction.sum}>
+        {transaction.sum}
+      </StyledTh>
+      <StyledTh>
+        <StyledSvg
           xmlns="http://www.w3.org/2000/svg"
           width="14"
           height="15"
@@ -25,12 +32,11 @@ const TransactionsItem = ({ transaction }) => {
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-        </svg>
-      </span>
-      <span>
+        </StyledSvg>
+
         <StyledButton>Delete</StyledButton>
-      </span>
-    </div>
+      </StyledTh>
+    </StyledTransaction>
   );
 };
 
