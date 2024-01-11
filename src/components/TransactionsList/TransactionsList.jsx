@@ -73,7 +73,6 @@ const TransactionsList = () => {
             <StyledTheadItem sum={true}>Sum</StyledTheadItem>
             <StyledTheadItem></StyledTheadItem>
           </StyledThead>
-
           {transactions.length !== 0 ? (
             transactions?.map(transaction => {
               return (
