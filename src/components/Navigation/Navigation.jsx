@@ -1,7 +1,7 @@
 import React from 'react';
 
-import NavigationHome from '../../images/Navigation/NavigationHome';
-import StatisticsHome from 'images/Navigation/StatisticsHome';
+import NavigationHome from '../../images/Navigation/NavigationHomeIcon';
+import StatisticsHome from 'images/Navigation/StatisticsHomeIcon';
 import { NavigationNavLink, NavigationSection } from './NavigationStyles';
 
 const Navigation = () => {

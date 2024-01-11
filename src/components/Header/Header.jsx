@@ -5,7 +5,7 @@ import {
   HeaderImgLogo,
   HeaderSection,
 } from './HeaderStyled';
-import headerLogo from '../../images/Register/logoMoneyGuard.png';
+import headerLogo from '../../images/Header/logoMoneyGuard.png';
 // import { useSelector } from 'react-redux';
 
 const Header = () => {
