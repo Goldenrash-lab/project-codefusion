@@ -8,7 +8,7 @@ const HeaderIconI = props => (
     viewBox="0 0 2 30"
     fill="none"
   >
-    <path d="M1 0V30" stroke="white" stroke-opacity="0.6" />
+    <path d="M1 0V30" stroke="white" strokeOpacity="0.6" />
   </svg>
 );
 
