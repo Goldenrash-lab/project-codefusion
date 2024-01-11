@@ -1,0 +1,20 @@
+:root {
+  --white: #fbfbfb;
+  --icon-violet: #734aef;
+
+  --button-gradient: linear-gradient(
+    167deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
+
+  --transparency-10: rgba(255, 255, 255, 0.1);
+  --transparency-20: rgba(255, 255, 255, 0.2);
+  --transparency-40: rgba(255, 255, 255, 0.4);
+  --transparency-60: rgba(255, 255, 255, 0.6);
+
+  --yellow: #ffb627;
+  --dashboard-text: #ff868d;
+  --button-text-color: #623f8b;
+}

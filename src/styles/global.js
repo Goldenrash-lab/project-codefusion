@@ -7,7 +7,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   margin: 0;
   padding: 0;
 }
@@ -23,6 +24,12 @@ img {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+body{
+     font-family: 'Poppins-Regular';
+  font-weight: 400;
+  font-size: 18px;
 }
 
 `;
