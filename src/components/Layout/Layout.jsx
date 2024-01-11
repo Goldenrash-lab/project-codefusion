@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router';
-import { Container } from './Layout.styled';
+import { Container, WrapperLeft, WrapperLeftAndRight } from './Layout.styled';
 import Header from 'components/Header/Header';
 import Navigation from 'components/Navigation/Navigation';
 import { Balance } from 'components/Balance/Balance';
@@ -11,14 +11,14 @@ const Layout = () => {
     <>
       <Container>
         <Header />
-        <div style={{ display: 'flex' }}>
-          <div>
+        <WrapperLeftAndRight>
+          <WrapperLeft>
             <Navigation />
             <Balance />
             <Currency />
-          </div>
+          </WrapperLeft>
           <Outlet />
-        </div>
+        </WrapperLeftAndRight>
       </Container>
     </>
   );
