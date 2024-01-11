@@ -22,7 +22,6 @@ export const App = () => {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegistrationPage />} />
       </Routes>
-      {/* <ModalAddTransactions /> */}
       <EditTransaction />
     </>
   );
