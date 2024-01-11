@@ -24,6 +24,7 @@ export const NavigationNavLink = styled(NavLink)`
   &:hover,
   &:focus {
     font-weight: 700;
+    transition: font-weight 0.5s ease;
   }
 
   &.active {
@@ -31,6 +32,7 @@ export const NavigationNavLink = styled(NavLink)`
     div {
       width: 18px !important;
       height: 18px !important;
+
       background-color: #fff;
       border-radius: 3px;
       filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
@@ -67,4 +69,10 @@ export const NavigationSpanStatistics = styled.span`
     stroke: aqua;
     color: aqua;
   }
+`;
+
+export const NavigationDivTest2 = styled.div`
+  display: flex;
+  align-content: center;
+  align-items: center;
 `;
