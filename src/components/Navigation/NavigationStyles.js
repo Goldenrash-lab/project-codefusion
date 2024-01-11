@@ -16,3 +16,19 @@ export const NavigationNavLink = styled(NavLink)`
   align-items: center;
   gap: 20px;
 `;
+
+export const NavigationSpanHome = styled.span`
+  font-weight: 400;
+
+  &:hover,
+  &:focus {
+    font-weight: 700;
+  }
+`;
+export const NavigationSpanStatistics = styled.span`
+  font-weight: 400;
+  &:hover,
+  &:focus {
+    font-weight: 700;
+  }
+`;
