@@ -54,7 +54,7 @@ export const InputDiv = styled.div`
 `;
 export const LoginSpanLogo = styled.span`
   color: var(--white, #fbfbfb);
-  font-family: Poppins;
+
   font-size: 26.963px;
   font-style: normal;
   font-weight: 400;
@@ -89,7 +89,7 @@ export const LoginNavLink = styled(NavLink)`
 export const LoginNavLinkSpan = styled.span`
   color: var(--text-button, #623f8b);
   text-align: center;
-  font-family: Poppins;
+
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -121,7 +121,7 @@ export const LoginButton = styled.button`
   box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
   color: var(--white, #fbfbfb);
   text-align: center;
-  font-family: Poppins;
+
   font-size: 18px;
   font-style: normal;
   font-weight: 400;

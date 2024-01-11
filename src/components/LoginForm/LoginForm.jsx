@@ -69,7 +69,7 @@ const LoginForm = () => {
             />
           </InputDiv>
           <LoginDivButton>
-            <LoginButton>Login</LoginButton>
+            <LoginButton>log in</LoginButton>
             <LoginNavLink to="/register">
               <LoginNavLinkSpan>Register</LoginNavLinkSpan>
             </LoginNavLink>
