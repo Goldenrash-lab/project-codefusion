@@ -1,16 +1,20 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import {
   StyledButton,
   StyledSvg,
   StyledTh,
   StyledTransaction,
 } from './TransactionsItem.styled';
+import { deleteTransactionThunk } from 'store/Transactions/operations';
 
 const TransactionsItem = ({ transaction }) => {
+  const dispatch = useDispatch();
+  const normalFontValue = 'true';
   return (
-    <StyledTransaction normalFont={true}>
+    <StyledTransaction normalfont={normalFontValue}>
       <StyledTh>{transaction.date}</StyledTh>
-      <StyledTh type={true}>{transaction.type}</StyledTh>
+      <StyledTh type={transaction.type}>{transaction.type}</StyledTh>
       <StyledTh>{transaction.category}</StyledTh>
       <StyledTh>{transaction.comment}</StyledTh>
       <StyledTh type={transaction.type} sum={transaction.sum}>
@@ -34,7 +38,9 @@ const TransactionsItem = ({ transaction }) => {
           />
         </StyledSvg>
 
-        <StyledButton>Delete</StyledButton>
+        <StyledButton onClick={() => deleteTransactionThunk(transaction.id)}>
+          Delete
+        </StyledButton>
       </StyledTh>
     </StyledTransaction>
   );

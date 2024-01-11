@@ -30,23 +30,25 @@ export const StyledTransaction = styled.tr`
   height: 56px;
   padding-left: 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.41);
-  font-size: ${props => (props.normalFont ? '14px' : null)};
+  font-size: '${props => (props.$normalfont ? '14px' : null)}';
   font-weight: 400;
 `;
 export const StyledTh = styled.th`
-  text-align: ${props => (props.sum ? 'end' : props.type ? 'center' : 'start')};
+  text-align: ${props =>
+    props.$sum ? 'end' : props.$type ? 'center' : 'start'};
   width: 100px;
   font-weight: 400;
   color: ${props =>
-    props.type === '+'
+    props.$type === '+'
       ? 'var(--yellow)'
-      : props.type === '-'
+      : props.$type === '-'
       ? 'var(--dashboard-text)'
       : null};
   &:last-child {
     margin-left: 33px;
   }
 `;
+
 export const StyledSvg = styled.svg`
   cursor: pointer;
 
