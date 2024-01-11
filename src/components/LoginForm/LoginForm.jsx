@@ -28,6 +28,7 @@ const LoginForm = () => {
   function submit(data) {
     console.log(data);
     dispatch(loginThunk(data))
+      .unwrap()
       .then(() => {
         console.log("You're logged in!");
       })
