@@ -5,7 +5,7 @@ import RegistrationPage from 'pages/RegistrationPage';
 import StatisticsTab from 'pages/StatisticsTab';
 import { Route, Routes } from 'react-router';
 import Global from 'styles/global';
-
+// тест ввапапвапва
 export const App = () => {
   return (
     <>
@@ -17,6 +17,7 @@ export const App = () => {
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
+        
       </Routes>
     </>
   );
