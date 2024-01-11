@@ -10,7 +10,14 @@ const Navigation = () => {
       <div>
         <NavigationSection>
           <NavigationNavLink to="/">
-            <NavigationHome />
+            <div
+              style={{
+                filter: 'drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.50))',
+              }}
+            >
+              <NavigationHome />
+            </div>
+            {/* <NavigationHome /> */}
             <span>Home</span>
           </NavigationNavLink>
           <NavigationNavLink to="/statistics">
