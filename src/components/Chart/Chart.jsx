@@ -1,8 +1,8 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { styled } from 'styled-components';
 import { formatCurrency } from 'pages/StatisticsTab';
+import { StyledChartContainer } from './Chart.styled';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -65,9 +65,3 @@ const TextInsideDoughnut = ({ text }) => {
     </div>
   );
 };
-
-const StyledChartContainer = styled.div`
-  margin-right: 32px;
-  width: 288px;
-  height: 288px;
-`;
