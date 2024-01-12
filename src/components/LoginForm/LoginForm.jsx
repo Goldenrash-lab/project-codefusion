@@ -87,7 +87,7 @@ const LoginForm = () => {
               {...register('email')}
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder="E-mail"
             />
             <LoginTextError>{errors.email?.message}</LoginTextError>
           </InputDiv>
