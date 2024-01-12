@@ -1,6 +1,8 @@
 import Layout from 'components/Layout/Layout';
 import LoginForm from 'components/LoginForm/LoginForm';
 import DashboardPage from 'pages/DashboardPage';
+import ModalEditTransactions from 'components/ModalEditTransaction/ModalEditTransaction';
+import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
 
 import RegistrationPage from 'pages/RegistrationPage';
 import StatisticsTab from 'pages/StatisticsTab';
@@ -10,6 +12,8 @@ export const App = () => {
   return (
     <>
       <Global />
+      <ModalEditTransactions />
+      {/* <ModalAddTransactions /> */}
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<DashboardPage />} />

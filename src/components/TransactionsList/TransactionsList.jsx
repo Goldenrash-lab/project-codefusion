@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import TransactionsItem from './TransactionsItem/TransactionsItem';
 import {
   StyledAddTransactionButton,
@@ -11,7 +11,7 @@ import {
 } from './TransactionsList.styled';
 import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
-// import { transactionsData } from 'store/Transactions/selectors';
+//import { transactionsData } from 'store/Transactions/selectors';
 
 const transactions = [
   {
@@ -76,10 +76,10 @@ const TransactionsList = () => {
           {/* <thead>
             <StyledThead>
               <StyledTheadItem>Date</StyledTheadItem>
-              <StyledTheadItem type={true}>Type</StyledTheadItem>
+              <StyledTheadItem $type={true}>Type</StyledTheadItem>
               <StyledTheadItem>Category</StyledTheadItem>
               <StyledTheadItem>Comment</StyledTheadItem>
-              <StyledTheadItem sum={true}>Sum</StyledTheadItem>
+              <StyledTheadItem $sum={true}>Sum</StyledTheadItem>
               <StyledTheadItem></StyledTheadItem>
             </StyledThead>
           </thead>

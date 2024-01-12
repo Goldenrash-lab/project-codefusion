@@ -3,10 +3,25 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { formatCurrency } from 'pages/StatisticsTab';
 import { StyledChartContainer, TextInsideDoughnut } from './Chart.styled';
+import { useMediaQuery } from 'react-responsive';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const Chart = ({ expensesData, totalExpenses }) => {
+  const isDesktop = useMediaQuery({ minWidth: 1024 });
+  const isTablet = useMediaQuery({ minWidth: 614, maxWidth: 818 });
+  const isMobile = useMediaQuery({ maxWidth: 480 });
+
+  let doughnutSize = 288;
+
+  if (isTablet) {
+    doughnutSize = 336;
+  } else if (isMobile) {
+    doughnutSize = 280;
+  } else if (isDesktop) {
+    doughnutSize = 288;
+  }
+
   const data = {
     datasets: [
       {
@@ -17,8 +32,9 @@ export const Chart = ({ expensesData, totalExpenses }) => {
       },
     ],
   };
+
   return (
-    <StyledChartContainer>
+    <StyledChartContainer $doughnutSize={doughnutSize}>
       <div
         style={{
           position: 'relative',
@@ -26,8 +42,8 @@ export const Chart = ({ expensesData, totalExpenses }) => {
       >
         <Doughnut
           data={data}
-          width={288}
-          height={288}
+          width={doughnutSize}
+          height={doughnutSize}
           options={{
             maintainAspectRatio: false,
             plugins: {
@@ -40,7 +56,7 @@ export const Chart = ({ expensesData, totalExpenses }) => {
                 text: 'Doughnut Chart',
               },
             },
-            cutout: 100,
+            cutout: doughnutSize / 2.88,
           }}
         />
         <TextInsideDoughnut text={`₴ ${formatCurrency(totalExpenses)}`} />
