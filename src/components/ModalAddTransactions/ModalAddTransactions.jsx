@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import calendar from '../../images/ModalAddTransaction/calendar.svg';
 import closeImg from '../../images/ModalAddTransaction/close.svg';
-import { toast } from 'react-toastify';
 import {
   Arrow,
   Backdrop,
@@ -28,8 +27,7 @@ import arrow from '../../images/ModalAddTransaction/arrow.svg';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { addTransactionThunk } from 'store/Transactions/operations';
-import { ErrorText } from 'components/RegistrationForm/RegistrationForm.styled';
+import { addTransactionThunk } from 'store/Transactions/transactionsThunk';
 
 const schema = yup
   .object({
@@ -52,11 +50,7 @@ const ModalAddTransactions = ({ close }) => {
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     mode: 'onChange',
     resolver: yupResolver(schema),
   });

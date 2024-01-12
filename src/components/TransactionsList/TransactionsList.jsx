@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import {
-  StyledAddTransactionButton,
-  StyledTable,
-  TableWrap,
-  WrapTable,
-} from './TransactionsList.styled';
+
+import { StyledAddTransactionButton } from './TransactionsList.styled';
 import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import TransactionsDashboard from './TransactionDashboard/TransactionsDashboard';
 import { useMediaQuery } from 'react-responsive';
-import { transactionsData } from 'store/Transactions/selectors';
 
 const transactions = [
   {
