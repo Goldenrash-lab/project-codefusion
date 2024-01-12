@@ -42,7 +42,7 @@ export const deleteTransactionThunk = createAsyncThunk(
 
 export const addTransactionThunk = createAsyncThunk(
   'addTransaction',
-  async ({ newTransaction }, thunkApi) => {
+  async (newTransaction, thunkApi) => {
     const savedToken = thunkApi.getState().auth.token;
     if (savedToken) {
       setToken(savedToken);
