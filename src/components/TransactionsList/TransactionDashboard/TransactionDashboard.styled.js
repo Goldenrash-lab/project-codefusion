@@ -5,7 +5,7 @@ export const StyledThead = styled.tr`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 715px;
+
   height: 56px;
   padding: 20px 16px;
   border-radius: 8px;
@@ -13,23 +13,26 @@ export const StyledThead = styled.tr`
 `;
 
 export const StyledTheadItem = styled.th`
-  width: 100px;
+  padding-right: 10px;
+  width: ${props => (props.$width ? '90px' : '100px')};
   font-size: 16px;
   font-weight: 600;
   text-align: ${props =>
     props.$sum ? 'end' : props.$type ? 'center' : 'start'};
+
+  &:last-child {
+    width: 120px;
+  }
 `;
 export const StyledTable = styled.table`
   width: 704px;
   margin: 0 auto;
-  /* border-left: 1px solid #d9d9d9; */
-
   margin-top: 20px;
 
   @media screen and (min-width: 1280px) {
     width: 715px;
     padding-left: 69px;
-    padding-right: 16px;
+    padding-right: 20px;
     margin-top: 46px;
   }
   /* background: radial-gradient(at 100% 0, #20033e 0, transparent 50%) repeat
