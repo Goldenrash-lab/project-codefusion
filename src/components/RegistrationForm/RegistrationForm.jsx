@@ -87,7 +87,7 @@ const RegistrationForm = () => {
   }
 
   const user = useSelector(selectUser);
-  console.log(user);
+
   if (user) {
     return <Navigate to={'/'} />;
   }
