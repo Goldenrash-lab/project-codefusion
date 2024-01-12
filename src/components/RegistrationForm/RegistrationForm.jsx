@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Button,
   ButtonsDiv,
@@ -17,13 +17,14 @@ import LockIcon from 'images/Register/LockIcon';
 import { InputWrapper } from './RegistrationForm.styled';
 import { TestDiv } from './RegistrationForm.styled';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerThunk } from 'store/Auth/thunk';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useNavigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
+import { selectUser } from 'store/Auth/selectors';
 
 const schema = yup
   .object({
@@ -63,13 +64,14 @@ const RegistrationForm = () => {
   });
 
   const dispatch = useDispatch();
+
   function submit({ username, email, password }) {
     const user = {
       username,
       email,
       password,
     };
-    console.log(user);
+
     dispatch(registerThunk(user))
       .unwrap()
       .then(() => {
@@ -77,12 +79,17 @@ const RegistrationForm = () => {
         toast.success('Welcome!');
       })
       .catch(err => {
-        // console.log(err);
         toast.error(err);
       });
   }
   function handleClick() {
     navigate('/login');
+  }
+
+  const user = useSelector(selectUser);
+  console.log(user);
+  if (user) {
+    return <Navigate to={'/'} />;
   }
 
   return (
