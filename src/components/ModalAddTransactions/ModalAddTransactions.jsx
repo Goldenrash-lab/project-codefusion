@@ -2,16 +2,14 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import calendar from '../../images/ModalAddTransaction/calendar.svg';
 import closeImg from '../../images/ModalAddTransaction/close.svg';
 import {
+  Arrow,
   Backdrop,
-  Calendar,
   CalendarImg,
   CheckedExpense,
   CheckedIncome,
   CloseBtn,
-  CloseImg,
   DatePickerWrapper,
   Modal,
-  Popper,
   Switcher,
   SwitcherContainer,
   UncheckedText,
@@ -21,11 +19,53 @@ import { ButtonsContainer } from './ModalAddTransaction.styled';
 import { CommentInput } from './ModalAddTransaction.styled';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import {
+  ErrorText,
+  TestDiv,
+} from 'components/RegistrationForm/RegistrationForm.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCategories } from 'store/Categories/categoriesSelectors';
+import { categoriesThunk } from 'store/Categories/categoriesThunk';
+import arrow from '../../images/ModalAddTransaction/arrow.svg';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema = yup
+  .object({
+    sum: yup
+      .number()
+      .min(1, 'Number must be at least 1 character')
+      .required('Sum is required'),
+    comment: yup
+      .string()
+      .min(5, 'Comment must be at least 5 characters')
+      .max(25)
+      .required('Comment is required'),
+  })
+  .required();
 
 const ModalAddTransactions = ({ close }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [isExpense, setIsExpense] = useState(true);
   const ref = useRef();
+  const categories = useSelector(selectCategories);
+  const dispatch = useDispatch();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'onChange',
+    resolver: yupResolver(schema),
+  });
+
+  function submit() {}
+
+  useEffect(() => {
+    dispatch(categoriesThunk());
+  }, [dispatch]);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -52,12 +92,12 @@ const ModalAddTransactions = ({ close }) => {
 
     useEffect(() => {
       document.addEventListener('keydown', handleEscKey);
-
       return () => {
         document.removeEventListener('keydown', handleEscKey);
       };
     }, [handleEscKey]);
   }
+
   return (
     <Backdrop
       onClick={onBackdropClick}
@@ -65,11 +105,12 @@ const ModalAddTransactions = ({ close }) => {
       onKeyDown={useEscapeKey(close)}
     >
       <Modal>
+        <TestDiv></TestDiv>
         <CloseBtn onClick={() => close(false)}>
           <img alt="" src={closeImg}></img>
         </CloseBtn>
         <h1>Add transaction</h1>
-        <form action="">
+        <form action="" onSubmit={handleSubmit(submit)}>
           <SwitcherContainer>
             {isExpense ? (
               <UncheckedText>Income</UncheckedText>
@@ -93,11 +134,17 @@ const ModalAddTransactions = ({ close }) => {
           </SwitcherContainer>
 
           {isExpense && (
-            <select name="" id="" required defaultValue={1}>
-              <option value={1} disabled hidden>
-                Select a category
-              </option>
-            </select>
+            <div>
+              <select name="" id="" required defaultValue={1}>
+                <option value={1} disabled hidden>
+                  Select a category
+                </option>
+                {categories.map(({ name }) => (
+                  <option>{name}</option>
+                ))}
+              </select>
+              <Arrow alt="" src={arrow}></Arrow>
+            </div>
           )}
 
           <SumDateContainer>
@@ -106,7 +153,9 @@ const ModalAddTransactions = ({ close }) => {
               name="sum"
               placeholder="0.00"
               autoComplete="off"
+              {...register('sum')}
             />
+            {/* <ErrorText>{errors.sum?.message}</ErrorText> */}
             <DatePickerWrapper>
               <CalendarImg alt="" src={calendar}></CalendarImg>
               <ReactDatePicker
@@ -116,7 +165,13 @@ const ModalAddTransactions = ({ close }) => {
               />
             </DatePickerWrapper>
           </SumDateContainer>
-          <CommentInput type="text" placeholder="Comment" autoComplete="off" />
+          <CommentInput
+            type="text"
+            placeholder="Comment"
+            autoComplete="off"
+            {...register('comment')}
+          />
+          {/* <ErrorText>{errors.comment?.message}</ErrorText> */}
           <ButtonsContainer>
             <button type="submit">Add</button>
             <button>Cancel</button>

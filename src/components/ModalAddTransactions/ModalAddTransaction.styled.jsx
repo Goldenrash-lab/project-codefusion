@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import switcherExpense from '../../images/Switcher/switcherExpense.svg';
 import switcherIncome from '../../images/Switcher/switcherIncome.svg';
-import background from '../../images/ModalAddTransaction/background.png';
+import background from '../../images/ModalAddTransaction/background1.png';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -13,6 +13,7 @@ export const Backdrop = styled.div`
   background: rgba(34, 13, 91, 0.23);
 
   backdrop-filter: blur(3.5px);
+  z-index: 20;
   /* @media only screen and (max-width: 480px) {
     position: relative;
   } */
@@ -36,7 +37,9 @@ export const Modal = styled.div`
   align-items: center;
 
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.1);
+  /* background: rgba(255, 255, 255, 0.1); */
+  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(50px);
   @media only screen and (max-width: 480px) {
     max-width: 320px;
     height: 100vh;
@@ -46,9 +49,6 @@ export const Modal = styled.div`
       flex-direction: column;
       align-items: center;
     }
-
-    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(50px);
   }
   /* width: calc(100% - 40px); */
   h1 {
@@ -64,6 +64,9 @@ export const Modal = styled.div`
     }
   }
   select {
+    position: relative;
+    appearance: none;
+    cursor: pointer;
     width: 394px;
     margin-bottom: 40px;
     background: transparent;
@@ -74,6 +77,23 @@ export const Modal = styled.div`
       width: 280px;
     }
   }
+  select > option {
+    /* background-color: darkblue; */
+
+    /* border-radius: 8px; */
+    /* background: linear-gradient(
+      0deg,
+      rgba(83, 61, 186, 0.7) 0%,
+      rgba(80, 48, 154, 0.7) 43.14%,
+      rgba(106, 70, 165, 0.52) 73.27%,
+      rgba(133, 93, 175, 0.13) 120.03%
+    ); */
+
+    /* form effects */
+    /* box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(50px); */
+  }
+
   select:required {
     color: rgba(255, 255, 255, 0.6);
     padding-left: 8px;
@@ -271,4 +291,11 @@ export const CloseBtn = styled.button`
   position: absolute;
   top: 20px;
   right: 20px;
+`;
+
+export const Arrow = styled.img`
+  position: absolute;
+  top: 213px;
+  right: 81px;
+  pointer-events: none;
 `;
