@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useLocation } from 'react-router';
+import { useDispatch } from 'react-redux';
+
 import {
   InputDiv,
   LoginButton,
@@ -15,7 +15,7 @@ import {
   LoginNavLinkSpan,
   LoginSpanLogo,
 } from './LoginFormStyded';
-import { signInThunk } from 'store/Auth/thunk';
+import { loginThunk } from 'store/Auth/thunk';
 
 import EmailLogo from '../../images/Login/EmailLogo';
 import PasswordLogo from '../../images/Login/PasswordLogo';
@@ -25,21 +25,14 @@ const LoginForm = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
 
-  const location = useLocation();
-
   function submit(data) {
     console.log(data);
-    dispatch(signInThunk(data))
+    dispatch(loginThunk(data))
+      .unwrap()
       .then(() => {
         console.log("You're logged in!");
       })
       .catch(() => console.log('Something went wrong!'));
-  }
-
-  const isAuthenticated = useSelector(state => !!state.auth.user);
-
-  if (isAuthenticated) {
-    return <Navigate to={location.state?.from || '/Home'} />;
   }
 
   return (
@@ -69,7 +62,7 @@ const LoginForm = () => {
             />
           </InputDiv>
           <LoginDivButton>
-            <LoginButton>Login</LoginButton>
+            <LoginButton>log in</LoginButton>
             <LoginNavLink to="/register">
               <LoginNavLinkSpan>Register</LoginNavLinkSpan>
             </LoginNavLink>

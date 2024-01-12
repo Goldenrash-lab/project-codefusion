@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+// import { useSelector } from 'react-redux';
 import TransactionsItem from './TransactionsItem/TransactionsItem';
 import {
   StyledAddTransactionButton,
@@ -9,7 +9,8 @@ import {
   TableWrap,
   WrapTable,
 } from './TransactionsList.styled';
-import { transactionsData } from 'store/Transactions/selectors';
+import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
+// import { transactionsData } from 'store/Transactions/selectors';
 
 const transactions = [
   {
@@ -64,6 +65,7 @@ const transactions = [
 const TransactionsList = () => {
   // const transactions = useSelector(transactionsData);
   // console.log(transactions);
+  const [isAddTransactionOpen, setIsTransactionOpen] = useState(false);
 
   return (
     <TableWrap>
@@ -95,7 +97,7 @@ const TransactionsList = () => {
           </tbody>
         </StyledTable>
       </WrapTable>
-      <StyledAddTransactionButton>
+      <StyledAddTransactionButton onClick={() => setIsTransactionOpen(true)}>
         <svg
           width="20"
           height="20"
@@ -107,6 +109,9 @@ const TransactionsList = () => {
           <path d="M0 10L20 10" stroke="white" strokeWidth="2" />
         </svg>
       </StyledAddTransactionButton>
+      {isAddTransactionOpen && (
+        <ModalAddTransactions close={setIsTransactionOpen} />
+      )}
     </TableWrap>
   );
 };

@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import calendar from '../../images/ModalAddTransaction/calendar.svg';
+import closeImg from '../../images/ModalAddTransaction/close.svg';
 import {
   Backdrop,
   Calendar,
   CalendarImg,
   CheckedExpense,
   CheckedIncome,
+  CloseBtn,
+  CloseImg,
   DatePickerWrapper,
   Modal,
   Popper,
-  StyledExpense,
   Switcher,
   SwitcherContainer,
-  UncheckedExpense,
   UncheckedText,
 } from './ModalAddTransaction.styled';
 import { SumDateContainer } from './ModalAddTransaction.styled';
@@ -21,16 +22,52 @@ import { CommentInput } from './ModalAddTransaction.styled';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const ModalAddTransactions = () => {
+const ModalAddTransactions = ({ close }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [isExpense, setIsExpense] = useState(true);
-  useEffect(() => {
-    console.log(isExpense);
-  }, [isExpense]);
+  const ref = useRef();
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
+  function onBackdropClick(e) {
+    if (e.target === ref.current) {
+      close(false);
+    }
+  }
+
+  function useEscapeKey(close) {
+    const handleEscKey = useCallback(
+      event => {
+        if (event.key === 'Escape') {
+          close(false);
+        }
+      },
+      [close]
+    );
+
+    useEffect(() => {
+      document.addEventListener('keydown', handleEscKey);
+
+      return () => {
+        document.removeEventListener('keydown', handleEscKey);
+      };
+    }, [handleEscKey]);
+  }
   return (
-    <Backdrop>
+    <Backdrop
+      onClick={onBackdropClick}
+      ref={ref}
+      onKeyDown={useEscapeKey(close)}
+    >
       <Modal>
+        <CloseBtn onClick={() => close(false)}>
+          <img alt="" src={closeImg}></img>
+        </CloseBtn>
         <h1>Add transaction</h1>
         <form action="">
           <SwitcherContainer>
@@ -56,27 +93,30 @@ const ModalAddTransactions = () => {
           </SwitcherContainer>
 
           {isExpense && (
-            <select name="" id="" required>
-              <option value="" disabled selected hidden>
+            <select name="" id="" required defaultValue={1}>
+              <option value={1} disabled hidden>
                 Select a category
               </option>
             </select>
           )}
 
           <SumDateContainer>
-            <input type="text" name="sum" placeholder="0.00" />
+            <input
+              type="text"
+              name="sum"
+              placeholder="0.00"
+              autoComplete="off"
+            />
             <DatePickerWrapper>
               <CalendarImg alt="" src={calendar}></CalendarImg>
               <ReactDatePicker
                 selected={startDate}
                 onChange={date => setStartDate(date)}
                 dateFormat="dd.MM.yyyy"
-                calendarContainer={Calendar}
-                popperContainer={Popper}
               />
             </DatePickerWrapper>
           </SumDateContainer>
-          <CommentInput type="text" placeholder="Comment" />
+          <CommentInput type="text" placeholder="Comment" autoComplete="off" />
           <ButtonsContainer>
             <button type="submit">Add</button>
             <button>Cancel</button>
