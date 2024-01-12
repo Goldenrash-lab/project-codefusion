@@ -22,7 +22,7 @@ export const categoriesThunk = createAsyncThunk(
 
 export const transactionsSummaryThunk = createAsyncThunk(
   'categoriesSummary/get',
-  async (_, thunkApi) => {
+  async (params, thunkApi) => {
     const savedToken = thunkApi.getState().auth.token;
     if (savedToken) {
       setToken(savedToken);
@@ -31,7 +31,12 @@ export const transactionsSummaryThunk = createAsyncThunk(
     }
 
     try {
-      const response = await api.get('api/transactions-summary');
+      const response = await api.get('api/transactions-summary', {
+        params: {
+          ...(params?.month !== undefined && { month: params.month }),
+          ...(params?.year !== undefined && { year: params.year }),
+        },
+      });
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
