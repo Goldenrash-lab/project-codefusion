@@ -36,6 +36,7 @@ export const LoginFormContainer = styled.form`
   padding-right: 62px;
   padding-bottom: 80px;
   padding-left: 62px;
+  z-index: 2;
 `;
 
 export const LoginDivButton = styled.div`
@@ -51,7 +52,21 @@ export const LoginDivButton = styled.div`
 
 export const InputDiv = styled.div`
   position: relative;
+  margin-bottom: 40px;
 `;
+
+export const LoginFormDivGradient = styled.div`
+  width: 454px;
+  border-radius: 454px;
+  background: rgba(47, 21, 176, 0.73);
+  max-width: 454px;
+  height: 454px;
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+  filter: blur(100px);
+`;
+
 export const LoginSpanLogo = styled.span`
   color: var(--white, #fbfbfb);
 
@@ -62,8 +77,6 @@ export const LoginSpanLogo = styled.span`
 `;
 
 export const LoginInput = styled.input`
-  margin-bottom: 40px;
-
   min-width: 409px;
   padding: 8px 8px 8px 54px;
   color: #fff;
@@ -72,6 +85,9 @@ export const LoginInput = styled.input`
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   position: relative;
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
 `;
 
 export const LoginNavLink = styled(NavLink)`
@@ -85,6 +101,7 @@ export const LoginNavLink = styled(NavLink)`
   border: 1px solid #4a56e2;
   background: #fcfcfc;
   box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 `;
 export const LoginNavLinkSpan = styled.span`
   color: var(--text-button, #623f8b);
@@ -117,7 +134,7 @@ export const LoginButton = styled.button`
     --button-gradient,
     linear-gradient(97deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%)
   );
-
+  cursor: pointer;
   box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
   color: var(--white, #fbfbfb);
   text-align: center;
@@ -129,4 +146,9 @@ export const LoginButton = styled.button`
   letter-spacing: 1.8px;
   text-transform: uppercase;
   border: none;
+`;
+
+export const LoginTextError = styled.p`
+  font-size: 14px;
+  padding-left: 30px;
 `;

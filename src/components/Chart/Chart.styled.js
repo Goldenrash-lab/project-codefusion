@@ -14,11 +14,13 @@ export const StyledTitle = styled.h2`
   font-weight: 400;
   line-height: normal;
 
-  @media only screen and (max-width: 767px) {
+  @media only screen and (min-width: 767px) {
     margin-left: 32px;
+    width: 336px;
   }
 
   @media only screen and (max-width: 480px) {
+    width: 280px;
   }
 `;
 
@@ -27,7 +29,7 @@ export const StyledContainer = styled.div`
   width: 715px;
   margin-left: 69px;
 
-  @media only screen and (max-width: 767px) {
+  @media only screen and (min-width: 767px) {
     width: 336px;
     margin-left: 32px;
   }
