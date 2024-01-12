@@ -30,9 +30,14 @@ export const StyledTransaction = styled.tr`
   width: 715px;
   height: 56px;
   padding-left: 16px;
+  padding-right: 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.41);
   font-size: ${props => (props.$normalFont ? '14px' : null)};
   font-weight: 400;
+
+  @media screen and (min-width: 1280px) {
+    padding-right: 0;
+  }
 `;
 export const StyledTh = styled.th`
   text-align: ${props =>

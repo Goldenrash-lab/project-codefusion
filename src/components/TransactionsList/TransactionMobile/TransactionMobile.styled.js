@@ -49,13 +49,16 @@ export const TransactionCard = styled.li`
 export const EditButton = styled.button`
   background-color: transparent;
   border: none;
-  color: var(--white, 0.6);
+  display: flex;
+  align-items: center;
 `;
 
 export const EditSpan = styled.span`
   font-size: 16px;
   line-height: 1.2;
   letter-spacing: 0.02em;
+  margin-left: 4px;
+  color: rgba(255, 255, 255, 0.6);
 `;
 export const StyledUlWrap = styled.ul`
   display: flex;

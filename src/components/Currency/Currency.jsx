@@ -13,6 +13,10 @@ import {
   StyledTh,
   StyledTdBox,
   StyledTableHead,
+  StyledNum,
+  StyledNumUsd,
+  StyledNumEur,
+  StyledImg,
 } from './CurrencyStyled';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
@@ -26,7 +30,7 @@ const Currency = () => {
   const [currency, setCurrency] = useState([]);
   const dispatch = useDispatch();
   const selectedCurrency = useSelector(currencySelector);
-
+  console.log('here', selectedCurrency, currency);
   // const isLoading = useSelector(isLoadingSelector);
   const token = useSelector(state => state.auth.token);
 
@@ -81,8 +85,11 @@ const Currency = () => {
                 })}
             </StyledTBody>
           </StyledTable>
-
-          <img src={imageDesc} alt="graphic" />
+          <StyledNum>
+            <StyledNumUsd>{currency[0]?.rateBuy}</StyledNumUsd>
+            <StyledNumEur>{currency[1]?.rateBuy}</StyledNumEur>
+            <StyledImg src={imageDesc} alt="graphic" />
+          </StyledNum>
         </StyledBox>
       )}
       {/* tablet */}

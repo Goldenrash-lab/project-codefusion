@@ -95,6 +95,9 @@ export const Modal = styled.div`
     /* box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(50px); */
   }
+  select > option:last-child {
+    display: none;
+  }
 
   select:required {
     color: rgba(255, 255, 255, 0.6);

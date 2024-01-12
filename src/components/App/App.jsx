@@ -1,7 +1,7 @@
 import Layout from 'components/Layout/Layout';
 import LoginForm from 'components/LoginForm/LoginForm';
 import DashboardPage from 'pages/DashboardPage';
-
+import ModalEditTransactions from 'components/ModalEditTransaction/ModalEditTransaction';
 import RegistrationPage from 'pages/RegistrationPage';
 import StatisticsTab from 'pages/StatisticsTab';
 import { useEffect } from 'react';
@@ -19,6 +19,7 @@ export const App = () => {
   return (
     <>
       <Global />
+      {/* <ModalEditTransactions /> */}
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<DashboardPage />} />
@@ -27,6 +28,7 @@ export const App = () => {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/edit" element={<ModalEditTransactions />} />
       </Routes>
     </>
   );
