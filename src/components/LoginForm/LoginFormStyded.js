@@ -52,6 +52,7 @@ export const LoginDivButton = styled.div`
 
 export const InputDiv = styled.div`
   position: relative;
+  margin-bottom: 40px;
 `;
 
 export const LoginFormDivGradient = styled.div`
@@ -76,8 +77,6 @@ export const LoginSpanLogo = styled.span`
 `;
 
 export const LoginInput = styled.input`
-  margin-bottom: 40px;
-
   min-width: 409px;
   padding: 8px 8px 8px 54px;
   color: #fff;
@@ -143,4 +142,9 @@ export const LoginButton = styled.button`
   letter-spacing: 1.8px;
   text-transform: uppercase;
   border: none;
+`;
+
+export const LoginTextError = styled.p`
+  font-size: 14px;
+  padding-left: 30px;
 `;
