@@ -57,7 +57,7 @@ export const HeaderSpanExit = styled.span`
 
 export const HeaderButtonExit = styled.button`
   text-decoration: none;
-
+  cursor: pointer;
   border: none;
   outline: transparent;
   background: rgba(0, 0, 0, 0);
@@ -66,11 +66,11 @@ export const HeaderButtonExit = styled.button`
   justify-content: center;
   align-items: center;
   margin-left: 6px;
+  transition: font-weight 0.5s ease;
   &:hover,
   &:focus {
     ${HeaderSpanExit} {
       font-weight: 700;
-      transition: font-weight 0.5s ease;
       color: #ffffff;
     }
     ${HeaderExitDivIcon} {
