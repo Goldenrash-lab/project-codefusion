@@ -1,4 +1,5 @@
 import Layout from 'components/Layout/Layout';
+// import { Loader } from 'components/Loader/Loader';
 import LoginForm from 'components/LoginForm/LoginForm';
 import DashboardPage from 'pages/DashboardPage';
 import ModalEditTransactions from 'components/ModalEditTransaction/ModalEditTransaction';
@@ -8,9 +9,15 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
 import { refreshThunk } from 'store/Auth/thunk';
+// import { useSelector } from 'react-redux';
+
+// import { selectIsLoading } from 'store/Auth/selectors';
+// import { isLoadingSelector } from 'store/currency/currencySelector';
 import Global from 'styles/global';
+
 export const App = () => {
   const dispatch = useDispatch();
+  // const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(refreshThunk());
@@ -19,7 +26,6 @@ export const App = () => {
   return (
     <>
       <Global />
-      {/* <ModalEditTransactions /> */}
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<DashboardPage />} />
