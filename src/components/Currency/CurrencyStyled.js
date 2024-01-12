@@ -9,6 +9,25 @@ export const StyledBox = styled.div`
   max-width: ${props => props.maxw || '480px'};
   margin-top: 32px;
 `;
+export const StyledNum = styled.div`
+  position: relative;
+`;
+export const StyledNumUsd = styled.div`
+  position: absolute;
+  top: 20px;
+  left: 50px;
+  color: var(--dashboard-text, #ff868d);
+  font-size: 12px;
+  font-style: normal;
+`;
+export const StyledNumEur = styled.div`
+  position: absolute;
+  top: -10px;
+  right: 95px;
+  color: var(--dashboard-text, #ff868d);
+  font-size: 12px;
+  font-style: normal;
+`;
 
 export const StyledTable = styled.div`
   max-height: 170px;
@@ -78,6 +97,7 @@ export const StyledTd = styled.span`
 `;
 
 export const StyledImg = styled.img`
+  margin-top: 7px;
   display: inline-block;
   width: ${props => props.w || '480px'};
 `;
