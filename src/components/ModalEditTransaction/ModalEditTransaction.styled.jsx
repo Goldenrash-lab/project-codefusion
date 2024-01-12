@@ -76,7 +76,7 @@ export const ContainerCategory = styled.div`
   justify-content: center;
   margin-bottom: 40px;
 `;
-export const Category = styled.input`
+export const Category = styled.p`
   width: 394px;
   padding-left: 8px;
   padding-bottom: 8px;

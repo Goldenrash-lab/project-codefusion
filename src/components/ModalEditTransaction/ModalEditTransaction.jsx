@@ -29,7 +29,7 @@ import {
 
 const ModalEditTransactions = () => {
   const [transactionType, setTransactionType] = useState('income');
-  const [expenseCategory, setExpenseCategory] = useState('');
+  const [expenseCategory, setExpenseCategory] = useState('true');
   const [amount, setAmount] = useState('');
   const [transactionDate, setTransactionDate] = useState('');
   const [comment, setComment] = useState('');
@@ -83,7 +83,9 @@ const ModalEditTransactions = () => {
             id="category"
             required
             onChange={e => setExpenseCategory(e.target.value)}
-          ></Category>
+          >
+            Car
+          </Category>
         </ContainerCategory>
 
         <FormGroup>
