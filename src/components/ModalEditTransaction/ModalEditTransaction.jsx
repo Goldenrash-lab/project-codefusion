@@ -109,6 +109,7 @@ const ModalEditTransactions = () => {
         </FormGroup>
 
         <FormGroup>
+
           <Label htmlFor="comment">
             <TextArea
               id="comment"
@@ -118,6 +119,7 @@ const ModalEditTransactions = () => {
               placeholder="Сomment"
             ></TextArea>
           </Label>
+
         </FormGroup>
 
         <ButtonsContainer>

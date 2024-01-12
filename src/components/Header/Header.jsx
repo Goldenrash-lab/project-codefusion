@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   HeaderButtonExit,
   HeaderDivContainer,
@@ -17,14 +17,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logoutThunk } from 'store/Auth/thunk';
 import { selectUser } from 'store/Auth/selectors';
 import { Navigate } from 'react-router';
+import ModalExitBtn from '../ModalExitBtn/ModalExitBtn';
 // import { useSelector } from 'react-redux';
 
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleLogout = () => {
     dispatch(logoutThunk());
+  };
+
+  const buttonExitClick = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   const isAuthenticated = useSelector(state => !!state.auth.user);
@@ -34,24 +40,33 @@ const Header = () => {
   }
 
   return (
-    <HeaderSection>
-      <HeaderDivContainer>
-        <HeaderDivLogo>
-          <HeaderLogo />
-          <span>Money Guard</span>
-        </HeaderDivLogo>
-        <HeaderDivExit>
-          <HeaderSpanName>Hello {user.username}</HeaderSpanName>
-          <HeaderIconI />
-          <HeaderButtonExit onClick={handleLogout}>
-            <HeaderExitDivIcon>
-              <HeaderExitIcon />
-            </HeaderExitDivIcon>
-            <HeaderSpanExit>Exit</HeaderSpanExit>
-          </HeaderButtonExit>
-        </HeaderDivExit>
-      </HeaderDivContainer>
-    </HeaderSection>
+    <>
+      {isModalOpen && (
+        <ModalExitBtn
+          buttonExitClick={buttonExitClick}
+          handleLogout={handleLogout}
+        />
+      )}
+      <HeaderSection>
+        <HeaderDivContainer>
+          <HeaderDivLogo>
+            <HeaderLogo />
+            <span>Money Guard</span>
+          </HeaderDivLogo>
+
+          <HeaderDivExit>
+            <HeaderSpanName>Hello {user.username}</HeaderSpanName>
+            <HeaderIconI />
+            <HeaderButtonExit onClick={buttonExitClick}>
+              <HeaderExitDivIcon>
+                <HeaderExitIcon />
+              </HeaderExitDivIcon>
+              <HeaderSpanExit>Exit</HeaderSpanExit>
+            </HeaderButtonExit>
+          </HeaderDivExit>
+        </HeaderDivContainer>
+      </HeaderSection>
+    </>
   );
 };
 
