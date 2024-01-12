@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { categoriesThunk } from './categoriesThunk';
+import { categoriesThunk, transactionsSummaryThunk } from './categoriesThunk';
 
 const categoriesSlice = createSlice({
   name: 'categories',
@@ -7,6 +7,7 @@ const categoriesSlice = createSlice({
     isLoading: false,
     isError: null,
     categories: [],
+    summary: null,
   },
   extraReducers: builder => {
     builder
@@ -18,6 +19,17 @@ const categoriesSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(categoriesThunk.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.isError = payload;
+      })
+      .addCase(transactionsSummaryThunk.fulfilled, (state, { payload }) => {
+        state.summary = payload;
+        state.isLoading = false;
+      })
+      .addCase(transactionsSummaryThunk.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(transactionsSummaryThunk.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isError = payload;
       });

@@ -26,7 +26,6 @@ import EmailLogo from '../../images/Login/EmailLogo';
 import PasswordLogo from '../../images/Login/PasswordLogo';
 import LoginLogo from '../../images/Login/LoginLogo';
 import { Navigate } from 'react-router-dom';
-import { ErrorText } from 'components/RegistrationForm/RegistrationForm.styled';
 
 const schema = yup
   .object({
@@ -95,7 +94,7 @@ const LoginForm = () => {
               name="password"
               placeholder="Password"
             />
-            <LoginTextError>{errors.password?.message}</LoginTextError>
+            <LoginTextError>{errors.password?.message || ''}</LoginTextError>
           </InputDiv>
           <LoginDivButton>
             <LoginButton type="submit">log in</LoginButton>

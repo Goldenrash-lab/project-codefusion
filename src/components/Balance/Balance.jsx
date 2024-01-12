@@ -1,16 +1,14 @@
 import React from 'react';
 import { StyledBalance, StyledTitle, StyledAmount } from './Balance.styled';
 import { useSelector } from 'react-redux';
-// import { selectBalance } from '../../store/Auth/selectors';
+import { selectBalance } from 'store/Auth/selectors';
 
 export const Balance = () => {
-  // const balance = useSelector(selectBalance);
+  const balance = useSelector(selectBalance);
   return (
     <StyledBalance>
       <StyledTitle>Your balance</StyledTitle>
-      <StyledAmount>
-        {/* {balance ? `₴ ${balance}` : `Sorry, you must log in!`} */}
-      </StyledAmount>
+      <StyledAmount>₴ {balance && balance}</StyledAmount>
     </StyledBalance>
   );
 };

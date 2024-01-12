@@ -118,6 +118,8 @@ export const TestDiv = styled.div`
   }
 `;
 export const ErrorText = styled.p`
-  color: red;
   font-size: 14px;
+  padding-left: 30px;
+  display: block;
+  height: 14px;
 `;

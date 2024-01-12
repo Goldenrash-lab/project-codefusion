@@ -60,6 +60,7 @@ export const StyledList = styled.ul`
   padding-left: 0;
   max-height: 435px;
   overflow-y: auto;
+  margin-bottom: 16px;
 `;
 
 export const StyledListItem = styled.li`

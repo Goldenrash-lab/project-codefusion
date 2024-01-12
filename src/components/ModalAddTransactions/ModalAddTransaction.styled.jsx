@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import switcherExpense from '../../images/Switcher/switcherExpense.svg';
 import switcherIncome from '../../images/Switcher/switcherIncome.svg';
 import background from '../../images/ModalAddTransaction/background1.png';
+import backgroundMob from '../../images/ModalAddTransaction/backgroundMob.png';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -41,8 +42,9 @@ export const Modal = styled.div`
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(50px);
   @media only screen and (max-width: 480px) {
+    background-image: url(${backgroundMob});
     max-width: 320px;
-    height: 100vh;
+    min-height: 650px;
     padding: 40px 20px;
     form {
       display: flex;
@@ -78,7 +80,7 @@ export const Modal = styled.div`
     }
   }
   select > option {
-    /* background-color: darkblue; */
+    background-color: rgba(106, 70, 165, 0.52);
 
     /* border-radius: 8px; */
     /* background: linear-gradient(
@@ -92,6 +94,9 @@ export const Modal = styled.div`
     /* form effects */
     /* box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(50px); */
+  }
+  select > option:last-child {
+    display: none;
   }
 
   select:required {
@@ -247,6 +252,7 @@ export const CommentInput = styled.input`
   }
   @media only screen and (max-width: 480px) {
     width: 280px;
+    padding-bottom: 52px !important;
   }
 `;
 
@@ -298,4 +304,23 @@ export const Arrow = styled.img`
   top: 213px;
   right: 81px;
   pointer-events: none;
+  @media only screen and (max-width: 480px) {
+    top: 206px;
+    right: 40px;
+  }
+`;
+
+export const TestDiv = styled.div`
+  border-radius: 454px;
+  background: rgba(47, 21, 176, 0.73);
+  max-width: 454px;
+  height: 454px;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+
+  filter: blur(100px);
+  @media only screen and (min-width: 480px) {
+    width: 454px;
+  }
 `;
