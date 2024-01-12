@@ -10,14 +10,14 @@ import { deleteTransactionThunk } from 'store/Transactions/operations';
 
 const TransactionsItem = ({ transaction }) => {
   const dispatch = useDispatch();
-  const normalFontValue = 'true';
+
   return (
-    <StyledTransaction normalfont={normalFontValue}>
+    <StyledTransaction $normalFont={true}>
       <StyledTh>{transaction.date}</StyledTh>
-      <StyledTh type={transaction.type}>{transaction.type}</StyledTh>
+      <StyledTh $type={true}>{transaction.type}</StyledTh>
       <StyledTh>{transaction.category}</StyledTh>
       <StyledTh>{transaction.comment}</StyledTh>
-      <StyledTh type={transaction.type} sum={transaction.sum}>
+      <StyledTh $type={transaction.type} $sum={transaction.sum}>
         {transaction.sum}
       </StyledTh>
       <StyledTh>

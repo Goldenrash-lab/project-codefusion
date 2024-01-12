@@ -72,10 +72,10 @@ const TransactionsList = () => {
           <thead>
             <StyledThead>
               <StyledTheadItem>Date</StyledTheadItem>
-              <StyledTheadItem type={true}>Type</StyledTheadItem>
+              <StyledTheadItem $type={true}>Type</StyledTheadItem>
               <StyledTheadItem>Category</StyledTheadItem>
               <StyledTheadItem>Comment</StyledTheadItem>
-              <StyledTheadItem sum={true}>Sum</StyledTheadItem>
+              <StyledTheadItem $sum={true}>Sum</StyledTheadItem>
               <StyledTheadItem></StyledTheadItem>
             </StyledThead>
           </thead>
