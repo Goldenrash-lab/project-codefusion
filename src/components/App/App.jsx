@@ -12,7 +12,7 @@ export const App = () => {
   return (
     <>
       <Global />
-      <ModalEditTransactions />
+      {/* <ModalEditTransactions /> */}
       {/* <ModalAddTransactions /> */}
       <Routes>
         <Route element={<Layout />}>

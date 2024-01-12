@@ -1,5 +1,5 @@
 import React from 'react';
-import Edit from '../Edit';
+import Edit from '../helpers/Edit';
 import {
   EditButton,
   EditSpan,
@@ -8,65 +8,19 @@ import {
   StyledLi,
   TransactionCard,
 } from './TransactionMobile.styled';
-import DeleteButton from '../DeleteButton';
+import DeleteButton from '../helpers/DeleteButton';
 
-const transactions = [
-  {
-    id: 1,
-    date: '04.01.23',
-    category: 'other',
-    comment: 'gift for a wife',
-    sum: 300,
-    type: '-',
-  },
-  {
-    id: 2,
-    date: '05.01.23',
-    category: 'income',
-    comment: 'salary from work',
-    sum: 4300,
-    type: '+',
-  },
-  {
-    id: 3,
-    date: '04.01.23',
-    category: 'other stuff',
-    comment: 'gift',
-    sum: 300,
-    type: '-',
-  },
-  {
-    id: 4,
-    date: '05.01.23',
-    category: 'income',
-    comment: 'salary',
-    sum: 4300,
-    type: '+',
-  },
-  {
-    id: 5,
-    date: '04.01.23',
-    category: 'other',
-    comment: 'gift for a wife',
-    sum: 300,
-    type: '-',
-  },
-  {
-    id: 6,
-    date: '05.01.23',
-    category: 'income',
-    comment: 'salary from work',
-    sum: 4300,
-    type: '+',
-  },
-];
-const TransactionMobile = () => {
+export const formatCurrency = number => {
+  return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ');
+};
+
+const TransactionMobile = ({ transactions }) => {
   return (
     <div>
       <ul>
         {transactions.map(transaction => {
           return (
-            <TransactionCard>
+            <TransactionCard $type={transaction.type} key={transaction.id}>
               <ul>
                 <StyledLi>
                   <SpanName>Date</SpanName>
@@ -86,7 +40,9 @@ const TransactionMobile = () => {
                 </StyledLi>
                 <StyledLi>
                   <SpanName>Sum</SpanName>
-                  <SpanItem>{transaction.sum}</SpanItem>
+                  <SpanItem $type={transaction.type}>
+                    {formatCurrency(transaction.sum)}
+                  </SpanItem>
                 </StyledLi>
                 <StyledLi>
                   <DeleteButton />

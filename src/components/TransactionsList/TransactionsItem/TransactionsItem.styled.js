@@ -6,6 +6,7 @@ export const StyledDeleteButton = styled.button`
   color: #fbfbfb;
   padding: 4px 12px 4px 12px;
   margin-left: 8px;
+  margin-right: 10px;
   border-radius: 20px;
   border: transparent;
   background: linear-gradient(
