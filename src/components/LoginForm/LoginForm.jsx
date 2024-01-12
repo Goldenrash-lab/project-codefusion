@@ -56,9 +56,11 @@ const LoginForm = () => {
     dispatch(loginThunk(data))
       .unwrap()
       .then(() => {
+        toast.success("You're logged in!");
         console.log("You're logged in!");
       })
-      .catch(() => console.log('Something went wrong!'));
+      .catch(() => toast.error('Something went wrong!'));
+
     console.log(data);
   }
 
