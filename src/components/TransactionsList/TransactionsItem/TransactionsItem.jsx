@@ -7,6 +7,7 @@ import {
   StyledTransaction,
 } from './TransactionsItem.styled';
 import { deleteTransactionThunk } from 'store/Transactions/operations';
+import { formatCurrency } from '../TransactionsList';
 
 const TransactionsItem = ({ transaction }) => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const TransactionsItem = ({ transaction }) => {
       <StyledTh $type={true}>{transaction.type}</StyledTh>
       <StyledTh>{transaction.category}</StyledTh>
       <StyledTh>{transaction.comment}</StyledTh>
-      <StyledTh $type={transaction.type} $sum={transaction.sum}>
+      <StyledTh $type={transaction.type} $sum={formatCurrency(transaction.sum)}>
         {transaction.sum}
       </StyledTh>
       <StyledTh>

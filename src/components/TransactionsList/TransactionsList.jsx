@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import TransactionsItem from './TransactionsItem/TransactionsItem';
 import {
   StyledAddTransactionButton,
   StyledTable,
-  StyledThead,
-  StyledTheadItem,
   TableWrap,
   WrapTable,
 } from './TransactionsList.styled';
 import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
+import TransactionMobile from './TransactionMobile/TransactionMobile';
+import TransactionsDashboard from './TransactionDashboard/TransactionsDashboard';
+import { useMediaQuery } from 'react-responsive';
 //import { transactionsData } from 'store/Transactions/selectors';
 
 const transactions = [
@@ -62,41 +62,24 @@ const transactions = [
     type: '+',
   },
 ];
+export const formatCurrency = number => {
+  return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ');
+};
+
 const TransactionsList = () => {
   // const transactions = useSelector(transactionsData);
   // console.log(transactions);
   const [isAddTransactionOpen, setIsTransactionOpen] = useState(false);
 
+  //const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
+  const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
+  const isMobileScreen = useMediaQuery({ query: '(max-width: 767.98px)' });
+
   return (
-    <TableWrap>
-      <WrapTable>
-        <StyledTable>
-          <thead>
-            <StyledThead>
-              <StyledTheadItem>Date</StyledTheadItem>
-              <StyledTheadItem $type={true}>Type</StyledTheadItem>
-              <StyledTheadItem>Category</StyledTheadItem>
-              <StyledTheadItem>Comment</StyledTheadItem>
-              <StyledTheadItem $sum={true}>Sum</StyledTheadItem>
-              <StyledTheadItem></StyledTheadItem>
-            </StyledThead>
-          </thead>
-          <tbody>
-            {transactions.length !== 0 ? (
-              transactions?.map(transaction => {
-                return (
-                  <TransactionsItem
-                    key={transaction.id}
-                    transaction={transaction}
-                  />
-                );
-              })
-            ) : (
-              <h1>No transactions yet </h1>
-            )}
-          </tbody>
-        </StyledTable>
-      </WrapTable>
+    <div>
+      {isTabletScreen && <TransactionsDashboard transactions={transactions} />}
+      {isMobileScreen && <TransactionMobile transactions={transactions} />}
+
       <StyledAddTransactionButton onClick={() => setIsTransactionOpen(true)}>
         <svg
           width="20"
@@ -112,7 +95,7 @@ const TransactionsList = () => {
       {isAddTransactionOpen && (
         <ModalAddTransactions close={setIsTransactionOpen} />
       )}
-    </TableWrap>
+    </div>
   );
 };
 

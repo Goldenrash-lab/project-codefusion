@@ -17,6 +17,7 @@ export const NavigationDivTest = styled.div`
 `;
 
 export const NavigationNavLink = styled(NavLink)`
+  max-width: 150px;
   cursor: pointer;
   display: flex;
   align-content: center;

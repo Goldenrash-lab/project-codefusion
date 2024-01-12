@@ -95,7 +95,7 @@ const LoginForm = () => {
               name="password"
               placeholder="Password"
             />
-            <LoginTextError>{errors.password?.message}</LoginTextError>
+            <LoginTextError>{errors.password?.message || ''}</LoginTextError>
           </InputDiv>
           <LoginDivButton>
             <LoginButton type="submit">log in</LoginButton>

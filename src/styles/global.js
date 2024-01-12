@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import background from '../images/iMac.jpg';
+// import background from '../images/iMac.jpg';
 export const Global = createGlobalStyle`
 
 h1,
@@ -16,6 +16,8 @@ p {
 ul,
 ol {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 img {
@@ -32,10 +34,10 @@ body{
   font-size: 18px;
   height: 100vh;
   color: var(--white);
-  background: url(${background});
+  /*
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 
 }
 

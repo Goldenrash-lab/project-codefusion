@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import backgroundImageImac from '../../images/Login/LoginFonIMac.jpg';
+import backgroundImageTablet from '../../images/Login/LoginFonTablet.jpg';
+import backgroundImageMobail from '../../images/Login/LoginGonMobile.jpg';
 
 export const LoginDiv = styled.div`
   width: 100%;
@@ -10,10 +12,20 @@ export const LoginDiv = styled.div`
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background-image: url(${backgroundImageImac});
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  @media only screen and (min-width: 1280px) {
+    background-image: url(${backgroundImageImac});
+  }
+  @media only screen and (min-width: 768px) {
+    background-image: url(${backgroundImageTablet});
+  }
+
+  @media only screen and (max-width: 767px) {
+    background-image: url(${backgroundImageMobail});
+  }
 `;
 
 export const LoginDivForm = styled.div`
@@ -25,9 +37,7 @@ export const LoginDivForm = styled.div`
 export const LoginFormContainer = styled.form`
   display: flex;
   border-radius: 8px;
-  background: var(--Form-color, rgba(255, 255, 255, 0.1));
-  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(50px);
+
   flex-direction: column;
   align-content: center;
   justify-content: center;
@@ -37,6 +47,18 @@ export const LoginFormContainer = styled.form`
   padding-bottom: 80px;
   padding-left: 62px;
   z-index: 2;
+  @media only screen and (min-width: 768px) {
+    background: var(--Form-color, rgba(255, 255, 255, 0.1));
+
+    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(50px);
+  }
+  @media only screen and (max-width: 767px) {
+    padding-top: 97px;
+    padding-right: 20px;
+    padding-bottom: 98px;
+    padding-left: 20px;
+  }
 `;
 
 export const LoginDivButton = styled.div`
@@ -48,6 +70,9 @@ export const LoginDivButton = styled.div`
   flex-direction: column;
   gap: 20px;
   margin-top: 12px;
+  @media only screen and (max-width: 767px) {
+    min-width: 280px;
+  }
 `;
 
 export const InputDiv = styled.div`
@@ -56,6 +81,10 @@ export const InputDiv = styled.div`
 `;
 
 export const LoginFormDivGradient = styled.div`
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
+
   width: 454px;
   border-radius: 454px;
   background: rgba(47, 21, 176, 0.73);
@@ -77,6 +106,10 @@ export const LoginSpanLogo = styled.span`
 `;
 
 export const LoginInput = styled.input`
+  @media only screen and (max-width: 767px) {
+    padding: 8px 8px 8px 40px;
+    min-width: 280px;
+  }
   min-width: 409px;
   padding: 8px 8px 8px 54px;
   color: #fff;
@@ -151,4 +184,6 @@ export const LoginButton = styled.button`
 export const LoginTextError = styled.p`
   font-size: 14px;
   padding-left: 30px;
+  display: block;
+  height: 14px;
 `;
