@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import {
   ExitBTNCancel,
   ExitBTNLogout,
@@ -16,23 +16,23 @@ import ExitLogo from '../../images/Login/LoginLogo';
 const ModalExitBtn = ({ buttonExitClick, handleLogout }) => {
   const modalRef = useRef();
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     buttonExitClick();
-  };
-
-  const handleKeyPress = e => {
-    if (e.key === 'Escape') {
-      handleClose();
-    }
-  };
-
-  const handleClickOutside = event => {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
-      handleClose();
-    }
-  };
+  }, [buttonExitClick]);
 
   useEffect(() => {
+    const handleClickOutside = event => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        handleClose();
+      }
+    };
+
+    const handleKeyPress = e => {
+      if (e.key === 'Escape') {
+        handleClose();
+      }
+    };
+
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('keydown', handleKeyPress);
 
