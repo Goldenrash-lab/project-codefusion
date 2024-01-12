@@ -54,3 +54,8 @@ export const WrapTable = styled.div`
     background-color: var(--transparency-20);
   }
 `;
+
+export const StyledAlert = styled.h3`
+  margin-top: 30px;
+  text-align: center;
+`;

@@ -1,6 +1,7 @@
 import React from 'react';
 import TransactionsItem from '../TransactionsItem/TransactionsItem';
 import {
+  StyledAlert,
   StyledTable,
   StyledThead,
   StyledTheadItem,
@@ -32,7 +33,7 @@ const TransactionsDashboard = ({ transactions }) => {
               );
             })
           ) : (
-            <h1>No transactions yet </h1>
+            <StyledAlert>Add your first transaction </StyledAlert>
           )}
         </tbody>
       </StyledTable>

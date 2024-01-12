@@ -4,7 +4,7 @@ import {
   deleteTransactionThunk,
   fetchTransactionsThunk,
   updateTransactionThunk,
-} from './operations';
+} from './transactionsThunk';
 
 export const transactionsSlice = createSlice({
   name: 'transactions',

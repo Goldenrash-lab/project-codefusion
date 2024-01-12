@@ -6,7 +6,7 @@ import {
   StyledTh,
   StyledTransaction,
 } from './TransactionsItem.styled';
-import { deleteTransactionThunk } from 'store/Transactions/operations';
+import { deleteTransactionThunk } from 'store/Transactions/transactionsThunk';
 import { formatCurrency } from '../TransactionsList';
 
 const TransactionsItem = ({ transaction }) => {

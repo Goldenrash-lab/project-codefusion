@@ -10,65 +10,66 @@ import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransa
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import TransactionsDashboard from './TransactionDashboard/TransactionsDashboard';
 import { useMediaQuery } from 'react-responsive';
+import { transactionsData } from 'store/Transactions/selectors';
 //import { transactionsData } from 'store/Transactions/selectors';
 
-const transactions = [
-  {
-    id: 1,
-    date: '04.01.23',
-    category: 'other',
-    comment: 'gift for a wife',
-    sum: 300,
-    type: '-',
-  },
-  {
-    id: 2,
-    date: '05.01.23',
-    category: 'income',
-    comment: 'salary from work',
-    sum: 4300,
-    type: '+',
-  },
-  {
-    id: 3,
-    date: '04.01.23',
-    category: 'other stuff',
-    comment: 'gift',
-    sum: 300,
-    type: '-',
-  },
-  {
-    id: 4,
-    date: '05.01.23',
-    category: 'income',
-    comment: 'salary',
-    sum: 4300,
-    type: '+',
-  },
-  {
-    id: 5,
-    date: '04.01.23',
-    category: 'other',
-    comment: 'gift for a wife',
-    sum: 300,
-    type: '-',
-  },
-  {
-    id: 6,
-    date: '05.01.23',
-    category: 'income',
-    comment: 'salary from work',
-    sum: 4300,
-    type: '+',
-  },
-];
+// const transactions = [
+//   {
+//     id: 1,
+//     date: '04.01.23',
+//     category: 'other',
+//     comment: 'gift for a wife',
+//     sum: 300,
+//     type: '-',
+//   },
+//   {
+//     id: 2,
+//     date: '05.01.23',
+//     category: 'income',
+//     comment: 'salary from work',
+//     sum: 4300,
+//     type: '+',
+//   },
+//   {
+//     id: 3,
+//     date: '04.01.23',
+//     category: 'other stuff',
+//     comment: 'gift',
+//     sum: 300,
+//     type: '-',
+//   },
+//   {
+//     id: 4,
+//     date: '05.01.23',
+//     category: 'income',
+//     comment: 'salary',
+//     sum: 4300,
+//     type: '+',
+//   },
+//   {
+//     id: 5,
+//     date: '04.01.23',
+//     category: 'other',
+//     comment: 'gift for a wife',
+//     sum: 300,
+//     type: '-',
+//   },
+//   {
+//     id: 6,
+//     date: '05.01.23',
+//     category: 'income',
+//     comment: 'salary from work',
+//     sum: 4300,
+//     type: '+',
+//   },
+// ];
 export const formatCurrency = number => {
   return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ');
 };
 
 const TransactionsList = () => {
-  // const transactions = useSelector(transactionsData);
-  // console.log(transactions);
+  const transactions = useSelector(transactionsData);
+  console.log(transactions);
   const [isAddTransactionOpen, setIsTransactionOpen] = useState(false);
 
   //const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
