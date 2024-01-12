@@ -136,8 +136,8 @@ const ModalAddTransactions = ({ close }) => {
                 <option value={1} disabled hidden>
                   Select a category
                 </option>
-                {categories.map(({ name }) => (
-                  <option>{name}</option>
+                {categories.map(({ name, id }) => (
+                  <option key={id}>{name}</option>
                 ))}
               </select>
               <Arrow alt="" src={arrow}></Arrow>
