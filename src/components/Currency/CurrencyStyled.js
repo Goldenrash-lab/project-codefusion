@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledBox = styled.div`
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   max-width: ${props => props.maxw || '480px'};
+  margin-top: 32px;
 `;
 
 export const StyledTable = styled.div`
@@ -20,7 +20,6 @@ export const StyledTableHead = styled.div`
 
   padding-left: ${props => props.padl || '62px'};
   margin-bottom: ${props => props.marb || '24px'};
-
 `;
 
 export const StyledThBox = styled.div`
@@ -41,11 +40,9 @@ export const StyledTBody = styled.div`
   display: flex;
   flex-direction: column;
 
-
   padding-left: ${props => props.padL || '62px'};
   gap: ${props => props.gap || '24px'};
   margin-bottom: 6px;
-
 `;
 
 export const StyledTh = styled.span`
