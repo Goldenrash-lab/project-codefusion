@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import backgroundImageImac from '../../images/Login/LoginFonIMac.jpg';
 import backgroundImageTablet from '../../images/Login/LoginFonTablet.jpg';
 import backgroundImageMobail from '../../images/Login/LoginGonMobile.jpg';
+
 export const LoginDiv = styled.div`
   width: 100%;
   height: 100%;
@@ -183,4 +184,6 @@ export const LoginButton = styled.button`
 export const LoginTextError = styled.p`
   font-size: 14px;
   padding-left: 30px;
+  display: block;
+  height: 14px;
 `;
