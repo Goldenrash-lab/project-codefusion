@@ -16,6 +16,7 @@ import HeaderLogo from '../../images/Header/HeaderLogo';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutThunk } from 'store/Auth/thunk';
 import { selectUser } from 'store/Auth/selectors';
+import { Navigate } from 'react-router';
 // import { useSelector } from 'react-redux';
 
 const Header = () => {
@@ -25,6 +26,12 @@ const Header = () => {
   const handleLogout = () => {
     dispatch(logoutThunk());
   };
+
+  const isAuthenticated = useSelector(state => !!state.auth.user);
+
+  if (!isAuthenticated) {
+    return <Navigate to={Location.state?.from || '/login'} />;
+  }
 
   return (
     <HeaderSection>

@@ -18,6 +18,7 @@ import {
   LoginNavLink,
   LoginNavLinkSpan,
   LoginSpanLogo,
+  LoginTextError,
 } from './LoginFormStyded';
 import { loginThunk } from 'store/Auth/thunk';
 
@@ -47,6 +48,7 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
+    mode: 'onChange',
     resolver: yupResolver(schema),
   });
   const dispatch = useDispatch();
@@ -87,7 +89,7 @@ const LoginForm = () => {
               name="email"
               placeholder="Email"
             />
-            <p>{errors.email?.message}</p>
+            <LoginTextError>{errors.email?.message}</LoginTextError>
           </InputDiv>
           <InputDiv>
             <PasswordLogo />
@@ -97,7 +99,7 @@ const LoginForm = () => {
               name="password"
               placeholder="Password"
             />
-            <p>{errors.password?.message}</p>
+            <LoginTextError>{errors.password?.message}</LoginTextError>
           </InputDiv>
           <LoginDivButton>
             <LoginButton type="submit">log in</LoginButton>
