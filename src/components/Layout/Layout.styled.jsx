@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-// import background from '../../images/iMac.jpg';
+import background from '../../images/iMac.jpg';
 
 export const Container = styled.div`
   /* containers */
@@ -9,6 +9,11 @@ export const Container = styled.div`
   max-width: 375px;
   margin: 0 auto;
   padding: 0 20px;
+
+  background: url(${background});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @media only screen and (min-width: 768px) {
     max-width: 768px;
