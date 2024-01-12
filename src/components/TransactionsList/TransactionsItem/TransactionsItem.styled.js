@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledButton = styled.button`
+export const StyledDeleteButton = styled.button`
   width: 69px;
   height: 29px;
   color: #fbfbfb;
@@ -39,21 +39,28 @@ export const StyledTh = styled.th`
   width: 100px;
   font-weight: 400;
   color: ${props =>
-    props.type === '+'
+    props.$type === '+'
       ? 'var(--yellow)'
-      : props.type === '-'
+      : props.$type === '-'
       ? 'var(--dashboard-text)'
       : null};
 
   &:last-child {
     margin-left: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
-export const StyledSvg = styled.svg`
+export const StyledEditButton = styled.button`
   cursor: pointer;
-
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
   &:hover {
-    box-shadow: 5px 9px 15px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 5px 9px 15px 5px rgba(0, 0, 0, 0.2);
   }
 `;
