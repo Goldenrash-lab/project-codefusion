@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+// import 'react-datepicker/dist/react-datepicker.css';
 
 import calendar from '../../images/ModalAddTransaction/calendar.svg';
 import slash from '../../images/EditTransaction/slash.svg';
@@ -29,7 +29,7 @@ import {
 
 const ModalEditTransactions = () => {
   const [transactionType, setTransactionType] = useState('income');
-  const [expenseCategory, setExpenseCategory] = useState('');
+  const [expenseCategory, setExpenseCategory] = useState('true');
   const [amount, setAmount] = useState('');
   const [transactionDate, setTransactionDate] = useState('');
   const [comment, setComment] = useState('');
@@ -83,18 +83,21 @@ const ModalEditTransactions = () => {
             id="category"
             required
             onChange={e => setExpenseCategory(e.target.value)}
-          ></Category>
+          >
+            Car
+          </Category>
         </ContainerCategory>
 
         <FormGroup>
-          <Label htmlFor="amount"></Label>
-          <Input
-            type="number"
-            id="amount"
-            value={amount}
-            onChange={e => setAmount(e.target.value)}
-            placeholder="Enter amount"
-          />
+          <Label htmlFor="amount">
+            <Input
+              type="number"
+              id="amount"
+              value={amount}
+              onChange={e => setAmount(e.target.value)}
+              placeholder="Amount"
+            />
+          </Label>
           <DatePickerWrapper>
             <CalendarImg alt="" src={calendar}></CalendarImg>
             <ReactDatePicker
@@ -106,14 +109,17 @@ const ModalEditTransactions = () => {
         </FormGroup>
 
         <FormGroup>
-          <Label htmlFor="comment"></Label>
-          <TextArea
-            id="comment"
-            value={comment}
-            onChange={e => setComment(e.target.value)}
-            rows="1"
-            placeholder="Comment"
-          ></TextArea>
+
+          <Label htmlFor="comment">
+            <TextArea
+              id="comment"
+              value={comment}
+              onChange={e => setComment(e.target.value)}
+              rows="1"
+              placeholder="Сomment"
+            ></TextArea>
+          </Label>
+
         </FormGroup>
 
         <ButtonsContainer>

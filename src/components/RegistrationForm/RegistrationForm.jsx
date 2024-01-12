@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Button,
   ButtonsDiv,
@@ -87,7 +87,7 @@ const RegistrationForm = () => {
   }
 
   const user = useSelector(selectUser);
-  console.log(user);
+
   if (user) {
     return <Navigate to={'/'} />;
   }

@@ -14,7 +14,11 @@ import {
   StyledTitleContainer,
 } from './StatisticsTable.styled';
 
-export const StatisticsTable = ({ expensesData, totalExpenses }) => {
+export const StatisticsTable = ({
+  categoriesSummary,
+  expenseSummary,
+  incomeSummary,
+}) => {
   return (
     <StyledTable>
       <StyledTitleContainer>
@@ -22,23 +26,25 @@ export const StatisticsTable = ({ expensesData, totalExpenses }) => {
         <p>Sum</p>
       </StyledTitleContainer>
       <StyledList>
-        {expensesData.map((expense, index) => (
+        {categoriesSummary.map((category, index) => (
           <StyledListItem key={index}>
             <StyledColorItem>
-              <ColorIndicator color={expense.color} />
-              <StyledCategory>{expense.category}</StyledCategory>
+              <ColorIndicator color={category.color} />
+              <StyledCategory>{category.name}</StyledCategory>
             </StyledColorItem>
-            <StyledSum>{formatCurrency(expense.sum)}</StyledSum>
+            <StyledSum>{formatCurrency(category.total)}</StyledSum>
           </StyledListItem>
         ))}
       </StyledList>
       <StyledText>
         <p>Expenses:</p>{' '}
-        <StyledSpanExpenses>{formatCurrency(totalExpenses)}</StyledSpanExpenses>
+        <StyledSpanExpenses>
+          {formatCurrency(expenseSummary)}
+        </StyledSpanExpenses>
       </StyledText>
       <StyledText>
         <p>Income:</p>{' '}
-        <StyledSpanIncome>{formatCurrency(27350)}</StyledSpanIncome>{' '}
+        <StyledSpanIncome>{formatCurrency(incomeSummary)}</StyledSpanIncome>{' '}
       </StyledText>
     </StyledTable>
   );

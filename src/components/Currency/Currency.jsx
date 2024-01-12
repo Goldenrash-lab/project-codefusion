@@ -12,8 +12,11 @@ import {
   StyledTd,
   StyledTh,
   StyledTdBox,
-
   StyledTableHead,
+  StyledNum,
+  StyledNumUsd,
+  StyledNumEur,
+  StyledImg,
 } from './CurrencyStyled';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
@@ -23,12 +26,11 @@ import {
   // isLoadingSelector,
 } from 'store/currency/currencySelector';
 
-
 const Currency = () => {
   const [currency, setCurrency] = useState([]);
   const dispatch = useDispatch();
   const selectedCurrency = useSelector(currencySelector);
-
+  console.log('here', selectedCurrency, currency);
   // const isLoading = useSelector(isLoadingSelector);
   const token = useSelector(state => state.auth.token);
 
@@ -61,7 +63,7 @@ const Currency = () => {
   return (
     <div>
       {isDesktop && (
-        <StyledBox ai="center" jc="center">
+        <StyledBox $ai="center" $jc="center">
           <StyledTable>
             <StyledTableHead>
               <StyledThBox>
@@ -83,14 +85,18 @@ const Currency = () => {
                 })}
             </StyledTBody>
           </StyledTable>
-          <img src={imageDesc} alt="graphic" />
+          <StyledNum>
+            <StyledNumUsd>{currency[0]?.rateBuy}</StyledNumUsd>
+            <StyledNumEur>{currency[1]?.rateBuy}</StyledNumEur>
+            <StyledImg src={imageDesc} alt="graphic" />
+          </StyledNum>
         </StyledBox>
       )}
       {/* tablet */}
       {isTablet && (
-        <StyledBox maxw="336px">
+        <StyledBox $maxw="336px">
           <StyledTable>
-            <StyledTableHead padl="20px" marb="8px">
+            <StyledTableHead $padl="20px" $marb="8px">
               <StyledThBox>
                 <StyledTh>Currency</StyledTh>
                 <StyledTh>Purchase</StyledTh>
@@ -98,7 +104,7 @@ const Currency = () => {
               </StyledThBox>
             </StyledTableHead>
 
-            <StyledTBody padl="20px" gap="12px">
+            <StyledTBody $padl="20px" $gap="12px">
               {currency?.length &&
                 currency.map(el => {
                   return (
@@ -116,7 +122,6 @@ const Currency = () => {
       )}
     </div>
   );
-
 };
 
 export default Currency;
