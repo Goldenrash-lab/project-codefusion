@@ -13,11 +13,18 @@ import HeaderExitIcon from '../../images/Header/HeaderExitIcon';
 import HeaderIconI from '../../images/Header/HeaderIconI';
 
 import HeaderLogo from '../../images/Header/HeaderLogo';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutThunk } from 'store/Auth/thunk';
+import { selectUser } from 'store/Auth/selectors';
 // import { useSelector } from 'react-redux';
 
 const Header = () => {
-  // const dispatch = useDispatch();
-  // const user = useSelector(state => state.auth.user);
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+
+  const handleLogout = () => {
+    dispatch(logoutThunk());
+  };
 
   return (
     <HeaderSection>
@@ -27,9 +34,9 @@ const Header = () => {
           <span>Money Guard</span>
         </HeaderDivLogo>
         <HeaderDivExit>
-          <HeaderSpanName>Name</HeaderSpanName>
+          <HeaderSpanName>Hello {user.username}</HeaderSpanName>
           <HeaderIconI />
-          <HeaderButtonExit>
+          <HeaderButtonExit onClick={handleLogout}>
             <HeaderExitDivIcon>
               <HeaderExitIcon />
             </HeaderExitDivIcon>

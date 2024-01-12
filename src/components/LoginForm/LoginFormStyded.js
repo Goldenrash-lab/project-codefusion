@@ -36,6 +36,7 @@ export const LoginFormContainer = styled.form`
   padding-right: 62px;
   padding-bottom: 80px;
   padding-left: 62px;
+  z-index: 2;
 `;
 
 export const LoginDivButton = styled.div`
@@ -52,6 +53,19 @@ export const LoginDivButton = styled.div`
 export const InputDiv = styled.div`
   position: relative;
 `;
+
+export const LoginFormDivGradient = styled.div`
+  width: 454px;
+  border-radius: 454px;
+  background: rgba(47, 21, 176, 0.73);
+  max-width: 454px;
+  height: 454px;
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+  filter: blur(100px);
+`;
+
 export const LoginSpanLogo = styled.span`
   color: var(--white, #fbfbfb);
 
