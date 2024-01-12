@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import calendar from '../../images/ModalAddTransaction/calendar.svg';
 import closeImg from '../../images/ModalAddTransaction/close.svg';
+import { toast } from 'react-toastify';
 import {
   Arrow,
   Backdrop,
@@ -27,6 +28,8 @@ import arrow from '../../images/ModalAddTransaction/arrow.svg';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { addTransactionThunk } from 'store/Transactions/operations';
+import { ErrorText } from 'components/RegistrationForm/RegistrationForm.styled';
 
 const schema = yup
   .object({
@@ -57,8 +60,6 @@ const ModalAddTransactions = ({ close }) => {
     mode: 'onChange',
     resolver: yupResolver(schema),
   });
-
-  function submit() {}
 
   useEffect(() => {
     dispatch(categoriesThunk());
@@ -93,6 +94,46 @@ const ModalAddTransactions = ({ close }) => {
         document.removeEventListener('keydown', handleEscKey);
       };
     }, [handleEscKey]);
+  }
+
+  function checkTransactionType() {
+    if (isExpense) {
+      return 'EXPENSE';
+    }
+    return 'INCOME';
+  }
+
+  function getFormattedDate() {
+    const year = startDate.getFullYear();
+    const month = String(startDate.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+    const day = String(startDate.getDate()).padStart(2, '0');
+    const hours = String(startDate.getHours()).padStart(2, '0');
+    const minutes = String(startDate.getMinutes()).padStart(2, '0');
+    const seconds = String(startDate.getSeconds()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+    return formattedDate;
+  }
+
+  function negOrPosNumber(sum) {
+    if (isExpense) {
+      return `-${sum}`;
+    }
+    return sum;
+  }
+
+  function submit(e) {
+    console.log(startDate);
+    const newTransaction = {
+      transactionDate: getFormattedDate(),
+      type: checkTransactionType(),
+      ...(isExpense
+        ? { categoryId: e.category }
+        : { categoryId: '063f1132-ba5d-42b4-951d-44011ca46262' }),
+      comment: e.comment,
+      amount: negOrPosNumber(e.sum),
+    };
+    console.log(newTransaction);
+    dispatch(addTransactionThunk(newTransaction));
   }
 
   return (
@@ -132,12 +173,20 @@ const ModalAddTransactions = ({ close }) => {
 
           {isExpense && (
             <div>
-              <select name="" id="" required defaultValue={1}>
-                <option value={1} disabled hidden>
+              <select
+                name="category"
+                id=""
+                required
+                defaultValue={''}
+                {...register('category')}
+              >
+                <option value={''} disabled hidden>
                   Select a category
                 </option>
                 {categories.map(({ name, id }) => (
-                  <option key={id}>{name}</option>
+                  <option key={id} value={id}>
+                    {name}
+                  </option>
                 ))}
               </select>
               <Arrow alt="" src={arrow}></Arrow>
@@ -156,6 +205,8 @@ const ModalAddTransactions = ({ close }) => {
             <DatePickerWrapper>
               <CalendarImg alt="" src={calendar}></CalendarImg>
               <ReactDatePicker
+                name="date"
+                {...register('date')}
                 selected={startDate}
                 onChange={date => setStartDate(date)}
                 dateFormat="dd.MM.yyyy"
@@ -171,7 +222,9 @@ const ModalAddTransactions = ({ close }) => {
           {/* <ErrorText>{errors.comment?.message}</ErrorText> */}
           <ButtonsContainer>
             <button type="submit">Add</button>
-            <button>Cancel</button>
+            <button type="button" onClick={() => close(false)}>
+              Cancel
+            </button>
           </ButtonsContainer>
         </form>
       </Modal>
