@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import backDesktop from '../../images/EditTransaction/backDesktop.png';
+import backMobile from '../../images/EditTransaction/backgroundMobile.png';
 
 export const EditContainer = styled.div`
   display: flex;
@@ -22,6 +23,11 @@ export const FormContainer = styled.div`
   background-color: teal;
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
+  @media only screen and (max-width: 480px) {
+    height: 691px;
+    background-image: url(${backMobile});
+    background-size: cover;
+  }
 `;
 
 export const Title = styled.h2`
@@ -30,14 +36,26 @@ export const Title = styled.h2`
   text-align: center;
   font-size: 30px;
   font-weight: 400;
+  @media only screen and (max-width: 480px) {
+    font-size: 24px;
+    margin: 20px auto 40px;
+  }
 `;
 
 export const FormGroup = styled.div`
-  margin: 0 0 15px 0;
+  margin: 0 auto 15px;
   display: flex;
   gap: 30px;
   justify-content: center;
   align-items: center;
+
+  @media only screen and (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin: 0 auto 40px;
+  }
 `;
 
 export const FormGroupType = styled.div`
@@ -68,17 +86,15 @@ export const Category = styled.input`
   background: none;
   font-size: 18px;
   font-weight: 400;
-
-  &:required {
-    color: rgba(255, 255, 255);
-    padding-left: 8px;
-    padding-bottom: 8px;
-  }
+  color: #ffffff;
   &:hover,
   &:active,
   &:focus {
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     outline: none;
+  }
+  @media only screen and (max-width: 480px) {
+    width: 280px;
   }
 `;
 
@@ -106,6 +122,9 @@ export const Input = styled.input`
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     outline: none;
   }
+  @media only screen and (max-width: 480px) {
+    width: 280px;
+  }
 `;
 
 export const DatePickerWrapper = styled.div`
@@ -121,6 +140,10 @@ export const DatePickerWrapper = styled.div`
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     padding: 8px;
     color: #ffffff;
+    @media only screen and (max-width: 480px) {
+      width: 280px;
+    }
+
     &:hover,
     &:active,
     &:focus {
@@ -134,6 +157,11 @@ export const CalendarImg = styled.img`
   position: absolute;
   bottom: 11px;
   left: 146px;
+
+  @media only screen and (max-width: 480px) {
+    bottom: 8px;
+    left: 239px;
+  }
 `;
 
 export const TextArea = styled.textarea`
@@ -150,6 +178,10 @@ export const TextArea = styled.textarea`
   &:focus {
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     outline: none;
+  }
+  @media only screen and (max-width: 480px) {
+    width: 280px;
+    height: 76px;
   }
 `;
 
@@ -168,7 +200,6 @@ export const SaveButton = styled.button`
   text-transform: uppercase;
   cursor: pointer;
   border: none;
-  border-radius: 4px;
   background: var(
     --button-gradient,
     linear-gradient(97deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%)
@@ -177,6 +208,10 @@ export const SaveButton = styled.button`
   color: #fff;
   width: 300px;
   height: 50px;
+  @media only screen and (max-width: 480px) {
+    width: 280px;
+    box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const CancelButton = styled.button`
@@ -192,6 +227,10 @@ export const CancelButton = styled.button`
   color: var(--button-text-color);
   width: 300px;
   height: 50px;
+  @media only screen and (max-width: 480px) {
+    width: 280px;
+    box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const ToggleButtonGroup = styled.div`
@@ -229,4 +268,8 @@ export const CloseBtn = styled.button`
   position: absolute;
   top: 20px;
   right: 20px;
+  @media only screen and (max-width: 480px) {
+    top: -50px;
+    right: -50px;
+  }
 `;
