@@ -33,8 +33,6 @@ export const StyledThead = styled.tr`
   padding: 20px 16px;
   border-radius: 8px;
   background: rgba(82, 59, 126, 0.8);
-  font-size: '${props => (props.$header ? '16px' : '14px')}';
-  font-weight: '${props => (props.$header ? '600' : '400')}';
 `;
 
 export const StyledAddTransactionButton = styled.button`
@@ -66,6 +64,6 @@ export const StyledTheadItem = styled.th`
   width: 100px;
   font-size: 16px;
   font-weight: 600;
-  text-align: '${props =>
-    props.sum ? 'end' : props.$type ? 'center' : 'start'}';
+  text-align: ${props =>
+    props.$sum ? 'end' : props.$type ? 'center' : 'start'};
 `;

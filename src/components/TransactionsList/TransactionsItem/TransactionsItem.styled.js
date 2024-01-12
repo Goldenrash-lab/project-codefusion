@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledButton = styled.button`
+export const StyledDeleteButton = styled.button`
   width: 69px;
   height: 29px;
   color: #fbfbfb;
@@ -30,7 +30,7 @@ export const StyledTransaction = styled.tr`
   height: 56px;
   padding-left: 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.41);
-  font-size: '${props => (props.$normalfont ? '14px' : null)}';
+  font-size: ${props => (props.$normalFont ? '14px' : null)};
   font-weight: 400;
 `;
 export const StyledTh = styled.th`
@@ -44,15 +44,23 @@ export const StyledTh = styled.th`
       : props.$type === '-'
       ? 'var(--dashboard-text)'
       : null};
+
   &:last-child {
     margin-left: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
-export const StyledSvg = styled.svg`
+export const StyledEditButton = styled.button`
   cursor: pointer;
-
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
   &:hover {
-    box-shadow: 5px 9px 15px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 5px 9px 15px 5px rgba(0, 0, 0, 0.2);
   }
 `;
