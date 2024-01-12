@@ -18,10 +18,10 @@ export const FormContainer = styled.div`
   background-image: url(${backDesktop});
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  // background-size: cover;
   background-color: teal;
-
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
 `;
 
 export const Title = styled.h2`
@@ -33,7 +33,7 @@ export const Title = styled.h2`
 `;
 
 export const FormGroup = styled.div`
-  margin-bottom: 15px;
+  margin: 0 0 15px 0;
   display: flex;
   gap: 30px;
   justify-content: center;
@@ -41,7 +41,7 @@ export const FormGroup = styled.div`
 `;
 
 export const FormGroupType = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,6 +56,7 @@ export const ContainerCategory = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 40px;
 `;
 export const Category = styled.input`
   width: 394px;
@@ -69,7 +70,7 @@ export const Category = styled.input`
   font-weight: 400;
 
   &:required {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255);
     padding-left: 8px;
     padding-bottom: 8px;
   }
@@ -83,6 +84,7 @@ export const Category = styled.input`
 
 export const Input = styled.input`
   width: 181px;
+  height: 38px;
   padding: 8px;
   color: #ffffff;
   box-sizing: border-box;
@@ -91,9 +93,16 @@ export const Input = styled.input`
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   font-size: 18px;
   font-weight: 600;
+  -moz-appearance: textfield;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
   &:hover,
   &:active,
   &:focus {
+    border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     outline: none;
   }
@@ -101,29 +110,34 @@ export const Input = styled.input`
 
 export const DatePickerWrapper = styled.div`
   position: relative;
-  width: input {
+  input {
+    width: 181px;
+    height: 34px;
     color: #fbfbfb;
     font-size: 18px;
     font-weight: 400;
-  }
-
-  input {
     background: transparent;
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    padding-left: 8px;
-    padding-bottom: 8px;
+    padding: 8px;
     color: #ffffff;
+    &:hover,
+    &:active,
+    &:focus {
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+      outline: none;
+    }
   }
 `;
 export const CalendarImg = styled.img`
   position: absolute;
-  top: -4px;
-  right: 11px;
+  bottom: 11px;
+  left: 146px;
 `;
 
 export const TextArea = styled.textarea`
-  width: 100%;
+  width: 394px;
   padding: 8px;
   box-sizing: border-box;
   color: #ffffff;

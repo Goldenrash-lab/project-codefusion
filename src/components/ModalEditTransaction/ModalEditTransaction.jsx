@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+// import 'react-datepicker/dist/react-datepicker.css';
 
 import calendar from '../../images/ModalAddTransaction/calendar.svg';
 import slash from '../../images/EditTransaction/slash.svg';
@@ -87,14 +87,15 @@ const ModalEditTransactions = () => {
         </ContainerCategory>
 
         <FormGroup>
-          <Label htmlFor="amount"></Label>
-          <Input
-            type="number"
-            id="amount"
-            value={amount}
-            onChange={e => setAmount(e.target.value)}
-            placeholder="Enter amount"
-          />
+          <Label htmlFor="amount">
+            <Input
+              type="number"
+              id="amount"
+              value={amount}
+              onChange={e => setAmount(e.target.value)}
+              placeholder="Amount"
+            />
+          </Label>
           <DatePickerWrapper>
             <CalendarImg alt="" src={calendar}></CalendarImg>
             <ReactDatePicker
@@ -106,14 +107,15 @@ const ModalEditTransactions = () => {
         </FormGroup>
 
         <FormGroup>
-          <Label htmlFor="comment"></Label>
-          <TextArea
-            id="comment"
-            value={comment}
-            onChange={e => setComment(e.target.value)}
-            rows="1"
-            placeholder="Сomment"
-          ></TextArea>
+          <Label htmlFor="comment">
+            <TextArea
+              id="comment"
+              value={comment}
+              onChange={e => setComment(e.target.value)}
+              rows="1"
+              placeholder="Сomment"
+            ></TextArea>
+          </Label>
         </FormGroup>
 
         <ButtonsContainer>
