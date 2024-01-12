@@ -10,7 +10,7 @@ import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransa
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import TransactionsDashboard from './TransactionDashboard/TransactionsDashboard';
 import { useMediaQuery } from 'react-responsive';
-//import { transactionsData } from 'store/Transactions/selectors';
+import { transactionsData } from 'store/Transactions/selectors';
 
 const transactions = [
   {
