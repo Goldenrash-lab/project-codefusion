@@ -11,15 +11,15 @@ export const EditContainer = styled.div`
 `;
 
 export const FormContainer = styled.div`
+  position: fixed;
   width: 540px;
   height: 580px;
   padding: 40px 0;
   background-image: url(${backDesktop});
   background-position: center;
-  background-repeat: repeat;
-  //   background-size: cover;
-  background-size: 100% 100%;
-  background-color: red;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: teal;
 
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
 `;
@@ -52,29 +52,74 @@ export const Label = styled.label`
   margin-bottom: 5px;
 `;
 
-export const Select = styled.select`
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  background: none;
+export const ContainerCategory = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
-
-export const Input = styled.input`
-  width: 100%;
-  padding: 8px;
-  color: #ffffff;
+export const Category = styled.input`
+  width: 394px;
+  padding-left: 8px;
+  padding-bottom: 8px;
   box-sizing: border-box;
-  background: none;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  background: none;
+  font-size: 18px;
+  font-weight: 400;
+
+  &:required {
+    color: rgba(255, 255, 255, 0.6);
+    padding-left: 8px;
+    padding-bottom: 8px;
+  }
   &:hover,
   &:active,
   &:focus {
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     outline: none;
   }
+`;
+
+export const Input = styled.input`
+  width: 181px;
+  padding: 8px;
+  color: #ffffff;
+  box-sizing: border-box;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  font-size: 18px;
+  font-weight: 600;
+  &:hover,
+  &:active,
+  &:focus {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    outline: none;
+  }
+`;
+
+export const DatePickerWrapper = styled.div`
+  position: relative;
+  width: input {
+    color: #fbfbfb;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-left: 8px;
+    padding-bottom: 8px;
+    color: #ffffff;
+  }
+`;
+export const CalendarImg = styled.img`
+  position: absolute;
+  top: -4px;
+  right: 11px;
 `;
 
 export const TextArea = styled.textarea`
@@ -137,7 +182,8 @@ export const CancelButton = styled.button`
 
 export const ToggleButtonGroup = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 12px;
 `;
 
 export const ToggleButton = styled.button`
@@ -159,4 +205,14 @@ export const ToggleButton = styled.button`
 `;
 export const SpanButton = styled.span`
   font-size: 14px;
+`;
+
+export const CloseBtn = styled.button`
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 `;
