@@ -10,6 +10,7 @@ import {
   WrapTable,
 } from './TransactionsList.styled';
 import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
+import TransactionMobile from './TransactionMobile/TransactionMobile';
 // import { transactionsData } from 'store/Transactions/selectors';
 
 const transactions = [
@@ -71,7 +72,8 @@ const TransactionsList = () => {
     <TableWrap>
       <WrapTable>
         <StyledTable>
-          <thead>
+          <TransactionMobile />
+          {/* <thead>
             <StyledThead>
               <StyledTheadItem>Date</StyledTheadItem>
               <StyledTheadItem type={true}>Type</StyledTheadItem>
@@ -94,7 +96,7 @@ const TransactionsList = () => {
             ) : (
               <h1>No transactions yet </h1>
             )}
-          </tbody>
+          </tbody> */}
         </StyledTable>
       </WrapTable>
       <StyledAddTransactionButton onClick={() => setIsTransactionOpen(true)}>
