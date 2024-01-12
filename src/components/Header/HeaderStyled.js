@@ -44,6 +44,7 @@ export const HeaderSpanName = styled.span`
 `;
 export const HeaderExitDivIcon = styled.div`
   opacity: 0.6;
+  height: 17px;
 `;
 export const HeaderSpanExit = styled.span`
   color: var(--white-60, rgba(255, 255, 255, 0.6));
