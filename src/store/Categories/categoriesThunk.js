@@ -19,3 +19,22 @@ export const categoriesThunk = createAsyncThunk(
     }
   }
 );
+
+export const transactionsSummaryThunk = createAsyncThunk(
+  'categoriesSummary/get',
+  async (_, thunkApi) => {
+    const savedToken = thunkApi.getState().auth.token;
+    if (savedToken) {
+      setToken(savedToken);
+    } else {
+      return thunkApi.rejectWithValue(`You're unauthorized`);
+    }
+
+    try {
+      const response = await api.get('api/transactions-summary');
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
