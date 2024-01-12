@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Button,
   ButtonsDiv,
+  ErrorText,
   Form,
   Input,
   TextLogo,
@@ -19,13 +20,71 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { registerThunk } from 'store/Auth/thunk';
 
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
+
+const schema = yup
+  .object({
+    username: yup
+      .string()
+      .min(4, 'Name must be at least 4 characters')
+      .required('Name is required'),
+    email: yup
+      .string()
+      .email('Please write valid email')
+      .required('Email is required'),
+    password: yup
+      .string()
+      .min(8, 'Password must be at least 8 characters')
+      .max(25)
+      .required('Password is required'),
+    confirmPassword: yup
+      .string()
+      .oneOf(
+        [yup.ref('password'), null],
+        "Passwords don't match, please try again."
+      )
+      .min(8, 'Password must be at least 8 characters')
+      .required('Confirm password is required'),
+  })
+  .required();
+
 const RegistrationForm = () => {
-  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'onChange',
+    resolver: yupResolver(schema),
+  });
+
   const dispatch = useDispatch();
-  function submit(data) {
-    console.log(data);
-    dispatch(registerThunk(data));
+  function submit({ username, email, password }) {
+    const user = {
+      username,
+      email,
+      password,
+    };
+    console.log(user);
+    dispatch(registerThunk(user))
+      .unwrap()
+      .then(() => {
+        navigate('/');
+        toast.success('Welcome!');
+      })
+      .catch(err => {
+        // console.log(err);
+        toast.error(err);
+      });
   }
+  function handleClick() {
+    navigate('/login');
+  }
+
   return (
     <WrapperReg>
       <WrapperForm>
@@ -38,11 +97,12 @@ const RegistrationForm = () => {
           <InputWrapper>
             <UserIcon />
             <Input
-              {...register('name')}
+              {...register('username')}
               type="text"
-              name="name"
+              // name="username"
               placeholder="Name"
             />
+            <ErrorText>{errors.username?.message}</ErrorText>
           </InputWrapper>
           <InputWrapper>
             <EmailIcon />
@@ -52,6 +112,7 @@ const RegistrationForm = () => {
               name="email"
               placeholder="E-mail"
             />
+            <ErrorText>{errors.email?.message}</ErrorText>
           </InputWrapper>
           <InputWrapper>
             <LockIcon />
@@ -61,20 +122,23 @@ const RegistrationForm = () => {
               name="password"
               placeholder="Password"
             />
+            <ErrorText>{errors.password?.message}</ErrorText>
           </InputWrapper>
           <InputWrapper>
             <LockIcon />
             <Input
+              {...register('confirmPassword')}
               type="password"
-              name="conf_password"
+              name="confirmPassword"
               placeholder="Confirm password"
             />
+            <ErrorText>{errors.confirmPassword?.message}</ErrorText>
           </InputWrapper>
           <ButtonsDiv>
             <Button $gradient={true} type="submit">
               REGISTER
             </Button>
-            <Button>LOG IN</Button>
+            <Button onClick={handleClick}>LOG IN</Button>
           </ButtonsDiv>
         </Form>
       </WrapperForm>

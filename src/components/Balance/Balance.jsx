@@ -5,7 +5,7 @@ export const Balance = () => {
   return (
     <StyledBalance>
       <StyledTitle>Your balance</StyledTitle>
-      <StyledAmount>₴ 24 000.00</StyledAmount>
+      <StyledAmount>₴ 99999</StyledAmount>
     </StyledBalance>
   );
 };

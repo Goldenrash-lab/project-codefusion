@@ -117,3 +117,7 @@ export const TestDiv = styled.div`
     width: 454px;
   }
 `;
+export const ErrorText = styled.p`
+  color: red;
+  font-size: 14px;
+`;

@@ -2,22 +2,22 @@ import * as React from 'react';
 
 const NavigationHome = props => (
   <svg
+    className="homeNavigation"
     xmlns="http://www.w3.org/2000/svg"
-    width="38"
-    height="38"
-    viewBox="0 0 38 38"
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
     fill="none"
+    style={{}}
   >
-    <g filter="url(#filter0_d_1_145)">
-      <rect x="10" y="7" width="18" height="18" rx="2" fill="#FBFBFB" />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M12 7C10.8954 7 10 7.89543 10 9V23C10 24.1046 10.8954 25 12 25H26C27.1046 25 28 24.1046 28 23V9C28 7.89543 27.1046 7 26 7H12ZM17.8 17.1176V21H14.8V15.8235H13L19 10L25 15.8235H23.2V21H20.2V17.1176H17.8Z"
-        fill="#734AEF"
-      />
-    </g>
-    <defs></defs>
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M2 0C0.895431 0 0 0.89543 0 2V16C0 17.1046 0.89543 18 2 18H16C17.1046 18 18 17.1046 18 16V2C18 0.895431 17.1046 0 16 0H2ZM7.8 10.1176V14H4.8V8.82353H3L9 3L15 8.82353H13.2V14H10.2V10.1176H7.8Z"
+      fill="#8A7AAA"
+      style={{}}
+    />
   </svg>
 );
+
 export default NavigationHome;

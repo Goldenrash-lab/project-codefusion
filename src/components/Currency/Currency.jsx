@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
+
 import imageDesc from '../../images/currency/currency.png';
 import imageTabl from '../../images/currency/currency-tablet.png';
+
 import {
   StyledBox,
   StyledTable,
@@ -10,6 +12,7 @@ import {
   StyledTd,
   StyledTh,
   StyledTdBox,
+
   StyledTableHead,
 } from './CurrencyStyled';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,10 +23,12 @@ import {
   // isLoadingSelector,
 } from 'store/currency/currencySelector';
 
+
 const Currency = () => {
   const [currency, setCurrency] = useState([]);
   const dispatch = useDispatch();
   const selectedCurrency = useSelector(currencySelector);
+
   // const isLoading = useSelector(isLoadingSelector);
   const token = useSelector(state => state.auth.token);
 
@@ -35,6 +40,7 @@ const Currency = () => {
   useEffect(() => {
     // if (!token) return;
     const lastUpdatedTime = localStorage.getItem('lastUpdatedTime');
+
     const isHourPassed = () => {
       const ONE_HOUR_IN_MS = 60 * 60 * 1000;
       return Date.now() - Number(lastUpdatedTime) >= ONE_HOUR_IN_MS;
@@ -110,6 +116,7 @@ const Currency = () => {
       )}
     </div>
   );
+
 };
 
 export default Currency;

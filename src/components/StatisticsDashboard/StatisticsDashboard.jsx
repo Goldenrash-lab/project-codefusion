@@ -1,11 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import { StyledContainer, StyledSelect } from './StatisticsDashboard.styled';
 
 export const StatisticsDashboard = () => {
   return (
     <StyledContainer>
       <StyledSelect name="month" id="month" defaultValue="March">
-        <option value="" disabled>
+        <option value="March" disabled>
           Please select a month
         </option>
         <option value="March">March</option>
@@ -21,18 +21,3 @@ export const StatisticsDashboard = () => {
     </StyledContainer>
   );
 };
-
-const StyledContainer = styled.div`
-  display: flex;
-  width: 395px;
-  height: 50px;
-  gap: 32px;
-  margin-bottom: 20px;
-  margin-right: 12px;
-`;
-
-const StyledSelect = styled.select`
-  width: 182px;
-  height: 50px;
-  border-radius: 8px;
-`;

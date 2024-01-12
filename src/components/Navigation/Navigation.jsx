@@ -2,7 +2,12 @@ import React from 'react';
 
 import NavigationHome from '../../images/Navigation/NavigationHomeIcon';
 import StatisticsHome from 'images/Navigation/StatisticsHomeIcon';
-import { NavigationNavLink, NavigationSection } from './NavigationStyles';
+import {
+  NavigationDivTest,
+  NavigationDivTest2,
+  NavigationNavLink,
+  NavigationSection,
+} from './NavigationStyles';
 
 const Navigation = () => {
   return (
@@ -10,12 +15,18 @@ const Navigation = () => {
       <div>
         <NavigationSection>
           <NavigationNavLink to="/">
-            <NavigationHome />
-            <span>Home</span>
+            <NavigationDivTest2>
+              <NavigationDivTest>
+                <NavigationHome />
+              </NavigationDivTest>
+            </NavigationDivTest2>
+            Home
           </NavigationNavLink>
           <NavigationNavLink to="/statistics">
-            <StatisticsHome />
-            <span>Statistics</span>
+            <NavigationDivTest>
+              <StatisticsHome />
+            </NavigationDivTest>
+            Statistics
           </NavigationNavLink>
         </NavigationSection>
       </div>

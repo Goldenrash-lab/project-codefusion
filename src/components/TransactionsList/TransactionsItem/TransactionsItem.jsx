@@ -1,16 +1,27 @@
 import React from 'react';
-import { StyledButton } from './TrancactionsItem.styled';
+// import { useDispatch } from 'react-redux';
+import {
+  StyledButton,
+  StyledSvg,
+  StyledTh,
+  StyledTransaction,
+} from './TransactionsItem.styled';
+import { deleteTransactionThunk } from 'store/Transactions/operations';
 
 const TransactionsItem = ({ transaction }) => {
+  // const dispatch = useDispatch();
+  const normalFontValue = 'true';
   return (
-    <div>
-      <span>{transaction.date}</span>
-      <span>{transaction.type}</span>
-      <span>{transaction.category}</span>
-      <span>{transaction.comment}</span>
-      <span>{transaction.sum}</span>
-      <span>
-        <svg
+    <StyledTransaction normalfont={normalFontValue}>
+      <StyledTh>{transaction.date}</StyledTh>
+      <StyledTh type={transaction.type}>{transaction.type}</StyledTh>
+      <StyledTh>{transaction.category}</StyledTh>
+      <StyledTh>{transaction.comment}</StyledTh>
+      <StyledTh type={transaction.type} sum={transaction.sum}>
+        {transaction.sum}
+      </StyledTh>
+      <StyledTh>
+        <StyledSvg
           xmlns="http://www.w3.org/2000/svg"
           width="14"
           height="15"
@@ -25,12 +36,13 @@ const TransactionsItem = ({ transaction }) => {
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-        </svg>
-      </span>
-      <span>
-        <StyledButton>Delete</StyledButton>
-      </span>
-    </div>
+        </StyledSvg>
+
+        <StyledButton onClick={() => deleteTransactionThunk(transaction.id)}>
+          Delete
+        </StyledButton>
+      </StyledTh>
+    </StyledTransaction>
   );
 };
 
