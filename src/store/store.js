@@ -15,6 +15,7 @@ import { currencyReducer } from './currency/currencySlice';
 import { transactionsReducer } from './Transactions/transactionsSlice';
 import { categoriesReducer } from './Categories/categoriesSlice';
 
+
 const persistConfig = {
   key: 'api/token',
   version: 1,
@@ -36,6 +37,7 @@ export const store = configureStore({
     currency: persistReducer(currencyPersistConfig, currencyReducer),
     transactions: transactionsReducer,
     categories: categoriesReducer,
+
   },
   // reducer: {
   //   auth: authReducer,

@@ -3,6 +3,7 @@ import {
   addTransactionThunk,
   deleteTransactionThunk,
   fetchTransactionsThunk,
+  updateTransactionThunk,
 } from './operations';
 
 export const transactionsSlice = createSlice({
@@ -26,10 +27,28 @@ export const transactionsSlice = createSlice({
       .addCase(addTransactionThunk.fulfilled, (state, action) => {
         state.transactions.push(action.payload);
       })
-      .addCase(fetchTransactionsThunk.pending, state => {
+      .addCase(updateTransactionThunk.fulfilled, (state, action) => {
+        state.transactions = action.payload;
         state.loading = false;
       })
+      .addCase(fetchTransactionsThunk.pending, state => {
+        state.loading = true;
+      })
+      .addCase(updateTransactionThunk.pending, state => {
+        state.loading = true;
+      })
+      .addCase(deleteTransactionThunk.pending, state => {
+        state.loading = true;
+      })
       .addCase(fetchTransactionsThunk.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(deleteTransactionThunk.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(updateTransactionThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

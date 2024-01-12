@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledBox = styled.div`
-  /* font-family: 'Poppins Regular', sans-serif; */
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,8 +17,10 @@ export const StyledTable = styled.div`
 
 export const StyledTableHead = styled.div`
   background: rgba(82, 59, 126, 0.6);
-  padding-left: ${props => props.padL || '62px'};
-  margin-bottom: ${props => props.marB || '24px'};
+
+  padding-left: ${props => props.padl || '62px'};
+  margin-bottom: ${props => props.marb || '24px'};
+
 `;
 
 export const StyledThBox = styled.div`
@@ -38,9 +40,12 @@ export const StyledTdBox = styled.div`
 export const StyledTBody = styled.div`
   display: flex;
   flex-direction: column;
+
+
   padding-left: ${props => props.padL || '62px'};
   gap: ${props => props.gap || '24px'};
   margin-bottom: 6px;
+
 `;
 
 export const StyledTh = styled.span`
