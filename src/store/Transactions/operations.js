@@ -18,7 +18,7 @@ export const deleteTransactionThunk = createAsyncThunk(
   'deleteTransaction',
   async (id, thunkApi) => {
     try {
-      const { data } = await api.delete(`/api/transactions${id}`);
+      const { data } = await api.delete(`/api/transactions/${id}`);
       console.log(data);
       return data;
     } catch (error) {
@@ -41,10 +41,10 @@ export const addTransactionThunk = createAsyncThunk(
 );
 
 export const updateTransactionThunk = createAsyncThunk(
-  'addTransaction',
+  'updateTransaction',
   async (id, thunkApi) => {
     try {
-      const { data } = await api.patch(`/api/transactions${id}`);
+      const { data } = await api.patch(`/api/transactions/${id}`);
       console.log(data);
       return data;
     } catch (error) {

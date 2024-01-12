@@ -10,7 +10,6 @@ import { deleteTransactionThunk } from 'store/Transactions/operations';
 
 const TransactionsItem = ({ transaction }) => {
   const dispatch = useDispatch();
-
   return (
     <StyledTransaction $normalFont={true}>
       <StyledTh>{transaction.date}</StyledTh>
@@ -38,7 +37,9 @@ const TransactionsItem = ({ transaction }) => {
           />
         </StyledSvg>
 
-        <StyledButton onClick={() => deleteTransactionThunk(transaction.id)}>
+        <StyledButton
+          onClick={() => dispatch(deleteTransactionThunk(transaction.id))}
+        >
           Delete
         </StyledButton>
       </StyledTh>
