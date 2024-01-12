@@ -112,7 +112,7 @@ const ModalEditTransactions = () => {
             value={comment}
             onChange={e => setComment(e.target.value)}
             rows="1"
-            placeholder="Сomment"
+            placeholder="Comment"
           ></TextArea>
         </FormGroup>
 
