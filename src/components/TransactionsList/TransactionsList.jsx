@@ -9,6 +9,7 @@ import {
 import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import TransactionsDashboard from './TransactionDashboard/TransactionsDashboard';
+import { useMediaQuery } from 'react-responsive';
 //import { transactionsData } from 'store/Transactions/selectors';
 
 const transactions = [
@@ -70,14 +71,15 @@ const TransactionsList = () => {
   // console.log(transactions);
   const [isAddTransactionOpen, setIsTransactionOpen] = useState(false);
 
+  //const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
+  const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
+  const isMobileScreen = useMediaQuery({ query: '(max-width: 767.98px)' });
+
   return (
-    <TableWrap>
-      <WrapTable>
-        <StyledTable>
-          <TransactionsDashboard transactions={transactions} />
-          <TransactionMobile transactions={transactions} />
-        </StyledTable>
-      </WrapTable>
+    <div>
+      {isTabletScreen && <TransactionsDashboard transactions={transactions} />}
+      {isMobileScreen && <TransactionMobile transactions={transactions} />}
+
       <StyledAddTransactionButton onClick={() => setIsTransactionOpen(true)}>
         <svg
           width="20"
@@ -93,7 +95,7 @@ const TransactionsList = () => {
       {isAddTransactionOpen && (
         <ModalAddTransactions close={setIsTransactionOpen} />
       )}
-    </TableWrap>
+    </div>
   );
 };
 

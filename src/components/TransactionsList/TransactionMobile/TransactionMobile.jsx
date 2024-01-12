@@ -6,6 +6,7 @@ import {
   SpanItem,
   SpanName,
   StyledLi,
+  StyledUlWrap,
   TransactionCard,
 } from './TransactionMobile.styled';
 import DeleteButton from '../helpers/DeleteButton';
@@ -17,7 +18,7 @@ export const formatCurrency = number => {
 const TransactionMobile = ({ transactions }) => {
   return (
     <div>
-      <ul>
+      <StyledUlWrap>
         {transactions.map(transaction => {
           return (
             <TransactionCard $type={transaction.type} key={transaction.id}>
@@ -55,7 +56,7 @@ const TransactionMobile = ({ transactions }) => {
             </TransactionCard>
           );
         })}
-      </ul>
+      </StyledUlWrap>
     </div>
   );
 };

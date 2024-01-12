@@ -47,6 +47,7 @@ export const StyledTh = styled.th`
       : null};
 
   &:last-child {
+    margin-right: 10px;
     margin-left: 33px;
     display: flex;
     justify-content: center;

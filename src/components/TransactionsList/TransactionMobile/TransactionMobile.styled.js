@@ -42,6 +42,7 @@ export const TransactionCard = styled.li`
         : props.$type === '-'
         ? 'var(--dashboard-text)'
         : null};
+
   margin-bottom: 8px;
 `;
 
@@ -55,4 +56,9 @@ export const EditSpan = styled.span`
   font-size: 16px;
   line-height: 1.2;
   letter-spacing: 0.02em;
+`;
+export const StyledUlWrap = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
