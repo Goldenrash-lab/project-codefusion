@@ -1,4 +1,3 @@
-import HeaderExitIcon from 'images/Header/HeaderExitIcon';
 import styled from 'styled-components';
 
 export const HeaderSection = styled.header`
