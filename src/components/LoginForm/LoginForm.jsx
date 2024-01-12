@@ -54,22 +54,18 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   function submit(data) {
-    console.log(data);
     dispatch(loginThunk(data))
       .unwrap()
       .then(() => {
         toast.success("You're logged in!");
-        console.log("You're logged in!");
       })
       .catch(() => toast.error('Something went wrong!'));
-
-    console.log(data);
   }
 
-  const isAuthenticated = useSelector(state => !!state.auth.user);
+  const isAuthenticated = useSelector(state => state.auth.user);
 
   if (isAuthenticated) {
-    return <Navigate to={Location.state?.from || '/'} />;
+    return <Navigate to={'/'} />;
   }
 
   return (

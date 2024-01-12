@@ -16,19 +16,19 @@ export const WrapperReg = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   @media only screen and (max-width: 1279px) {
-    background-image: url(${backgroundTablet});
+    background-image: url(${backgroundDesk});
   }
   @media only screen and (max-width: 767px) {
     background-image: url(${backgroundTablet});
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 555px) {
     background-image: url(${backgroundMobile});
   }
 `;
 export const WrapperForm = styled.div`
   /* display: none; */
-  @media only screen and (min-width: 480px) {
+  @media only screen and (min-width: 555px) {
     display: block;
     border-radius: 8px;
     background: var(--Form-color, rgba(255, 255, 255, 0.1));
@@ -96,7 +96,7 @@ export const Input = styled.input`
   &::placeholder {
     color: rgba(255, 255, 255, 0.6);
   }
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 555px) {
     min-width: 100%;
   }
 `;
@@ -113,7 +113,7 @@ export const TestDiv = styled.div`
   z-index: -1;
 
   filter: blur(100px);
-  @media only screen and (min-width: 480px) {
+  @media only screen and (min-width: 555px) {
     width: 454px;
   }
 `;

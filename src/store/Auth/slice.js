@@ -19,9 +19,7 @@ const authSlice = createSlice({
         state.token = '';
       })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
-        state.user.name = payload.name;
-        state.user.email = payload.email;
-        state.user.balance = payload.balance;
+        state.user = payload;
         state.isLoggedIn = true;
         state.isRefresh = false;
       })
