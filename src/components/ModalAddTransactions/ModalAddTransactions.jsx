@@ -10,12 +10,8 @@ import {
   CloseBtn,
   DatePickerWrapper,
   Modal,
-  Switcher,
-  SwitcherContainer,
   UncheckedText,
 } from './ModalAddTransaction.styled';
-import { SumDateContainer } from './ModalAddTransaction.styled';
-import { ButtonsContainer } from './ModalAddTransaction.styled';
 import { CommentInput } from './ModalAddTransaction.styled';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -28,11 +24,25 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { addTransactionThunk } from 'store/Transactions/transactionsThunk';
+import { ErrorText } from './ModalAddTransaction.styled';
+import { toast } from 'react-toastify';
+import { Switcher, SwitcherContainer } from './Switcher.styled';
+import {
+  ButtonsContainer,
+  ErrorInputContainer,
+  SumDateContainer,
+} from './Containers.styled';
+import {
+  checkTransactionType,
+  getFormattedDate,
+  negOrPosNumber,
+} from './helpers';
 
 const schema = yup
   .object({
     sum: yup
       .number()
+      .typeError('Please enter the sum')
       .min(1, 'Number must be at least 1 character')
       .required('Sum is required'),
     comment: yup
@@ -50,7 +60,11 @@ const ModalAddTransactions = ({ close }) => {
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
 
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     mode: 'onChange',
     resolver: yupResolver(schema),
   });
@@ -90,44 +104,28 @@ const ModalAddTransactions = ({ close }) => {
     }, [handleEscKey]);
   }
 
-  function checkTransactionType() {
-    if (isExpense) {
-      return 'EXPENSE';
-    }
-    return 'INCOME';
-  }
-
-  function getFormattedDate() {
-    const year = startDate.getFullYear();
-    const month = String(startDate.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-    const day = String(startDate.getDate()).padStart(2, '0');
-    const hours = String(startDate.getHours()).padStart(2, '0');
-    const minutes = String(startDate.getMinutes()).padStart(2, '0');
-    const seconds = String(startDate.getSeconds()).padStart(2, '0');
-    const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
-    return formattedDate;
-  }
-
-  function negOrPosNumber(sum) {
-    if (isExpense) {
-      return `-${sum}`;
-    }
-    return sum;
-  }
-
   function submit(e) {
     console.log(startDate);
     const newTransaction = {
-      transactionDate: getFormattedDate(),
-      type: checkTransactionType(),
+      transactionDate: getFormattedDate(startDate),
+      type: checkTransactionType(isExpense),
       ...(isExpense
         ? { categoryId: e.category }
         : { categoryId: '063f1132-ba5d-42b4-951d-44011ca46262' }),
       comment: e.comment,
-      amount: negOrPosNumber(e.sum),
+      amount: negOrPosNumber(e.sum, isExpense),
     };
     console.log(newTransaction);
-    dispatch(addTransactionThunk(newTransaction));
+
+    dispatch(addTransactionThunk(newTransaction))
+      .unwrap()
+      .then(() => {
+        close(false);
+        toast.success('Transaction is successfully added');
+      })
+      .catch(err => {
+        toast.error(err);
+      });
   }
 
   return (
@@ -188,14 +186,16 @@ const ModalAddTransactions = ({ close }) => {
           )}
 
           <SumDateContainer>
-            <input
-              type="text"
-              name="sum"
-              placeholder="0.00"
-              autoComplete="off"
-              {...register('sum')}
-            />
-            {/* <ErrorText>{errors.sum?.message}</ErrorText> */}
+            <ErrorInputContainer>
+              <input
+                type="text"
+                name="sum"
+                placeholder="0.00"
+                autoComplete="off"
+                {...register('sum')}
+              />
+              <ErrorText>{errors.sum?.message}</ErrorText>
+            </ErrorInputContainer>
             <DatePickerWrapper>
               <CalendarImg alt="" src={calendar}></CalendarImg>
               <ReactDatePicker
@@ -207,13 +207,15 @@ const ModalAddTransactions = ({ close }) => {
               />
             </DatePickerWrapper>
           </SumDateContainer>
-          <CommentInput
-            type="text"
-            placeholder="Comment"
-            autoComplete="off"
-            {...register('comment')}
-          />
-          {/* <ErrorText>{errors.comment?.message}</ErrorText> */}
+          <ErrorInputContainer>
+            <CommentInput
+              type="text"
+              placeholder="Comment"
+              autoComplete="off"
+              {...register('comment')}
+            />
+            <ErrorText>{errors.comment?.message}</ErrorText>
+          </ErrorInputContainer>
           <ButtonsContainer>
             <button type="submit">Add</button>
             <button type="button" onClick={() => close(false)}>
