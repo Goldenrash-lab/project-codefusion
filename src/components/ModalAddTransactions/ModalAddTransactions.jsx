@@ -19,10 +19,7 @@ import { ButtonsContainer } from './ModalAddTransaction.styled';
 import { CommentInput } from './ModalAddTransaction.styled';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import {
-  ErrorText,
-  TestDiv,
-} from 'components/RegistrationForm/RegistrationForm.styled';
+import { TestDiv } from 'components/ModalAddTransactions/ModalAddTransaction.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCategories } from 'store/Categories/categoriesSelectors';
 import { categoriesThunk } from 'store/Categories/categoriesThunk';
