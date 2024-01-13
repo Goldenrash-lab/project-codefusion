@@ -6,7 +6,7 @@ import ModalEditTransactions from 'components/ModalEditTransaction/ModalEditTran
 import RegistrationPage from 'pages/RegistrationPage';
 import StatisticsTab from 'pages/StatisticsTab';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
 import { refreshThunk } from 'store/Auth/thunk';
 // import { useSelector } from 'react-redux';
@@ -14,6 +14,7 @@ import { refreshThunk } from 'store/Auth/thunk';
 // import { selectIsLoading } from 'store/Auth/selectors';
 // import { isLoadingSelector } from 'store/currency/currencySelector';
 import Global from 'styles/global';
+import { Loader } from 'components/Loader/Loader';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -23,10 +24,14 @@ export const App = () => {
     dispatch(refreshThunk());
   }, [dispatch]);
 
+  const loading = useSelector(state => state.loader.loading);
+
   return (
     <>
       <Global />
-      <Routes>
+      {loading ? (<Loader/> ) : 
+      
+      (<Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/statistics" element={<StatisticsTab />} />
@@ -35,7 +40,7 @@ export const App = () => {
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/edit" element={<ModalEditTransactions />} />
-      </Routes>
+      </Routes>)}
     </>
   );
 };
