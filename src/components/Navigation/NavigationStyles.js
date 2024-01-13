@@ -137,8 +137,8 @@ export const NavigationNavLinkCurrency = styled(NavLink)`
   &.active {
     font-weight: 700;
     div {
-      width: 38px !important;
-      height: 38px !important;
+      width: 38px;
+      height: 38px;
 
       background-color: #fff;
       border-radius: 3px;
