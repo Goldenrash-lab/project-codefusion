@@ -30,6 +30,14 @@ const TransactionsItem = ({ transaction }) => {
 
   const transType = transaction.type === 'EXPENSE' ? '-' : '+';
 
+  function correctBalance(amount) {
+    if (amount < 0) {
+      return Math.abs(amount);
+    } else {
+      return (amount = -amount);
+    }
+  }
+
   return (
     <StyledTransaction $normalFont={true}>
       <StyledTh $width={true}>{formattedDateStr}</StyledTh>
@@ -65,7 +73,7 @@ const TransactionsItem = ({ transaction }) => {
             dispatch(deleteTransactionThunk(transaction.id))
               .unwrap()
               .then(() => {
-                dispatch(changeBalance(transaction.amount));
+                dispatch(changeBalance(correctBalance(transaction.amount)));
                 dispatch(deleteTransaction(transaction.id));
                 toast.success('Transaction is deleted!');
               })

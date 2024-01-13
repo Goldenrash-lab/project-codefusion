@@ -30,7 +30,6 @@ const Currency = () => {
   const [currency, setCurrency] = useState([]);
   const dispatch = useDispatch();
   const selectedCurrency = useSelector(currencySelector);
-  console.log('here', selectedCurrency, currency);
   // const isLoading = useSelector(isLoadingSelector);
   const token = useSelector(state => state.auth.token);
 
