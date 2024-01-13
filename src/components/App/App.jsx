@@ -15,6 +15,7 @@ import { refreshThunk } from 'store/Auth/thunk';
 // import { isLoadingSelector } from 'store/currency/currencySelector';
 import Global from 'styles/global';
 import { Loader } from 'components/Loader/Loader';
+import CurrencyTab from 'pages/CurrencyTab';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ export const App = () => {
         <Route element={<Layout />}>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/statistics" element={<StatisticsTab />} />
+          <Route path="/currency" element={<CurrencyTab />} />
         </Route>
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegistrationPage />} />
