@@ -37,6 +37,7 @@ import {
   getFormattedDate,
   negOrPosNumber,
 } from './helpers';
+import { changeBalance } from 'store/Auth/slice';
 
 const schema = yup
   .object({
@@ -121,6 +122,7 @@ const ModalAddTransactions = ({ close }) => {
       .unwrap()
       .then(() => {
         close(false);
+        dispatch(changeBalance(+newTransaction.amount));
         toast.success('Transaction is successfully added');
       })
       .catch(err => {
