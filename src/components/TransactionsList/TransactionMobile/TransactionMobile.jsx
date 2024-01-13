@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Edit from '../helpers/Edit';
 import {
   EditButton,
@@ -14,18 +14,14 @@ import { formatCurrency } from '../TransactionsList';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCategories } from 'store/Categories/categoriesSelectors';
 import { transactionsData } from 'store/Transactions/selectors';
-import {
-  deleteTransactionThunk,
-  fetchTransactionsThunk,
-} from 'store/Transactions/transactionsThunk';
+import { deleteTransactionThunk } from 'store/Transactions/transactionsThunk';
+import { toast } from 'react-toastify';
+import { deleteTransaction } from 'store/Transactions/transactionsSlice';
 
 const TransactionMobile = () => {
   const categories = useSelector(selectCategories);
   const transactions = useSelector(transactionsData);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchTransactionsThunk());
-  }, [dispatch]);
 
   return (
     <div>
@@ -71,6 +67,14 @@ const TransactionMobile = () => {
                   <StyledButton
                     onClick={() =>
                       dispatch(deleteTransactionThunk(transaction.id))
+                        .unwrap()
+                        .then(() => {
+                          dispatch(deleteTransaction(transaction.id));
+                          toast.success('Transaction is deleted!');
+                        })
+                        .catch(err => {
+                          toast.error(err);
+                        })
                     }
                   >
                     Delete
