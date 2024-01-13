@@ -7,9 +7,9 @@ import { useMediaQuery } from 'react-responsive';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const Chart = ({ expensesData, totalExpenses }) => {
+export const Chart = ({ categoriesSummary, expenseSummary }) => {
   const isDesktop = useMediaQuery({ minWidth: 1024 });
-  const isTablet = useMediaQuery({ minWidth: 614, maxWidth: 818 });
+  const isTablet = useMediaQuery({ minWidth: 768 });
   const isMobile = useMediaQuery({ maxWidth: 480 });
 
   let doughnutSize = 288;
@@ -25,9 +25,9 @@ export const Chart = ({ expensesData, totalExpenses }) => {
   const data = {
     datasets: [
       {
-        data: expensesData.map(expence => expence.sum),
-        backgroundColor: expensesData.map(expence => expence.color),
-        borderColor: expensesData.map(expence => expence.color),
+        data: categoriesSummary.map(expence => expence.total),
+        backgroundColor: categoriesSummary.map(expence => expence.color),
+        borderColor: categoriesSummary.map(expence => expence.color),
         borderWidth: 2,
       },
     ],
@@ -59,7 +59,7 @@ export const Chart = ({ expensesData, totalExpenses }) => {
             cutout: doughnutSize / 2.88,
           }}
         />
-        <TextInsideDoughnut text={`₴ ${formatCurrency(totalExpenses)}`} />
+        <TextInsideDoughnut text={`₴ ${formatCurrency(expenseSummary)}`} />
       </div>
     </StyledChartContainer>
   );
