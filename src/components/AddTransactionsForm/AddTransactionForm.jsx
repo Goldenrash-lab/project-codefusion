@@ -1,5 +1,5 @@
 import {
-  Arrow,
+  //   Arrow,
   CalendarImg,
   CheckedExpense,
   CheckedIncome,
@@ -12,9 +12,10 @@ import {
   UncheckedText,
 } from 'components/ModalAddTransactions/ModalAddTransaction.styled';
 import React, { useState } from 'react';
+import Select, { components } from 'react-select';
 import MediaQuery from 'react-responsive';
 import closeImg from '../../images/ModalAddTransaction/close.svg';
-import arrow from '../../images/ModalAddTransaction/arrow.svg';
+import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 import calendar from '../../images/ModalAddTransaction/calendar.svg';
 import {
   Switcher,
@@ -29,7 +30,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCategories } from 'store/Categories/categoriesSelectors';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import {
   checkTransactionType,
   getFormattedDate,
@@ -61,9 +62,17 @@ const AddTransactionForm = ({ close }) => {
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
 
+  console.log(categories);
+
+  const options = categories.map(cat => {
+    return { value: cat.id, label: cat.name };
+  });
+  console.log(options);
+
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm({
     mode: 'onChange',
@@ -94,6 +103,88 @@ const AddTransactionForm = ({ close }) => {
         toast.error(err);
       });
   }
+
+  const selectStyle = {
+    control: styles => ({
+      ...styles,
+      backgroundColor: 'transparent',
+      marginBottom: '40px',
+      border: 'none',
+      borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
+      outline: 'none',
+      borderRadius: '0',
+      boxShadow: 'none',
+      cursor: 'pointer',
+      minWidth: '280px',
+
+      '&:hover': {
+        border: 'none',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
+      },
+    }),
+    singleValue: styles => ({
+      ...styles,
+      color: '#FBFBFB',
+      fontSize: '18px',
+    }),
+    placeholder: styles => ({
+      ...styles,
+      color: 'rgba(255, 255, 255, 0.6)',
+      fontSize: '18px',
+    }),
+    menu: styles => ({
+      ...styles,
+      borderRadius: '8px',
+      backgroundColor: 'transparent',
+      boxShadow: '0px 4px 60px 0px rgba(0, 0, 0, 0.25)',
+      backdropFilter: 'blur(50px)',
+      overflow: 'hidden',
+      color: '#FBFBFB',
+      fontFamily: 'inherit',
+      fontSize: '16px',
+      fontWeight: '400',
+
+      '&::before': {
+        background:
+          'linear-gradient(0deg, rgba(83, 61, 186, 0.70) 0%, rgba(80, 48, 154, 0.70) 43.14%, rgba(106, 70, 165, 0.52) 73.27%, rgba(133, 93, 175, 0.13) 120.03%)',
+        content: '""',
+        filter: 'blur(50px)',
+        position: 'absolute',
+        inset: '0%',
+        zIndex: '-1',
+      },
+    }),
+    option: (styles, { isFocused, isSelected }) => {
+      if (isFocused) {
+        return {
+          ...styles,
+          background: '#FFFFFF1A',
+          color: '#FF868D',
+        };
+      } else if (isSelected) {
+        return {
+          ...styles,
+          background: 'transparent',
+        };
+      } else {
+        return {
+          ...styles,
+        };
+      }
+    },
+  };
+
+  const DropdownIndicator = props => {
+    return (
+      <components.DropdownIndicator {...props}>
+        {props.selectProps.menuIsOpen ? (
+          <SlArrowUp size={18} label="Arrow up" color={'#FBFBFB'} />
+        ) : (
+          <SlArrowDown size={18} label="Arrow down" color={'#FBFBFB'} />
+        )}
+      </components.DropdownIndicator>
+    );
+  };
 
   return (
     <Modal>
@@ -129,25 +220,47 @@ const AddTransactionForm = ({ close }) => {
         </SwitcherContainer>
 
         {isExpense && (
-          <div>
-            <select
-              name="category"
-              id=""
-              required
-              defaultValue={''}
-              {...register('category')}
-            >
-              <option value={''} disabled hidden>
-                Select a category
-              </option>
-              {categories.map(({ name, id }) => (
-                <option key={id} value={id}>
-                  {name}
-                </option>
-              ))}
-            </select>
-            <Arrow alt="" src={arrow}></Arrow>
-          </div>
+          <Controller
+            name="category"
+            control={control}
+            rules={{ required: true }}
+            render={({ field, value }) => (
+              <Select
+                name="category"
+                {...register('category')}
+                id="category"
+                options={options}
+                components={{
+                  DropdownIndicator,
+                  IndicatorSeparator: () => null,
+                }}
+                placeholder="Select a category"
+                styles={selectStyle}
+                isSearchable={false}
+                // value={categories.find(category => category.value === value)}
+                onChange={option => field.onChange(option.value)}
+              />
+            )}
+          />
+          //   <div>
+          //     <select
+          //       name="category"
+          //       id=""
+          //       required
+          //       defaultValue={''}
+          //       {...register('category')}
+          //     >
+          //       <option value={''} disabled hidden>
+          //         Select a category
+          //       </option>
+          //       {categories.map(({ name, id }) => (
+          //         <option key={id} value={id}>
+          //           {name}
+          //         </option>
+          //       ))}
+          //     </select>
+          //     <Arrow alt="" src={arrow}></Arrow>
+          //   </div>
         )}
 
         <SumDateContainer>

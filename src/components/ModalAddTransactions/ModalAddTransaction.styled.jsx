@@ -17,7 +17,7 @@ export const Backdrop = styled.div`
 
 export const Modal = styled.div`
   width: 540px;
-  max-height: 589px;
+  /* max-height: 589px; */
   overflow: hidden;
   background-image: url(${background});
   background-position: center;
@@ -32,13 +32,22 @@ export const Modal = styled.div`
   align-items: center;
   border-radius: 8px;
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(50px);
+  /* backdrop-filter: blur(50px); */
 
   @media only screen and (max-width: 480px) {
-    background-image: url(${backgroundMob});
-    max-width: 320px;
-    max-height: 100%;
+    /* background-image: url(${backgroundMob});
+    max-width: 320px; */
+    /* width: 100%; */
+    /* max-height: 100%; */
     padding: 40px 20px;
+    height: 100%;
+    background-image: none;
+    background-color: purple;
+    background: var(--Form-color, rgba(255, 255, 255, 0.1));
+
+    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(50px);
+    z-index: 100;
     form {
       display: flex;
       flex-direction: column;
@@ -58,35 +67,6 @@ export const Modal = styled.div`
     @media only screen and (max-width: 480px) {
       font-size: 24px;
     }
-  }
-  select {
-    position: relative;
-    appearance: none;
-    cursor: pointer;
-    width: 394px;
-    margin-bottom: 40px;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    outline: none;
-
-    @media only screen and (max-width: 480px) {
-      width: 280px;
-    }
-  }
-
-  select > option {
-    background-color: rgba(106, 70, 165, 0.52);
-  }
-
-  select > option:last-child {
-    display: none;
-  }
-
-  select:required {
-    color: rgba(255, 255, 255, 0.6);
-    padding-left: 8px;
-    padding-bottom: 8px;
   }
 
   input {
