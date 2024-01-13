@@ -51,6 +51,7 @@ export const EditButton = styled.button`
   border: none;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const EditSpan = styled.span`

@@ -52,7 +52,7 @@ export const transactionsSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      .addCase(updateTransactionThunk.rejected, (state, action) => {
+      .addCase(addTransactionThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
