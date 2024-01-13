@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   StyledDeleteButton,
   StyledEditButton,
@@ -8,17 +8,36 @@ import {
 } from './TransactionsItem.styled';
 import { deleteTransactionThunk } from 'store/Transactions/transactionsThunk';
 import { formatCurrency } from '../TransactionsList';
+import { selectCategories } from 'store/Categories/categoriesSelectors';
+import { toast } from 'react-toastify';
 
 const TransactionsItem = ({ transaction }) => {
   const dispatch = useDispatch();
+
+  const categories = useSelector(selectCategories);
+
+  const category = categories.find(
+    category => category.id === transaction.categoryId
+  );
+
+  const inputDate = new Date(transaction.transactionDate);
+  const day = String(inputDate.getDate()).padStart(2, '0');
+  const month = String(inputDate.getMonth() + 1).padStart(2, '0');
+  const year = String(inputDate.getFullYear()).slice(-2);
+  const formattedDateStr = `${day}.${month}.${year}`;
+
+  const transType = transaction.type === 'EXPENSE' ? '-' : '+';
+
   return (
     <StyledTransaction $normalFont={true}>
-      <StyledTh>{transaction.date}</StyledTh>
-      <StyledTh $type={true}>{transaction.type}</StyledTh>
-      <StyledTh>{transaction.category}</StyledTh>
+      <StyledTh $width={true}>{formattedDateStr}</StyledTh>
+      <StyledTh $width={true} $type={true}>
+        {transType}
+      </StyledTh>
+      <StyledTh>{category?.name}</StyledTh>
       <StyledTh>{transaction.comment}</StyledTh>
-      <StyledTh $type={transaction.type} $sum={formatCurrency(transaction.sum)}>
-        {transaction.sum}
+      <StyledTh $type={transType} $sum={transaction.amount}>
+        {formatCurrency(transaction.amount)}
       </StyledTh>
       <StyledTh>
         <StyledEditButton>
@@ -40,7 +59,16 @@ const TransactionsItem = ({ transaction }) => {
           </svg>
         </StyledEditButton>
         <StyledDeleteButton
-          onClick={() => dispatch(deleteTransactionThunk(transaction.id))}
+          onClick={() =>
+            dispatch(deleteTransactionThunk(transaction.id))
+              .unwrap()
+              .then(() => {
+                toast.success('Transaction is deleted!');
+              })
+              .catch(err => {
+                toast.error(err);
+              })
+          }
         >
           Delete
         </StyledDeleteButton>

@@ -1,69 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { StyledAddTransactionButton } from './TransactionsList.styled';
 import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import TransactionsDashboard from './TransactionDashboard/TransactionsDashboard';
 import { useMediaQuery } from 'react-responsive';
+import { useDispatch } from 'react-redux';
+import { fetchTransactionsThunk } from 'store/Transactions/transactionsThunk';
 
-const transactions = [
-  {
-    id: 1,
-    date: '04.01.23',
-    category: 'other',
-    comment: 'gift for a wife',
-    sum: 300,
-    type: '-',
-  },
-  {
-    id: 2,
-    date: '05.01.23',
-    category: 'income',
-    comment: 'salary from work',
-    sum: 4300,
-    type: '+',
-  },
-  {
-    id: 3,
-    date: '04.01.23',
-    category: 'other stuff',
-    comment: 'gift',
-    sum: 300,
-    type: '-',
-  },
-  {
-    id: 4,
-    date: '05.01.23',
-    category: 'income',
-    comment: 'salary',
-    sum: 4300,
-    type: '+',
-  },
-  {
-    id: 5,
-    date: '04.01.23',
-    category: 'other',
-    comment: 'gift for a wife',
-    sum: 300,
-    type: '-',
-  },
-  {
-    id: 6,
-    date: '05.01.23',
-    category: 'income',
-    comment: 'salary from work',
-    sum: 4300,
-    type: '+',
-  },
-];
 export const formatCurrency = number => {
-  return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ');
+  return Math.abs(number)
+    .toFixed(2)
+    .replace(/\d(?=(\d{3})+\.)/g, '$& ');
 };
 
 const TransactionsList = () => {
-  // const transactions = useSelector(transactionsData);
-  // console.log(transactions);
+  const dispatch = useDispatch();
+
   const [isAddTransactionOpen, setIsTransactionOpen] = useState(false);
+
+  useEffect(() => {
+    dispatch(fetchTransactionsThunk());
+  }, [dispatch]);
 
   //const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
@@ -71,8 +29,8 @@ const TransactionsList = () => {
 
   return (
     <div>
-      {isTabletScreen && <TransactionsDashboard transactions={transactions} />}
-      {isMobileScreen && <TransactionMobile transactions={transactions} />}
+      {isTabletScreen && <TransactionsDashboard />}
+      {isMobileScreen && <TransactionMobile />}
 
       <StyledAddTransactionButton onClick={() => setIsTransactionOpen(true)}>
         <svg

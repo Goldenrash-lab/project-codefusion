@@ -25,10 +25,15 @@ export const transactionsSlice = createSlice({
         );
       })
       .addCase(addTransactionThunk.fulfilled, (state, action) => {
-        state.transactions.push(action.payload);
+        state.transactions.unshift(action.payload);
       })
       .addCase(updateTransactionThunk.fulfilled, (state, action) => {
-        state.transactions = action.payload;
+        const index = state.transactions.findIndex(
+          transaction => transaction.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.transactions[index] = action.payload;
+        }
         state.loading = false;
       })
       .addCase(fetchTransactionsThunk.pending, state => {
@@ -37,10 +42,17 @@ export const transactionsSlice = createSlice({
       .addCase(updateTransactionThunk.pending, state => {
         state.loading = true;
       })
+      .addCase(addTransactionThunk.pending, state => {
+        state.loading = true;
+      })
       .addCase(deleteTransactionThunk.pending, state => {
         state.loading = true;
       })
       .addCase(fetchTransactionsThunk.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(addTransactionThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
