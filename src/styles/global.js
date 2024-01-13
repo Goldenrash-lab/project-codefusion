@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-// import background from '../images/iMac.jpg';
+import background from '../images/iMac.jpg';
+import mobileBCC from '../images/mobile.jpg';
 export const Global = createGlobalStyle`
 
 h1,
@@ -32,13 +33,19 @@ body{
      font-family: 'Poppins-Regular';
   font-weight: 400;
   font-size: 18px;
-  height: 100vh;
+  min-height: 100vh;
   color: var(--white);
-  /*
+  background: url(${mobileBCC});
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; */
-
+  background-size: cover; 
+  @media only screen and (min-width: 768px) {
+    background: url(${background});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+     
+  }
 }
 
 `;
