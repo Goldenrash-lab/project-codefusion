@@ -11,6 +11,7 @@ import { formatCurrency } from '../TransactionsList';
 import { selectCategories } from 'store/Categories/categoriesSelectors';
 import { toast } from 'react-toastify';
 import { deleteTransaction } from 'store/Transactions/transactionsSlice';
+import { changeBalance } from 'store/Auth/slice';
 
 const TransactionsItem = ({ transaction }) => {
   const dispatch = useDispatch();
@@ -64,6 +65,7 @@ const TransactionsItem = ({ transaction }) => {
             dispatch(deleteTransactionThunk(transaction.id))
               .unwrap()
               .then(() => {
+                dispatch(changeBalance(transaction.amount));
                 dispatch(deleteTransaction(transaction.id));
                 toast.success('Transaction is deleted!');
               })
