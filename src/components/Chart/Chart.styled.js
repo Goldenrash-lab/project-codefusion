@@ -14,13 +14,14 @@ export const StyledTitle = styled.h2`
   font-weight: 400;
   line-height: normal;
 
-  @media only screen and (min-width: 767px) {
+  @media only screen and (min-width: 768px) and (max-width: 1279px) {
     margin-left: 32px;
     width: 336px;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 767px) {
     width: 280px;
+    margin-left: 20px;
   }
 `;
 
@@ -29,14 +30,15 @@ export const StyledContainer = styled.div`
   width: 715px;
   margin-left: 69px;
 
-  @media only screen and (min-width: 767px) {
+  @media only screen and (min-width: 768px) and (max-width: 1279px) {
     width: 336px;
-    margin-left: 32px;
+    margin-left: 0;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 767px) {
     flex-direction: column;
     width: 280px;
+    margin-left: 20px;
   }
 `;
 
@@ -49,7 +51,10 @@ export const StyledChartContainer = styled.div`
   width: ${props => `${props.$doughnutSize}px`};
   height: ${props => `${props.$doughnutSize}px`};
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (min-width: 768px) {
+  }
+
+  @media only screen and (max-width: 767px) {
     margin-bottom: 32px;
   }
 `;

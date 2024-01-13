@@ -8,12 +8,15 @@ export const StyledContainer = styled.div`
   margin-bottom: 20px;
 
   @media only screen and (min-width: 768px) {
+    width: 336px;
     gap: 16px;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 767px) {
+    width: 280px;
+    height: 120px;
     flex-direction: column;
-    margin-bottom: 20px;
+    gap: 20px;
   }
 `;
 
@@ -34,7 +37,7 @@ export const StyledSelect = styled.select`
     width: 160px;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 767px) {
     width: 280px;
   }
 `;

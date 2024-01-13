@@ -17,6 +17,7 @@ export const StyledBalance = styled.div`
 `;
 export const StyledTitle = styled.h3`
   font-size: 12px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: 12px;
   color: rgba(255, 255, 255, 0.4);
@@ -24,6 +25,9 @@ export const StyledTitle = styled.h3`
 export const StyledAmount = styled.p`
   color: #fbfbfb;
   font-size: 30px;
+  font-family: 'Poppins-SemiBold';
+  display: flex;
+  align-items: center;
 `;
 export const StyledBalanceDiv = styled.div`
   @media (max-width: 768px) {
