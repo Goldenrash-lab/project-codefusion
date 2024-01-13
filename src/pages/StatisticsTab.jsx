@@ -4,9 +4,12 @@ import {
   StyledStatsInfo,
   StyledTitle,
 } from 'components/Chart/Chart.styled';
-import { StatisticsDashboard } from 'components/StatisticsDashboard/StatisticsDashboard';
+import {
+  StatisticsDashboard,
+  monthNumberMap,
+} from 'components/StatisticsDashboard/StatisticsDashboard';
 import { StatisticsTable } from 'components/StatisticsTable/StatisticsTable';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCategoriesError,
@@ -16,23 +19,53 @@ import {
 import { transactionsSummaryThunk } from 'store/Categories/categoriesThunk';
 
 const StatisticsTab = () => {
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth() + 1;
+
+  const [selectedMonth, setSelectedMonth] = useState(currentMonth);
+  const [selectedYear, setSelectedYear] = useState(currentYear);
+
   const dispatch = useDispatch();
   const summary = useSelector(selectSummary);
   const loading = useSelector(selectCategoriesLoading);
   const error = useSelector(selectCategoriesError);
 
+  useEffect(() => {
+    dispatch(
+      transactionsSummaryThunk({ year: currentYear, month: currentMonth })
+    );
+  }, [dispatch, currentYear, currentMonth]);
+
+  const dispatchTransactionsSummary = (month, year) => {
+    dispatch(
+      transactionsSummaryThunk({
+        month: monthNumberMap.get(month),
+        year: parseInt(year),
+      })
+    );
+  };
+
+  const handleMonthChange = event => {
+    const newMonth = event.target.value;
+    setSelectedMonth(newMonth);
+    dispatchTransactionsSummary(newMonth, selectedYear);
+  };
+
+  const handleYearChange = event => {
+    const newYear = event.target.value;
+    setSelectedYear(newYear);
+    dispatchTransactionsSummary(selectedMonth, newYear);
+  };
+
   const categoriesSummary = summary?.categoriesSummary
-    ?.map(category => {
+    ?.filter(category => category.type === 'EXPENSE')
+    .map(category => {
       return { ...category, color: categoryColorsMap.get(category.name) };
     })
     .sort((a, b) => a.total - b.total);
 
   const expenseSummary = summary?.expenseSummary;
   const incomeSummary = summary?.incomeSummary;
-
-  useEffect(() => {
-    dispatch(transactionsSummaryThunk());
-  }, [dispatch]);
 
   return (
     <div>
@@ -45,7 +78,12 @@ const StatisticsTab = () => {
             expenseSummary={expenseSummary}
           />
           <StyledStatsInfo>
-            <StatisticsDashboard />
+            <StatisticsDashboard
+              selectedMonth={selectedMonth}
+              selectedYear={selectedYear}
+              handleMonthChange={handleMonthChange}
+              handleYearChange={handleYearChange}
+            />
             <StatisticsTable
               categoriesSummary={categoriesSummary}
               expenseSummary={expenseSummary}
@@ -75,6 +113,7 @@ const categoryColorsMap = new Map([
   ['Leisure', 'rgba(144, 238, 144, 1)'],
   ['Other expenses', 'rgba(152, 251, 152, 1)'],
   ['Entertainment', 'rgba(152, 150, 152, 1)'],
+  ['Income', 'rgba(36, 189, 180, 1)'],
 ]);
 
 export default StatisticsTab;

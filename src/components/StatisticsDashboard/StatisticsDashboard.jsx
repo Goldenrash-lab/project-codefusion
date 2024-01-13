@@ -1,13 +1,21 @@
 import React from 'react';
 import { StyledContainer, StyledSelect } from './StatisticsDashboard.styled';
 
-export const StatisticsDashboard = () => {
-  // dispatch(transactionsSummaryThunk({ month: 12, year: 2023 }));
-
+export const StatisticsDashboard = ({
+  selectedMonth,
+  selectedYear,
+  handleMonthChange,
+  handleYearChange,
+}) => {
   return (
     <StyledContainer>
-      <StyledSelect name="month" id="month" defaultValue="March">
-        <option value="March" disabled>
+      <StyledSelect
+        name="month"
+        id="month"
+        value={selectedMonth}
+        onChange={handleMonthChange}
+      >
+        <option value="" disabled>
           Please select a month
         </option>
         {Array.from(monthNumberMap.keys()).map(month => (
@@ -16,8 +24,13 @@ export const StatisticsDashboard = () => {
           </option>
         ))}
       </StyledSelect>
-      <StyledSelect name="year" id="year" defaultValue={endYear}>
-        <option value={endYear} disabled>
+      <StyledSelect
+        name="year"
+        id="year"
+        value={selectedYear}
+        onChange={handleYearChange}
+      >
+        <option value="" disabled>
           Please select a year
         </option>
         {years.map(year => (
@@ -37,7 +50,7 @@ const years = Array.from(
   (_, index) => startYear + index
 );
 
-const monthNumberMap = new Map([
+export const monthNumberMap = new Map([
   ['January', 1],
   ['February', 2],
   ['March', 3],
