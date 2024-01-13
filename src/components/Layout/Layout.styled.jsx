@@ -11,16 +11,16 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 0 20px;
 
-  background: url(${backgroundMob});
+  /* background: url(${backgroundMob});
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 
   @media only screen and (min-width: 768px) {
-    background: url(${backgroundDesk});
+    /* background: url(${backgroundDesk});
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
     max-width: 768px;
     padding: 0 32px;
   }
