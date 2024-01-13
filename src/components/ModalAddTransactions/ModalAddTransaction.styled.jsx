@@ -37,7 +37,7 @@ export const Modal = styled.div`
   @media only screen and (max-width: 480px) {
     background-image: url(${backgroundMob});
     max-width: 320px;
-    min-height: 650px;
+    max-height: 100%;
     padding: 40px 20px;
     form {
       display: flex;
