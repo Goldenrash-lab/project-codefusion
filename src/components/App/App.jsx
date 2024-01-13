@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
 import { refreshThunk } from 'store/Auth/thunk';
 import { Loader } from 'components/Loader/Loader';
+import CurrencyTab from 'pages/CurrencyTab';
 
 import Global from 'styles/global';
 
@@ -30,6 +31,7 @@ export const App = () => {
         <Route element={<Layout />}>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/statistics" element={<StatisticsTab />} />
+          <Route path="/currency" element={<CurrencyTab />} />
         </Route>
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegistrationPage />} />
