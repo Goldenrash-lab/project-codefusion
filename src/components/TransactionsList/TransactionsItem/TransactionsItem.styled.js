@@ -42,7 +42,7 @@ export const StyledTransaction = styled.tr`
 export const StyledTh = styled.th`
   text-align: ${props =>
     props.$sum ? 'end' : props.$type ? 'center' : 'start'};
-  width: 100px;
+  width: ${props => (props.$width ? '90px' : '100px')};
   font-weight: 400;
   color: ${props =>
     props.$type === '+'
@@ -53,7 +53,7 @@ export const StyledTh = styled.th`
 
   &:last-child {
     margin-right: 10px;
-    margin-left: 33px;
+    margin-left: 10px;
     display: flex;
     justify-content: center;
     align-items: center;

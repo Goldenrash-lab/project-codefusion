@@ -13,7 +13,6 @@ export const transactionsSlice = createSlice({
     loading: false,
     error: '',
   },
-  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(fetchTransactionsThunk.fulfilled, (state, action) => {
@@ -26,11 +25,16 @@ export const transactionsSlice = createSlice({
         );
       })
       .addCase(addTransactionThunk.fulfilled, (state, action) => {
-        state.transactions.push(action.payload);
+        state.transactions.unshift(action.payload);
       })
       .addCase(updateTransactionThunk.fulfilled, (state, action) => {
-        // state.transactions = action.payload;
-        // state.loading = false;
+        const index = state.transactions.findIndex(
+          transaction => transaction.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.transactions[index] = action.payload;
+        }
+        state.loading = false;
       })
       .addCase(fetchTransactionsThunk.pending, state => {
         state.loading = true;

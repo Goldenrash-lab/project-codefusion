@@ -9,11 +9,13 @@ import {
 import { deleteTransactionThunk } from 'store/Transactions/transactionsThunk';
 import { formatCurrency } from '../TransactionsList';
 import { selectCategories } from 'store/Categories/categoriesSelectors';
+import { toast } from 'react-toastify';
 
 const TransactionsItem = ({ transaction }) => {
   const dispatch = useDispatch();
 
   const categories = useSelector(selectCategories);
+
   const category = categories.find(
     category => category.id === transaction.categoryId
   );
@@ -28,8 +30,10 @@ const TransactionsItem = ({ transaction }) => {
 
   return (
     <StyledTransaction $normalFont={true}>
-      <StyledTh>{formattedDateStr}</StyledTh>
-      <StyledTh $type={true}>{transType}</StyledTh>
+      <StyledTh $width={true}>{formattedDateStr}</StyledTh>
+      <StyledTh $width={true} $type={true}>
+        {transType}
+      </StyledTh>
       <StyledTh>{category?.name}</StyledTh>
       <StyledTh>{transaction.comment}</StyledTh>
       <StyledTh $type={transType} $sum={transaction.amount}>
@@ -55,7 +59,16 @@ const TransactionsItem = ({ transaction }) => {
           </svg>
         </StyledEditButton>
         <StyledDeleteButton
-          onClick={() => dispatch(deleteTransactionThunk(transaction.id))}
+          onClick={() =>
+            dispatch(deleteTransactionThunk(transaction.id))
+              .unwrap()
+              .then(() => {
+                toast.success('Transaction is deleted!');
+              })
+              .catch(err => {
+                toast.error(err);
+              })
+          }
         >
           Delete
         </StyledDeleteButton>

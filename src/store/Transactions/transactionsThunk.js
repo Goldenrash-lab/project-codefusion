@@ -12,7 +12,6 @@ export const fetchTransactionsThunk = createAsyncThunk(
     }
     try {
       const { data } = await api.get('api/transactions');
-      console.log(data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -60,7 +59,7 @@ export const addTransactionThunk = createAsyncThunk(
 
 export const updateTransactionThunk = createAsyncThunk(
   'updateTransaction',
-  async (id, thunkApi) => {
+  async ({ id, updatedTransaction }, thunkApi) => {
     const savedToken = thunkApi.getState().auth.token;
     if (savedToken) {
       setToken(savedToken);
@@ -68,7 +67,10 @@ export const updateTransactionThunk = createAsyncThunk(
       return thunkApi.rejectWithValue(`You're unauthorized`);
     }
     try {
-      const { data } = await api.patch(`api/transactions/${id}`);
+      const { data } = await api.patch(
+        `api/transactions/${id}`,
+        updatedTransaction
+      );
       console.log(data);
       return data;
     } catch (error) {

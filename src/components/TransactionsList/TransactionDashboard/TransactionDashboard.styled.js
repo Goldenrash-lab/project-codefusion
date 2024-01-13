@@ -7,13 +7,17 @@ export const StyledThead = styled.tr`
   align-items: center;
 
   height: 56px;
-  padding: 20px 16px;
+  padding: 20px 0px 20px 16px;
   border-radius: 8px;
   background: rgba(82, 59, 126, 0.8);
+
+  @media screen and (max-width: 1280px) {
+    padding: 20px 10px 20px 16px;
+  }
 `;
 
 export const StyledTheadItem = styled.th`
-  padding-right: 10px;
+  //padding-right: 10px;
   width: ${props => (props.$width ? '90px' : '100px')};
   font-size: 16px;
   font-weight: 600;
