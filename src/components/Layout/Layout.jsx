@@ -13,8 +13,10 @@ const Layout = () => {
         <Header />
         <WrapperLeftAndRight>
           <WrapperLeft>
-            <Navigation />
-            <Balance />
+            <div>
+              <Navigation />
+              <Balance />
+            </div>
             <Currency />
           </WrapperLeft>
           <Outlet />
