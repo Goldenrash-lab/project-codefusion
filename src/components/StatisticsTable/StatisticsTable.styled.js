@@ -7,7 +7,7 @@ export const StyledTable = styled.div`
     width: 336px;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 767px) {
     width: 280px;
   }
 `;
@@ -31,7 +31,7 @@ export const StyledTitleContainer = styled.h3`
     width: 336px;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 767px) {
     width: 280px;
   }
 `;
