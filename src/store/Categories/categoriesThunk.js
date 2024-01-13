@@ -29,7 +29,6 @@ export const transactionsSummaryThunk = createAsyncThunk(
     } else {
       return thunkApi.rejectWithValue(`You're unauthorized`);
     }
-
     try {
       const response = await api.get('api/transactions-summary', {
         params: {

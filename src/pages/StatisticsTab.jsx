@@ -4,10 +4,7 @@ import {
   StyledStatsInfo,
   StyledTitle,
 } from 'components/Chart/Chart.styled';
-import {
-  StatisticsDashboard,
-  monthNumberMap,
-} from 'components/StatisticsDashboard/StatisticsDashboard';
+import { StatisticsDashboard } from 'components/StatisticsDashboard/StatisticsDashboard';
 import { StatisticsTable } from 'components/StatisticsTable/StatisticsTable';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,20 +36,20 @@ const StatisticsTab = () => {
   const dispatchTransactionsSummary = (month, year) => {
     dispatch(
       transactionsSummaryThunk({
-        month: monthNumberMap.get(month),
+        month: month,
         year: parseInt(year),
       })
     );
   };
 
-  const handleMonthChange = event => {
-    const newMonth = event.target.value;
+  const handleMonthChange = selectedOption => {
+    const newMonth = selectedOption.value;
     setSelectedMonth(newMonth);
     dispatchTransactionsSummary(newMonth, selectedYear);
   };
 
-  const handleYearChange = event => {
-    const newYear = event.target.value;
+  const handleYearChange = selectedOption => {
+    const newYear = selectedOption.value;
     setSelectedYear(newYear);
     dispatchTransactionsSummary(selectedMonth, newYear);
   };
