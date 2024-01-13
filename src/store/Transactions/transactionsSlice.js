@@ -42,10 +42,17 @@ export const transactionsSlice = createSlice({
       .addCase(updateTransactionThunk.pending, state => {
         state.loading = true;
       })
+      .addCase(addTransactionThunk.pending, state => {
+        state.loading = true;
+      })
       .addCase(deleteTransactionThunk.pending, state => {
         state.loading = true;
       })
       .addCase(fetchTransactionsThunk.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(updateTransactionThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
