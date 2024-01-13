@@ -13,6 +13,14 @@ export const transactionsSlice = createSlice({
     loading: false,
     error: '',
   },
+  reducers: {
+    deleteTransaction: (state, action) => {
+      console.log(action.payload);
+      state.transactions = state.transactions.filter(
+        transaction => transaction.id !== action.payload
+      );
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchTransactionsThunk.fulfilled, (state, action) => {
@@ -21,7 +29,7 @@ export const transactionsSlice = createSlice({
       })
       .addCase(deleteTransactionThunk.fulfilled, (state, action) => {
         state.transactions = state.transactions.filter(
-          transaction => transaction.id !== action.payload
+          transaction => transaction.id !== action.payload.id
         );
       })
       .addCase(addTransactionThunk.fulfilled, (state, action) => {
@@ -66,5 +74,7 @@ export const transactionsSlice = createSlice({
       });
   },
 });
+
+export const { deleteTransaction } = transactionsSlice.actions;
 
 export const transactionsReducer = transactionsSlice.reducer;

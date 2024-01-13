@@ -10,6 +10,7 @@ import { deleteTransactionThunk } from 'store/Transactions/transactionsThunk';
 import { formatCurrency } from '../TransactionsList';
 import { selectCategories } from 'store/Categories/categoriesSelectors';
 import { toast } from 'react-toastify';
+import { deleteTransaction } from 'store/Transactions/transactionsSlice';
 
 const TransactionsItem = ({ transaction }) => {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ const TransactionsItem = ({ transaction }) => {
             dispatch(deleteTransactionThunk(transaction.id))
               .unwrap()
               .then(() => {
+                dispatch(deleteTransaction(transaction.id));
                 toast.success('Transaction is deleted!');
               })
               .catch(err => {

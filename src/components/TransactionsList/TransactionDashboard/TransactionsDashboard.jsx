@@ -15,6 +15,7 @@ import { categoriesThunk } from 'store/Categories/categoriesThunk';
 const TransactionsDashboard = () => {
   const transactions = useSelector(transactionsData);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchTransactionsThunk());
     dispatch(categoriesThunk());
