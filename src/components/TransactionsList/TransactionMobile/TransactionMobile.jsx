@@ -1,25 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Edit from '../helpers/Edit';
 import {
   EditButton,
   EditSpan,
   SpanItem,
   SpanName,
+  StyledButton,
   StyledLi,
   StyledUlWrap,
   TransactionCard,
 } from './TransactionMobile.styled';
-import DeleteButton from '../helpers/DeleteButton';
 import { formatCurrency } from '../TransactionsList';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectCategories } from 'store/Categories/categoriesSelectors';
+import { transactionsData } from 'store/Transactions/selectors';
+import {
+  deleteTransactionThunk,
+  fetchTransactionsThunk,
+} from 'store/Transactions/transactionsThunk';
 
-// export const formatCurrency = number => {
-//   return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ');
-// };
-
-const TransactionMobile = ({ transactions }) => {
+const TransactionMobile = () => {
   const categories = useSelector(selectCategories);
+  const transactions = useSelector(transactionsData);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchTransactionsThunk());
+  }, [dispatch]);
 
   return (
     <div>
@@ -49,7 +55,7 @@ const TransactionMobile = ({ transactions }) => {
                 </StyledLi>
                 <StyledLi>
                   <SpanName>Category</SpanName>
-                  <SpanItem>{category.name}</SpanItem>
+                  <SpanItem>{category?.name}</SpanItem>
                 </StyledLi>
                 <StyledLi>
                   <SpanName>Comment</SpanName>
@@ -62,7 +68,13 @@ const TransactionMobile = ({ transactions }) => {
                   </SpanItem>
                 </StyledLi>
                 <StyledLi>
-                  <DeleteButton />
+                  <StyledButton
+                    onClick={() =>
+                      dispatch(deleteTransactionThunk(transaction.id))
+                    }
+                  >
+                    Delete
+                  </StyledButton>
                   <EditButton>
                     <Edit />
                     <EditSpan>Edit</EditSpan>

@@ -25,11 +25,12 @@ const TransactionsItem = ({ transaction }) => {
   const formattedDateStr = `${day}.${month}.${year}`;
 
   const transType = transaction.type === 'EXPENSE' ? '-' : '+';
+
   return (
     <StyledTransaction $normalFont={true}>
       <StyledTh>{formattedDateStr}</StyledTh>
       <StyledTh $type={true}>{transType}</StyledTh>
-      <StyledTh>{category.name}</StyledTh>
+      <StyledTh>{category?.name}</StyledTh>
       <StyledTh>{transaction.comment}</StyledTh>
       <StyledTh $type={transType} $sum={transaction.amount}>
         {formatCurrency(transaction.amount)}

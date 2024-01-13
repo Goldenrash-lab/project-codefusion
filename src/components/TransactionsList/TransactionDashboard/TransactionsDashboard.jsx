@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TransactionsItem from '../TransactionsItem/TransactionsItem';
 import {
   StyledAlert,
@@ -7,8 +7,16 @@ import {
   StyledTheadItem,
   WrapTable,
 } from './TransactionDashboard.styled';
+import { fetchTransactionsThunk } from 'store/Transactions/transactionsThunk';
+import { useDispatch, useSelector } from 'react-redux';
+import { transactionsData } from 'store/Transactions/selectors';
 
-const TransactionsDashboard = ({ transactions }) => {
+const TransactionsDashboard = () => {
+  const transactions = useSelector(transactionsData);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchTransactionsThunk());
+  }, [dispatch]);
   return (
     <WrapTable>
       {transactions.length === 0 && (
