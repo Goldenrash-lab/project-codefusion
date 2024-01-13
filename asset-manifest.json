@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project-codefusion/static/css/main.2f034c44.css",
-    "main.js": "/project-codefusion/static/js/main.d58a7777.js",
+    "main.js": "/project-codefusion/static/js/main.710c91b2.js",
     "static/media/backDesktop.png": "/project-codefusion/static/media/backDesktop.99b3b05983363aaaa476.png",
     "static/media/deskRegister.jpg": "/project-codefusion/static/media/deskRegister.75d916277e1e1072b976.jpg",
     "static/media/LoginFonIMac.jpg": "/project-codefusion/static/media/LoginFonIMac.3277a09b3c01d8359ca5.jpg",
@@ -23,12 +23,11 @@
     "static/media/calendar.svg": "/project-codefusion/static/media/calendar.ea0b73981b75b4e48621d069702fecfa.svg",
     "static/media/close.svg": "/project-codefusion/static/media/close.1c3795d4a77580438e0ee12c41c82e6b.svg",
     "static/media/slash.svg": "/project-codefusion/static/media/slash.0de4a54764962cd9ea4f00c124f2d44f.svg",
-    "static/media/arrow.svg": "/project-codefusion/static/media/arrow.3adc90affb2d995309da185a632f3b25.svg",
     "main.2f034c44.css.map": "/project-codefusion/static/css/main.2f034c44.css.map",
-    "main.d58a7777.js.map": "/project-codefusion/static/js/main.d58a7777.js.map"
+    "main.710c91b2.js.map": "/project-codefusion/static/js/main.710c91b2.js.map"
   },
   "entrypoints": [
     "static/css/main.2f034c44.css",
-    "static/js/main.d58a7777.js"
+    "static/js/main.710c91b2.js"
   ]
 }
