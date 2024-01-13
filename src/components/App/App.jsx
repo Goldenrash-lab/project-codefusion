@@ -29,9 +29,9 @@ export const App = () => {
   return (
     <>
       <Global />
-      {loading ? (<Loader/> ) : 
-      
-      (<Routes>
+      {loading && <Loader />}
+
+      <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/statistics" element={<StatisticsTab />} />
@@ -40,7 +40,7 @@ export const App = () => {
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/edit" element={<ModalEditTransactions />} />
-      </Routes>)}
+      </Routes>
     </>
   );
 };
