@@ -5,14 +5,14 @@ export const StyledBalance = styled.div`
   background-color: rgba(82, 59, 126, 0.6);
   box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
   @media (max-width: 768px) {
-    padding-left: 40px;
+    padding-left: 32px;
+    padding-right: 0px;
     border-radius: 8px;
     background: rgba(82, 59, 126, 0.6);
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(50px);
-  }
-  @media (max-width: 320px) {
-    padding-left: 32px;
+
+    min-width: 280px;
   }
 `;
 export const StyledTitle = styled.h3`
@@ -28,4 +28,18 @@ export const StyledAmount = styled.p`
   font-family: 'Poppins-SemiBold';
   display: flex;
   align-items: center;
+`;
+export const StyledBalanceDiv = styled.div`
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 32px;
+  }
+`;
+export const StyledBalanceDivText = styled.div`
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;

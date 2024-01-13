@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   HeaderButtonExit,
   HeaderDivContainer,
@@ -24,7 +24,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
   const handleLogout = () => {
     dispatch(logoutThunk());
   };
@@ -34,6 +34,18 @@ const Header = () => {
   };
 
   const isAuthenticated = useSelector(state => !!state.auth.user);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 767);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   if (!isAuthenticated) {
     return <Navigate to={Location.state?.from || '/login'} />;
@@ -56,7 +68,8 @@ const Header = () => {
 
           <HeaderDivExit>
             <HeaderSpanName>Hello {user.username}</HeaderSpanName>
-            <HeaderIconI />
+            {isMobile ? '' : <HeaderIconI />}
+
             <HeaderButtonExit onClick={buttonExitClick}>
               <HeaderExitDivIcon>
                 <HeaderExitIcon />
