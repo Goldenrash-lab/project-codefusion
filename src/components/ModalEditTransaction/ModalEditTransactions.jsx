@@ -17,12 +17,12 @@ import {
   SaveButton,
   CancelButton,
   ToggleButtonGroup,
-  ToggleButton,
   SpanButton,
   FormGroupType,
   CloseBtn,
   DatePickerWrapper,
   CalendarImg,
+  StyledText,
 } from './ModalEditTransaction.styled';
 import { Backdrop } from 'components/ModalAddTransactions/ModalAddTransaction.styled';
 import { useForm } from 'react-hook-form';
@@ -41,14 +41,20 @@ export const ModalEditTransactions = ({ close, transaction }) => {
   const dispatch = useDispatch();
   const categories = useSelector(selectCategories);
 
+  const [transactionType] = useState(transaction.type);
+
   function submit({ amount, comment }) {
+    const newAmount = +amount;
+    const amountChange = newAmount - transaction.amount;
+
     const updatedTransaction = {
-      amount: +amount,
+      amount: newAmount,
       comment,
       categoryId: transaction.categoryId,
-      type: transaction.type,
+      type: transactionType,
       transactionDate: getFormattedDate(startDate),
     };
+
     const patchBody = {
       id: transaction.id,
       updatedTransaction,
@@ -57,8 +63,9 @@ export const ModalEditTransactions = ({ close, transaction }) => {
     dispatch(updateTransactionThunk(patchBody))
       .unwrap()
       .then(() => {
-        dispatch(changeBalance(transaction.amount - updatedTransaction.amount));
+        dispatch(changeBalance(amountChange));
         toast.success('Transaction updated!');
+        close(false);
       })
       .catch(err => toast.error(err));
   }
@@ -79,11 +86,19 @@ export const ModalEditTransactions = ({ close, transaction }) => {
             <FormGroupType>
               <Label htmlFor="transaction-type">
                 <ToggleButtonGroup>
-                  <ToggleButton>Income</ToggleButton>
+                  <StyledText
+                    $color={transactionType === 'INCOME' && '#ffb627'}
+                  >
+                    Income
+                  </StyledText>
                   <SpanButton>
                     <img alt="" src={slash}></img>
                   </SpanButton>
-                  <ToggleButton>Expense</ToggleButton>
+                  <StyledText
+                    $color={transactionType === 'EXPENSE' && '#ff868d'}
+                  >
+                    Expense
+                  </StyledText>
                 </ToggleButtonGroup>
               </Label>
             </FormGroupType>

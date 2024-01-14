@@ -237,7 +237,7 @@ export const ToggleButtonGroup = styled.div`
   gap: 12px;
 `;
 
-export const ToggleButton = styled.button`
+export const StyledText = styled.p`
   flex: 1;
   font-size: 16px;
   cursor: pointer;
@@ -245,14 +245,7 @@ export const ToggleButton = styled.button`
   //   border-radius: 4px;
   height: 24px;
   background: none;
-  color: #fff;
-  &:hover,
-  &:active,
-  &:focus {
-    color: var(--dashboard-text);
-    border: none;
-    outline: none;
-  }
+  color: ${props => props.$color || '#fff'};
 `;
 export const SpanButton = styled.span`
   font-size: 14px;
