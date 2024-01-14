@@ -5,9 +5,11 @@ export const StyledBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  /* width: 100%; */
   max-width: ${props => props.$maxw || '480px'};
-  margin-top: 32px;
+  /* margin-top: 32px; */
+  margin-top: ${props => props.$mart || '32px'};
+  background-color: #4a56e21a;
 `;
 
 export const StyledTable = styled.div`
@@ -16,7 +18,8 @@ export const StyledTable = styled.div`
 `;
 
 export const StyledTableHead = styled.div`
-  background: rgba(82, 59, 126, 0.6);
+  /* background: rgba(82, 59, 126, 0.6); */
+  background: rgba(255, 255, 255, 0.2);
   padding-left: ${props => props.$padl || '62px'};
   margin-bottom: ${props => props.$marb || '24px'};
 `;
@@ -32,7 +35,7 @@ export const StyledTdBox = styled.div`
   display: flex;
   flex-direction: row;
   text-align: start;
-  gap: 50px;
+  gap: 60px;
 `;
 
 export const StyledTBody = styled.div`
@@ -61,7 +64,6 @@ export const StyledTh = styled.span`
 export const StyledTd = styled.span`
   display: inline-block;
   color: var(--white, #fbfbfb);
-  /* font-family: 'Poppins Regular'; */
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
