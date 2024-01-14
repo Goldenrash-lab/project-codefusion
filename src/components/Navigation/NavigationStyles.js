@@ -9,11 +9,27 @@ export const NavigationSection = styled.nav`
   padding-bottom: 28px;
   padding-left: 16px;
   gap: 12px;
+  @media only screen and (max-width: 767px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 65px;
+    padding-right: 65px;
+
+    gap: 32px;
+    align-items: center;
+  }
 `;
 
 export const NavigationDivTest = styled.div`
   width: 18px;
   height: 18px;
+  @media only screen and (max-width: 767px) {
+    width: 38px;
+    height: 38px;
+  }
 `;
 
 export const NavigationNavLink = styled(NavLink)`
@@ -32,14 +48,36 @@ export const NavigationNavLink = styled(NavLink)`
   &.active {
     font-weight: 700;
     div {
-      width: 18px !important;
-      height: 18px !important;
+      width: 18px;
+      height: 18px;
 
       background-color: #fff;
       border-radius: 3px;
       filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
       svg > path {
         fill: #734aef;
+      }
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    &:hover,
+    &:focus {
+      font-weight: 700;
+      transition: font-weight 0.5s ease;
+    }
+
+    &.active {
+      font-weight: 700;
+      div {
+        width: 38px;
+        height: 38px;
+
+        background-color: #fff;
+        border-radius: 5px;
+        filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+        svg > path {
+          fill: #734aef;
+        }
       }
     }
   }
@@ -77,4 +115,49 @@ export const NavigationDivTest2 = styled.div`
   display: flex;
   align-content: center;
   align-items: center;
+`;
+
+export const NavigationNavLinkCurrency = styled(NavLink)`
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+
+  max-width: 150px;
+  cursor: pointer;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  gap: 20px;
+  &:hover,
+  &:focus {
+    font-weight: 700;
+    transition: font-weight 0.5s ease;
+  }
+
+  &.active {
+    font-weight: 700;
+    div {
+      width: 38px;
+      height: 38px;
+
+      background-color: #fff;
+      border-radius: 3px;
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+      svg > path {
+        fill: #734aef;
+      }
+    }
+  }
+`;
+
+export const NavigationDivTest3 = styled.div`
+  display: flex;
+  align-content: center;
+  align-items: center;
+`;
+
+export const NavigationPText = styled.p`
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
 `;

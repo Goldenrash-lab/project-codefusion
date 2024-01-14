@@ -1,6 +1,7 @@
-import Currency from 'components/Currency/Currency';
 import React from 'react';
 
-export const CurrencyTab = () => {
-  return <Currency />;
+const CurrencyTab = () => {
+  return <></>;
 };
+
+export default CurrencyTab;
