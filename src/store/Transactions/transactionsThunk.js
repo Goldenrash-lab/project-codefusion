@@ -49,7 +49,7 @@ export const addTransactionThunk = createAsyncThunk(
     }
     try {
       const { data } = await api.post(`api/transactions`, newTransaction);
-      console.log(data);
+
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -71,7 +71,7 @@ export const updateTransactionThunk = createAsyncThunk(
         `api/transactions/${id}`,
         updatedTransaction
       );
-      console.log(data);
+
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

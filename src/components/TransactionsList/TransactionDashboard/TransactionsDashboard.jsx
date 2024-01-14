@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { transactionsData } from 'store/Transactions/selectors';
 import { categoriesThunk } from 'store/Categories/categoriesThunk';
 
-const TransactionsDashboard = () => {
+const TransactionsDashboard = ({ open, get }) => {
   const transactions = useSelector(transactionsData);
   const dispatch = useDispatch();
 
@@ -38,6 +38,8 @@ const TransactionsDashboard = () => {
             ? transactions?.map(transaction => {
                 return (
                   <TransactionsItem
+                    get={get}
+                    open={open}
                     key={transaction.id}
                     transaction={transaction}
                   />

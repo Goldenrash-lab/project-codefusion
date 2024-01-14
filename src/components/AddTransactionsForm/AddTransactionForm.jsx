@@ -62,12 +62,9 @@ const AddTransactionForm = ({ close }) => {
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
 
-  console.log(categories);
-
   const options = categories.map(cat => {
     return { value: cat.id, label: cat.name };
   });
-  console.log(options);
 
   const {
     register,
@@ -80,7 +77,6 @@ const AddTransactionForm = ({ close }) => {
   });
 
   function submit(e) {
-    console.log(startDate);
     const newTransaction = {
       transactionDate: getFormattedDate(startDate),
       type: checkTransactionType(isExpense),
@@ -90,7 +86,6 @@ const AddTransactionForm = ({ close }) => {
       comment: e.comment,
       amount: negOrPosNumber(e.sum, isExpense),
     };
-    console.log(newTransaction);
 
     dispatch(addTransactionThunk(newTransaction))
       .unwrap()
@@ -172,6 +167,23 @@ const AddTransactionForm = ({ close }) => {
         };
       }
     },
+    menuList: base => ({
+      ...base,
+      height: '100%',
+
+      '::-webkit-scrollbar': {
+        width: '9px',
+      },
+      '::-webkit-scrollbar-track': {
+        background: 'red',
+      },
+      '::-webkit-scrollbar-thumb': {
+        background: '#888',
+      },
+      '::-webkit-scrollbar-thumb:hover': {
+        background: '#555',
+      },
+    }),
   };
 
   const DropdownIndicator = props => {

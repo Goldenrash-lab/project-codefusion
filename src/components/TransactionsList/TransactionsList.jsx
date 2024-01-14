@@ -15,6 +15,7 @@ import { fetchTransactionsThunk } from 'store/Transactions/transactionsThunk';
 import { transactionsData } from 'store/Transactions/selectors';
 
 import coin from './coin.png';
+import ModalEditTransactions from 'components/ModalEditTransaction/ModalEditTransactions';
 
 export const formatCurrency = number => {
   return Math.abs(number)
@@ -27,13 +28,19 @@ const TransactionsList = () => {
   const transactions = useSelector(transactionsData);
   const [isAddTransactionOpen, setIsTransactionOpen] = useState(false);
 
+  const [isEditTransactionOpen, setIsEditTransactionOpen] = useState(false);
+  const [editTrans, setEditTrans] = useState(null);
+
   useEffect(() => {
     dispatch(fetchTransactionsThunk());
   }, [dispatch]);
 
-  //const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
   const isMobileScreen = useMediaQuery({ query: '(max-width: 767.98px)' });
+
+  function getEditTransaction(trans) {
+    setEditTrans(trans);
+  }
 
   return (
     <div>
@@ -44,7 +51,12 @@ const TransactionsList = () => {
         </Wrapper>
       ) : (
         <>
-          {isTabletScreen && <TransactionsDashboard />}
+          {isTabletScreen && (
+            <TransactionsDashboard
+              open={setIsEditTransactionOpen}
+              get={getEditTransaction}
+            />
+          )}
           {isMobileScreen && <TransactionMobile />}
         </>
       )}
@@ -63,6 +75,12 @@ const TransactionsList = () => {
       </StyledAddTransactionButton>
       {isAddTransactionOpen && (
         <ModalAddTransactions close={setIsTransactionOpen} />
+      )}
+      {isEditTransactionOpen && (
+        <ModalEditTransactions
+          close={setIsEditTransactionOpen}
+          transaction={editTrans}
+        />
       )}
     </div>
   );
