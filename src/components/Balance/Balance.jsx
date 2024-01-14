@@ -18,7 +18,8 @@ export const Balance = () => {
         <StyledBalanceDivText>
           <StyledTitle>Your balance</StyledTitle>
           <StyledAmount>
-            <Babki fill="white" width="26" height="26" /> {balance && balance}
+            <Babki fill="white" width="26" height="26" />{' '}
+            {balance && balance.toFixed(0)}
           </StyledAmount>
         </StyledBalanceDivText>
       </StyledBalance>
