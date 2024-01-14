@@ -6,7 +6,7 @@ export const StyledDeleteButton = styled.button`
   color: #fbfbfb;
   padding: 4px 12px 4px 12px;
   margin-left: 8px;
-  margin-right: 10px;
+  //margin-right: 10px;
   border-radius: 20px;
   border: transparent;
   background: linear-gradient(
@@ -21,20 +21,25 @@ export const StyledDeleteButton = styled.button`
   &:hover {
     box-shadow: 1px 9px 15px 1px rgba(0, 0, 0, 0.4);
   }
+  /* @media screen and (max-width: 1280px) {
+    margin-right: 0px;
+  } */
 `;
 
 export const StyledTransaction = styled.tr`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 715px;
+  width: 704px;
   height: 56px;
   padding-left: 16px;
-  padding-right: 10px;
+
   border-bottom: 1px solid rgba(255, 255, 255, 0.41);
   font-size: ${props => (props.$normalFont ? '14px' : null)};
   font-weight: 400;
-
+  &:last-child {
+    border-bottom: none;
+  }
   @media screen and (min-width: 1280px) {
     padding-right: 0;
   }
@@ -57,6 +62,10 @@ export const StyledTh = styled.th`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 1280px) {
+      padding-right: 0;
+    }
   }
 `;
 
