@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import TransactionsItem from '../TransactionsItem/TransactionsItem';
 import {
-  StyledAlert,
   StyledTable,
   StyledThead,
   StyledTheadItem,
@@ -21,9 +20,6 @@ const TransactionsDashboard = () => {
 
   return (
     <WrapTable>
-      {transactions.length === 0 && (
-        <StyledAlert>Add your first transaction </StyledAlert>
-      )}
       <StyledTable>
         <thead>
           <StyledThead>
