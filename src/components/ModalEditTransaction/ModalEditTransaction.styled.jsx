@@ -8,7 +8,6 @@ export const EditContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #f0f0f0;
 `;
 
 export const FormContainer = styled.div`
@@ -109,7 +108,6 @@ export const Input = styled.input`
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   font-size: 18px;
   font-weight: 600;
-  -moz-appearance: textfield;
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     -webkit-appearance: none;
