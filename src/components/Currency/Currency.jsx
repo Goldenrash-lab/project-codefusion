@@ -56,6 +56,7 @@ const Currency = () => {
     }
   }, [dispatch, selectedCurrency, token]);
 
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
   const isDesktop = useMediaQuery({ minWidth: 1280 });
 
@@ -117,6 +118,32 @@ const Currency = () => {
             </StyledTBody>
           </StyledTable>
           <img src={imageTabl} alt="" />
+        </StyledBox>
+      )}
+      {isMobile && (
+        <StyledBox maxw="336px">
+          <StyledTable>
+            <StyledTableHead $padl="20px" $marb="8px">
+              <StyledThBox>
+                <StyledTh>Currency</StyledTh>
+                <StyledTh>Purchase</StyledTh>
+                <StyledTh>Sale</StyledTh>
+              </StyledThBox>
+            </StyledTableHead>
+            <StyledTBody $padl="20px" $gap="12px">
+              {currency?.length &&
+                currency.map(el => {
+                  return (
+                    <StyledTdBox key={nanoid()}>
+                      <StyledTd>{el.currencyName}</StyledTd>
+                      <StyledTd>{el.rateBuy}</StyledTd>
+                      <StyledTd>{el.rateSell.toString().slice(0, -2)}</StyledTd>
+                    </StyledTdBox>
+                  );
+                })}
+            </StyledTBody>
+          </StyledTable>
+          <img src={imageTabl} alt="" $w="336px" />
         </StyledBox>
       )}
     </div>
