@@ -172,16 +172,16 @@ const AddTransactionForm = ({ close }) => {
       height: '100%',
 
       '::-webkit-scrollbar': {
-        width: '9px',
+        width: '2px',
       },
       '::-webkit-scrollbar-track': {
-        background: 'red',
+        background: 'inset 0 0 2px rgba(0, 0, 0, 0.2)',
       },
       '::-webkit-scrollbar-thumb': {
-        background: '#888',
+        background: ' var(--transparency-20)',
       },
       '::-webkit-scrollbar-thumb:hover': {
-        background: '#555',
+        background: ' var(--transparency-20)',
       },
     }),
   };

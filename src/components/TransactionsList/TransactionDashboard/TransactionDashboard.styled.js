@@ -41,7 +41,7 @@ export const WrapTable = styled.div`
   overflow-y: hidden;
 
   @media screen and (min-width: 1280px) {
-    height: 620px;
+    height: 500px;
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
