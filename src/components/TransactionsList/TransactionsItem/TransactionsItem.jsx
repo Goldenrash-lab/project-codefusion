@@ -8,6 +8,7 @@ import {
 } from './TransactionsItem.styled';
 import { deleteTransactionThunk } from 'store/Transactions/transactionsThunk';
 import { formatCurrency } from '../TransactionsList';
+import { log } from 'console';
 
 const TransactionsItem = ({ transaction }) => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const TransactionsItem = ({ transaction }) => {
         {transaction.sum}
       </StyledTh>
       <StyledTh>
-        <StyledEditButton>
+        <StyledEditButton onClick={() => console.log('clickEdit')}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="14"

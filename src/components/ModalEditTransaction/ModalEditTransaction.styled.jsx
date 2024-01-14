@@ -1,31 +1,37 @@
 import styled from 'styled-components';
-import backDesktop from '../../images/EditTransaction/backDesktop.png';
-import backMobile from '../../images/EditTransaction/backgroundMobile.png';
+import background from '../../images/EditTransaction/Rectangle4.jpg';
+import backgroundMob from '../../images/ModalAddTransaction/backgroundMob.png';
 
 export const EditContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f0f0f0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(34, 13, 91, 0.23);
+  backdrop-filter: blur(3.5px);
+  z-index: 20;
 `;
 
 export const FormContainer = styled.div`
-  position: fixed;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 540px;
   height: 580px;
   padding: 40px 0;
-  background-image: url(${backDesktop});
+  background-image: url(${background});
+  // background-size: cover;
+  // background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
-  // background-size: cover;
-  background-color: teal;
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(50px);
   border-radius: 8px;
   @media only screen and (max-width: 480px) {
     height: 691px;
-    background-image: url(${backMobile});
+    background-image: url(${backgroundMob});
     background-size: cover;
   }
 `;
@@ -196,6 +202,7 @@ export const SaveButton = styled.button`
   margin-bottom: 10px;
   padding: 10px 20px;
   font-size: 18px;
+  font-weight: 400;
   letter-spacing: 1.8px;
   text-transform: uppercase;
   cursor: pointer;
@@ -204,13 +211,13 @@ export const SaveButton = styled.button`
     --button-gradient,
     linear-gradient(97deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%)
   );
+  box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   color: #fff;
   width: 300px;
   height: 50px;
   @media only screen and (max-width: 480px) {
     width: 280px;
-    box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
   }
 `;
 

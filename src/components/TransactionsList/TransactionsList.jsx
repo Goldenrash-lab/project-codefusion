@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { StyledAddTransactionButton } from './TransactionsList.styled';
 import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
+import ModalEditTransactions from 'components/ModalEditTransaction/ModalEditTransaction';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import TransactionsDashboard from './TransactionDashboard/TransactionsDashboard';
 import { useMediaQuery } from 'react-responsive';
@@ -64,6 +65,7 @@ const TransactionsList = () => {
   // const transactions = useSelector(transactionsData);
   // console.log(transactions);
   const [isAddTransactionOpen, setIsTransactionOpen] = useState(false);
+  const [isEditTransactionOpen, setIsEditTransactionOpen] = useState(false);
 
   //const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
@@ -88,6 +90,9 @@ const TransactionsList = () => {
       </StyledAddTransactionButton>
       {isAddTransactionOpen && (
         <ModalAddTransactions close={setIsTransactionOpen} />
+      )}
+      {isEditTransactionOpen && (
+        <ModalEditTransactions close={setIsTransactionOpen} />
       )}
     </div>
   );

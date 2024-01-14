@@ -31,7 +31,7 @@ const ModalEditTransactions = () => {
   const [transactionType, setTransactionType] = useState('income');
   const [expenseCategory, setExpenseCategory] = useState('true');
   const [amount, setAmount] = useState('');
-  const [transactionDate, setTransactionDate] = useState('');
+  const [transactionDate, setTransactionDate] = useState(new Date());
   const [comment, setComment] = useState('');
 
   const handleSave = () => {
@@ -109,7 +109,6 @@ const ModalEditTransactions = () => {
         </FormGroup>
 
         <FormGroup>
-
           <Label htmlFor="comment">
             <TextArea
               id="comment"
@@ -119,7 +118,6 @@ const ModalEditTransactions = () => {
               placeholder="Сomment"
             ></TextArea>
           </Label>
-
         </FormGroup>
 
         <ButtonsContainer>
