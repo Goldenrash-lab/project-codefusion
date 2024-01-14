@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/project-codefusion/static/css/main.2f034c44.css",
-    "main.js": "/project-codefusion/static/js/main.9f4afe4e.js",
+    "main.js": "/project-codefusion/static/js/main.df47bede.js",
     "static/media/backDesktop.png": "/project-codefusion/static/media/backDesktop.99b3b05983363aaaa476.png",
     "static/media/deskRegister.jpg": "/project-codefusion/static/media/deskRegister.75d916277e1e1072b976.jpg",
     "static/media/LoginFonIMac.jpg": "/project-codefusion/static/media/LoginFonIMac.3277a09b3c01d8359ca5.jpg",
     "static/media/tabletRegister.jpg": "/project-codefusion/static/media/tabletRegister.89c95658c5cf7f253023.jpg",
-    "static/media/background1.png": "/project-codefusion/static/media/background1.227e429aeade448dab19.png",
+    "static/media/background.png": "/project-codefusion/static/media/background.227e429aeade448dab19.png",
     "static/media/iMac.jpg": "/project-codefusion/static/media/iMac.c1445d787c6e6e90bc8c.jpg",
     "static/media/LoginFonTablet.jpg": "/project-codefusion/static/media/LoginFonTablet.222bc47a7149903c5e4f.jpg",
-    "static/media/backgroundMob.png": "/project-codefusion/static/media/backgroundMob.52c6febcd5c71b4cf7b7.png",
+    "static/media/backgroundMob.png": "/project-codefusion/static/media/backgroundMob.52b769d905c245037ad6.png",
     "static/media/backgroundMobile.png": "/project-codefusion/static/media/backgroundMobile.6440f24016d802033b4f.png",
     "static/media/Poppins-Regular.ttf": "/project-codefusion/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Poppins-SemiBold.ttf": "/project-codefusion/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
@@ -25,10 +25,10 @@
     "static/media/close.svg": "/project-codefusion/static/media/close.1c3795d4a77580438e0ee12c41c82e6b.svg",
     "static/media/slash.svg": "/project-codefusion/static/media/slash.0de4a54764962cd9ea4f00c124f2d44f.svg",
     "main.2f034c44.css.map": "/project-codefusion/static/css/main.2f034c44.css.map",
-    "main.9f4afe4e.js.map": "/project-codefusion/static/js/main.9f4afe4e.js.map"
+    "main.df47bede.js.map": "/project-codefusion/static/js/main.df47bede.js.map"
   },
   "entrypoints": [
     "static/css/main.2f034c44.css",
-    "static/js/main.9f4afe4e.js"
+    "static/js/main.df47bede.js"
   ]
 }
