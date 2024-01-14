@@ -5,6 +5,7 @@ import Header from 'components/Header/Header';
 import Navigation from 'components/Navigation/Navigation';
 import { Balance } from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
+import { NavigBalanceContainerDiv } from 'components/Balance/Balance.styled';
 
 const Layout = () => {
   return (
@@ -13,10 +14,10 @@ const Layout = () => {
         <Header />
         <WrapperLeftAndRight>
           <WrapperLeft>
-            <div>
+            <NavigBalanceContainerDiv>
               <Navigation />
               <Balance />
-            </div>
+            </NavigBalanceContainerDiv>
             <Currency />
           </WrapperLeft>
           <Outlet />

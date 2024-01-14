@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
-import { StyledAddTransactionButton } from './TransactionsList.styled';
+import {
+  StyledAddTransactionButton,
+  StyledAlert,
+  StyledImg,
+  Wrapper,
+} from './TransactionsList.styled';
 import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import TransactionsDashboard from './TransactionDashboard/TransactionsDashboard';
 import { useMediaQuery } from 'react-responsive';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchTransactionsThunk } from 'store/Transactions/transactionsThunk';
+import { transactionsData } from 'store/Transactions/selectors';
+
+import coin from './coin.png';
 
 export const formatCurrency = number => {
   return Math.abs(number)
@@ -16,7 +24,7 @@ export const formatCurrency = number => {
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
-
+  const transactions = useSelector(transactionsData);
   const [isAddTransactionOpen, setIsTransactionOpen] = useState(false);
 
   useEffect(() => {
@@ -29,8 +37,17 @@ const TransactionsList = () => {
 
   return (
     <div>
-      {isTabletScreen && <TransactionsDashboard />}
-      {isMobileScreen && <TransactionMobile />}
+      {transactions.length === 0 ? (
+        <Wrapper>
+          <StyledImg src={coin} alt="coin" />
+          <StyledAlert>Add your first transaction </StyledAlert>
+        </Wrapper>
+      ) : (
+        <>
+          {isTabletScreen && <TransactionsDashboard />}
+          {isMobileScreen && <TransactionMobile />}
+        </>
+      )}
 
       <StyledAddTransactionButton onClick={() => setIsTransactionOpen(true)}>
         <svg

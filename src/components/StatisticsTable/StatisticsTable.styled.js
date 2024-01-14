@@ -61,6 +61,16 @@ export const StyledList = styled.ul`
   max-height: 435px;
   overflow-y: auto;
   margin-bottom: 16px;
+
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--transparency-20);
+  }
 `;
 
 export const StyledListItem = styled.li`
