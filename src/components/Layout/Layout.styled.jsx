@@ -45,6 +45,13 @@ export const WrapperLeft = styled.div`
   display: flex;
   flex-direction: row;
 
+  @media only screen and (max-width: 767px) {
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+
   @media only screen and (min-width: 1280px) {
     border-right: 1px solid rgba(255, 255, 255, 0.6);
     flex-direction: column;

@@ -5,6 +5,10 @@ export const HeaderSection = styled.header`
   background: linear-gradient(270deg, #2e1746 3.2%, #2e225f 99.98%);
   box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25),
     0px -3px 2px 0px rgba(0, 0, 0, 0.1) inset;
+
+  @media only screen and (max-width: 767px) {
+    height: 60px;
+  }
 `;
 
 export const HeaderImgLogo = styled.img``;
@@ -40,6 +44,9 @@ export const HeaderSpanName = styled.span`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  @media only screen and (max-width: 767px) {
+    padding-right: 0px;
+  }
 `;
 export const HeaderExitDivIcon = styled.div`
   opacity: 0.6;
@@ -77,4 +84,23 @@ export const HeaderButtonExit = styled.button`
       opacity: 10;
     }
   }
+`;
+// @media only screen and (max-width: 767px) {
+
+//     }
+
+export const HeaderSpanLogoText = styled.span`
+  color: var(--white, #fbfbfb);
+  font-size: 17px;
+  font-weight: 400;
+  @media only screen and (max-width: 767px) {
+    color: var(--white, #fbfbfb);
+    font-size: 13px;
+    font-weight: 400;
+  }
+`;
+
+export const HeaderDivLogoContainerSvg = styled.div`
+  width: 18px;
+  height: 18px;
 `;

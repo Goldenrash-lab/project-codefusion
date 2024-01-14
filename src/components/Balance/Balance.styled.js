@@ -34,10 +34,18 @@ export const StyledBalanceDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-bottom: 32px;
+
+    /* justify-content: flex-start; */
   }
 `;
 export const StyledBalanceDivText = styled.div`
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+export const NavigBalanceContainerDiv = styled.div`
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
