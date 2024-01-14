@@ -46,7 +46,7 @@ export const HeaderDivContainer = styled.div`
     padding-left: 20px;
     padding-right: 20px;
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     max-width: 320px;
     padding-left: 20px;
     padding-right: 20px;
