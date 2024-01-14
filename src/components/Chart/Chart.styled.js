@@ -22,6 +22,7 @@ export const StyledTitle = styled.h2`
   @media only screen and (min-width: 320px) and (max-width: 767px) {
     width: 280px;
     margin-left: 20px;
+    margin-top: 0px;
   }
 `;
 

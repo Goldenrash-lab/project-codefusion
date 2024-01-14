@@ -4,9 +4,11 @@ import {
   HeaderDivContainer,
   HeaderDivExit,
   HeaderDivLogo,
+  HeaderDivLogoContainerSvg,
   HeaderExitDivIcon,
   HeaderSection,
   HeaderSpanExit,
+  HeaderSpanLogoText,
   HeaderSpanName,
 } from './HeaderStyled';
 import HeaderExitIcon from '../../images/Header/HeaderExitIcon';
@@ -62,19 +64,22 @@ const Header = () => {
       <HeaderSection>
         <HeaderDivContainer>
           <HeaderDivLogo>
-            <HeaderLogo />
-            <span>Money Guard</span>
+            <HeaderDivLogoContainerSvg>
+              <HeaderLogo />
+            </HeaderDivLogoContainerSvg>
+
+            <HeaderSpanLogoText>Money Guard</HeaderSpanLogoText>
           </HeaderDivLogo>
 
           <HeaderDivExit>
-            <HeaderSpanName>Hello {user.username}</HeaderSpanName>
+            <HeaderSpanName>{user.username}</HeaderSpanName>
             {isMobile ? '' : <HeaderIconI />}
 
             <HeaderButtonExit onClick={buttonExitClick}>
               <HeaderExitDivIcon>
                 <HeaderExitIcon />
               </HeaderExitDivIcon>
-              <HeaderSpanExit>Exit</HeaderSpanExit>
+              {isMobile ? '' : <HeaderSpanExit>Exit</HeaderSpanExit>}
             </HeaderButtonExit>
           </HeaderDivExit>
         </HeaderDivContainer>
