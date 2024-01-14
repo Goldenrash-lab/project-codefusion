@@ -33,11 +33,24 @@ export const HeaderDivExit = styled.div`
 export const HeaderDivContainer = styled.div`
   padding-top: 16px;
   padding-right: 16px;
-  padding-left: 16px;
   display: flex;
   align-content: center;
   justify-content: space-between;
   align-items: center;
+
+  max-width: 1248px;
+  margin: 0 auto;
+
+  @media only screen and (max-width: 1272px) {
+    max-width: 767px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  @media only screen and (max-width: 768px) {
+    max-width: 320px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `;
 export const HeaderSpanName = styled.span`
   color: var(--white-60, rgba(255, 255, 255, 0.6));

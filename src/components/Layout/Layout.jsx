@@ -16,8 +16,8 @@ const Layout = () => {
 
   return (
     <>
+      <Header />
       <Container>
-        <Header />
         <WrapperLeftAndRight>
           <WrapperLeft>
             <NavigBalanceContainerDiv>
