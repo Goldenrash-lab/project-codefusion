@@ -62,7 +62,9 @@ const AddTransactionForm = ({ close }) => {
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
 
-  const options = categories.map(cat => {
+  const filteredCategories = categories.filter(item => item.type !== 'INCOME');
+
+  const options = filteredCategories.map(cat => {
     return { value: cat.id, label: cat.name };
   });
 
@@ -238,6 +240,7 @@ const AddTransactionForm = ({ close }) => {
             rules={{ required: true }}
             render={({ field, value }) => (
               <Select
+                required
                 name="category"
                 {...register('category')}
                 id="category"
@@ -249,30 +252,10 @@ const AddTransactionForm = ({ close }) => {
                 placeholder="Select a category"
                 styles={selectStyle}
                 isSearchable={false}
-                // value={categories.find(category => category.value === value)}
                 onChange={option => field.onChange(option.value)}
               />
             )}
           />
-          //   <div>
-          //     <select
-          //       name="category"
-          //       id=""
-          //       required
-          //       defaultValue={''}
-          //       {...register('category')}
-          //     >
-          //       <option value={''} disabled hidden>
-          //         Select a category
-          //       </option>
-          //       {categories.map(({ name, id }) => (
-          //         <option key={id} value={id}>
-          //           {name}
-          //         </option>
-          //       ))}
-          //     </select>
-          //     <Arrow alt="" src={arrow}></Arrow>
-          //   </div>
         )}
 
         <SumDateContainer>
