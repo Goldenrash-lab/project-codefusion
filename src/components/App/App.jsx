@@ -12,6 +12,7 @@ import { Loader } from 'components/Loader/Loader';
 import CurrencyTab from 'pages/CurrencyTab';
 
 import Global from 'styles/global';
+import { currencyThunk } from 'store/currency/currencyThunk';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,22 @@ export const App = () => {
     dispatch(refreshThunk());
   }, [dispatch]);
 
+  // currency useEffect
+  useEffect(() => {
+    const lastUpdatedTime = localStorage.getItem('lastUpdatedTime');
+
+    const isHourPassed = () => {
+      const ONE_HOUR_IN_MS = 60 * 60 * 1000;
+      return Date.now() - Number(lastUpdatedTime) >= ONE_HOUR_IN_MS;
+    };
+
+    if (isHourPassed() || !lastUpdatedTime) {
+      dispatch(currencyThunk());
+      const newTime = Date.now();
+      localStorage.setItem('lastUpdatedTime', newTime);
+    }
+  }, [dispatch]);
+  //
   const loading = useSelector(state => state.loader.loading);
 
   return (
