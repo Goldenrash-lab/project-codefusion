@@ -58,6 +58,23 @@ export const StatisticsDashboard = ({
         color: '#FF868D',
       },
     }),
+    menuList: base => ({
+      ...base,
+      height: '100%',
+
+      '::-webkit-scrollbar': {
+        width: '2px',
+      },
+      '::-webkit-scrollbar-track': {
+        background: 'inset 0 0 2px rgba(0, 0, 0, 0.2)',
+      },
+      '::-webkit-scrollbar-thumb': {
+        background: ' var(--transparency-20)',
+      },
+      '::-webkit-scrollbar-thumb:hover': {
+        background: ' var(--transparency-20)',
+      },
+    }),
   };
   return (
     <StyledContainer>
