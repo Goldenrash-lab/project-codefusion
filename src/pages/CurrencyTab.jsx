@@ -24,7 +24,7 @@ const CurrencyTab = () => {
     <>
       {isMobile && (
         <StyledMobBox>
-          <StyledBox $maxw="336px">
+          <StyledBox $maxw="336px" $mart="0px">
             <StyledTable>
               <StyledTableHead $padl="20px" $marb="8px">
                 <StyledThBox>
