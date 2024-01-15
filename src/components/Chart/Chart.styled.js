@@ -61,7 +61,7 @@ export const StyledChartContainer = styled.div`
   }
 
   @media only screen and (min-width: 320px) and (max-width: 767px) {
-    margin-bottom: 32px;
+    margin-bottom: 20px;
   }
 `;
 

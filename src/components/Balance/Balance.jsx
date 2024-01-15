@@ -19,7 +19,7 @@ export const Balance = () => {
           <StyledTitle>Your balance</StyledTitle>
           <StyledAmount>
             <Babki fill="white" width="26" height="26" />{' '}
-            {balance && balance.toFixed(0)}
+            {balance && balance.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ')}
           </StyledAmount>
         </StyledBalanceDivText>
       </StyledBalance>
