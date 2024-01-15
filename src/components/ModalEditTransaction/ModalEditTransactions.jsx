@@ -130,6 +130,7 @@ export const ModalEditTransactions = ({ close, transaction }) => {
                   onChange={date => setStartDate(date)}
                   dateFormat="dd.MM.yyyy"
                   name="date"
+                  maxDate={new Date()}
                 />
               </DatePickerWrapper>
             </FormGroup>
