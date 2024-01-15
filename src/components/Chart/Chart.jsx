@@ -22,16 +22,30 @@ export const Chart = ({ categoriesSummary, expenseSummary }) => {
     doughnutSize = 288;
   }
 
-  const data = {
-    datasets: [
-      {
-        data: categoriesSummary.map(expence => expence.total),
-        backgroundColor: categoriesSummary.map(expence => expence.color),
-        borderColor: categoriesSummary.map(expence => expence.color),
-        borderWidth: 2,
-      },
-    ],
-  };
+  let data;
+  if (categoriesSummary.length > 0) {
+    data = {
+      datasets: [
+        {
+          data: categoriesSummary.map(expense => expense.total),
+          backgroundColor: categoriesSummary.map(expense => expense.color),
+          borderColor: categoriesSummary.map(expense => expense.color),
+          borderWidth: 2,
+        },
+      ],
+    };
+  } else {
+    data = {
+      datasets: [
+        {
+          data: [doughnutSize / 2.88],
+          backgroundColor: ['transparent'],
+          borderColor: ['#d8c5c5'],
+          borderWidth: 1,
+        },
+      ],
+    };
+  }
 
   return (
     <StyledChartContainer $doughnutSize={doughnutSize}>
