@@ -50,7 +50,7 @@ const schema = yup
       .required('Sum is required'),
     comment: yup
       .string()
-      .min(5, 'Comment must be at least 5 characters')
+      .min(3, 'Comment must be at least 3 characters')
       .max(25)
       .required('Comment is required'),
   })
@@ -277,6 +277,7 @@ const AddTransactionForm = ({ close }) => {
               selected={startDate}
               onChange={date => setStartDate(date)}
               dateFormat="dd.MM.yyyy"
+              maxDate={new Date()}
             />
           </DatePickerWrapper>
         </SumDateContainer>

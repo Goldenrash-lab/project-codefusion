@@ -57,6 +57,17 @@ export const ButtonsContainer = styled.div`
       width: 280px;
     }
   }
+  button:first-child {
+    background: linear-gradient(
+      97deg,
+      #ffc727 -16.42%,
+      #9e40ba 97.04%,
+      #7000ff 150.71%
+    );
+    cursor: pointer;
+    transition: 8ms ease-in-out;
+    color: #ffff;
+  }
 
   button:hover,
   button:focus {
