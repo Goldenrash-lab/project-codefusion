@@ -63,7 +63,7 @@ const Header = () => {
       )}
       <HeaderSection>
         <HeaderDivContainer>
-          <HeaderDivLogo>
+          <HeaderDivLogo to="/">
             <HeaderDivLogoContainerSvg>
               <HeaderLogo />
             </HeaderDivLogoContainerSvg>
