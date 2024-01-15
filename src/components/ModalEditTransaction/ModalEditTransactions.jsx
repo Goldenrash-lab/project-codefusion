@@ -35,6 +35,7 @@ import { changeBalance } from 'store/Auth/slice';
 import { TestDiv } from 'components/RegistrationForm/RegistrationForm.styled';
 
 export const ModalEditTransactions = ({ close, transaction }) => {
+  console.log(transaction);
   const { handleSubmit, register } = useForm();
   const [startDate, setStartDate] = useState(
     new Date(transaction.transactionDate)
@@ -74,6 +75,7 @@ export const ModalEditTransactions = ({ close, transaction }) => {
     const catName = categories.find(cat => cat.id === idCat);
     return catName.name;
   }
+  console.log(categories);
 
   return (
     <Backdrop>
@@ -106,7 +108,7 @@ export const ModalEditTransactions = ({ close, transaction }) => {
             </FormGroupType>
             <ContainerCategory>
               <Category placeholder="Category" id="category" required>
-                {getNameCat(transaction.categoryId)}
+                {getNameCat(transaction?.categoryId)}
               </Category>
             </ContainerCategory>
 

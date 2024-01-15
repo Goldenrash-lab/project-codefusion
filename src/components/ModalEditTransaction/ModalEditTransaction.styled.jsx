@@ -181,7 +181,10 @@ export const TextArea = styled.textarea`
   }
   @media only screen and (max-width: 480px) {
     width: 280px;
-    height: 76px;
+    /* height: 76px; */
+  }
+  @media only screen and (min-width: 481px) {
+    padding-top: 20px;
   }
 `;
 
