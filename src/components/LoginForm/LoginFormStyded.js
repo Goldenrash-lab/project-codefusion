@@ -186,4 +186,5 @@ export const LoginTextError = styled.p`
   padding-left: 30px;
   display: block;
   height: 14px;
+   color: #ff868d;
 `;
