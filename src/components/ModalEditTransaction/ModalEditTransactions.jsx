@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import calendar from '../../images/ModalAddTransaction/calendar.svg';
 import slash from '../../images/EditTransaction/slash.svg';
@@ -75,9 +75,33 @@ export const ModalEditTransactions = ({ close, transaction }) => {
     return catName.name;
   }
 
+  function useEscapeKey(close) {
+    const handleEscKey = useCallback(
+      event => {
+        if (event.key === 'Escape') {
+          close(false);
+        }
+      },
+      [close]
+    );
+
+    useEffect(() => {
+      document.addEventListener('keydown', handleEscKey);
+      return () => {
+        document.removeEventListener('keydown', handleEscKey);
+      };
+    }, [handleEscKey]);
+  }
+
+  function onBackdropClick(e) {
+    if (e.target === e.currentTarget) {
+      close(false);
+    }
+  }
+
   return (
-    <Backdrop>
-      <EditContainer>
+    <Backdrop onKeyDown={useEscapeKey(close)}>
+      <EditContainer onClick={onBackdropClick}>
         <FormContainer>
           <TestDiv />
           <CloseBtn onClick={() => close(false)}>
