@@ -53,6 +53,7 @@ export const WrapperLeft = styled.div`
     align-content: center;
     justify-content: center;
     align-items: center;
+    width: 100%;
   }
 
   @media only screen and (min-width: 1280px) {
