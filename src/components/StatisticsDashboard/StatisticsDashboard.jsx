@@ -75,7 +75,20 @@ export const StatisticsDashboard = ({
         background: ' var(--transparency-20)',
       },
     }),
+    dropdownIndicator: styles => ({
+      ...styles,
+      transform: 'rotate(180deg)',
+    }),
   };
+
+  const customStylesSecondSelect = {
+    ...customStyles,
+    dropdownIndicator: styles => ({
+      ...styles,
+      transform: 'rotate(0deg)',
+    }),
+  };
+
   return (
     <StyledContainer>
       <Select
@@ -96,7 +109,7 @@ export const StatisticsDashboard = ({
         value={yearOptions.find(option => option.value === selectedYear)}
         onChange={handleYearChange}
         options={yearOptions}
-        styles={customStyles}
+        styles={customStylesSecondSelect}
         isSearchable={false}
         components={{
           IndicatorSeparator: () => null,

@@ -15,7 +15,7 @@ export const StyledTitle = styled.h2`
   line-height: normal;
 
   @media only screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-left: 32px;
+    margin: 10px 0 20px 32px;
     width: 336px;
   }
 
@@ -23,6 +23,7 @@ export const StyledTitle = styled.h2`
     width: 280px;
     margin: 0 auto;
     margin-top: 0px;
+    padding: 8px;
   }
 `;
 
@@ -45,6 +46,10 @@ export const StyledContainer = styled.div`
 
 export const StyledStatsInfo = styled.div`
   flex-direction: column;
+
+  @media only screen and (min-width: 768px) and (max-width: 1279px) {
+    margin-top: -45px;
+  }
 `;
 
 export const StyledChartContainer = styled.div`
