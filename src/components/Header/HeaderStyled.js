@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const HeaderSection = styled.header`
   height: 80px;
@@ -13,7 +14,7 @@ export const HeaderSection = styled.header`
 
 export const HeaderImgLogo = styled.img``;
 
-export const HeaderDivLogo = styled.div`
+export const HeaderDivLogo = styled(NavLink)`
   display: flex;
   flex-direction: column;
   align-items: center;
