@@ -47,7 +47,6 @@ export const ModalEditTransactions = ({ close, transaction }) => {
   function submit({ amount, comment }) {
     const newAmount = transactionType === 'INCOME' ? +amount : +amount * -1;
     const amountChange = newAmount - transaction.amount;
-    console.log(newAmount);
 
     const updatedTransaction = {
       amount: newAmount,
