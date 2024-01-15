@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import backDesktop from '../../images/EditTransaction/backDesktop.png';
-import backMobile from '../../images/EditTransaction/backgroundMobile.png';
+import backDesktop from '../../images/EditTransaction/Rectangle4.jpg';
+import backMobile from '../../images/ModalAddTransaction/backgroundMob.png';
 
 export const EditContainer = styled.div`
   display: flex;
@@ -101,6 +101,7 @@ export const Input = styled.input`
   width: 181px;
   height: 38px;
   padding: 8px;
+  padding-left: 49px;
   color: #ffffff;
   box-sizing: border-box;
   background: none;
@@ -122,6 +123,7 @@ export const Input = styled.input`
   }
   @media only screen and (max-width: 480px) {
     width: 280px;
+    padding-left: 20px;
   }
 `;
 
@@ -137,6 +139,7 @@ export const DatePickerWrapper = styled.div`
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     padding: 8px;
+    padding-left: 20px;
     color: #ffffff;
     @media only screen and (max-width: 480px) {
       width: 280px;
