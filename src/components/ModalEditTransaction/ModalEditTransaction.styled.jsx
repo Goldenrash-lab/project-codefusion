@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import backDesktop from '../../images/EditTransaction/backDesktop.png';
-import backMobile from '../../images/EditTransaction/backgroundMobile.png';
+import backDesktop from '../../images/ModalAddTransaction/background.png';
+// import backDesktop from '../../images/EditTransaction/backDesktop.png';
+import backMobile from '../../images/ModalAddTransaction/backgroundMob.png';
+// import backMobile from '../../images/EditTransaction/backgroundMobile.png';
 
 export const EditContainer = styled.div`
   display: flex;
