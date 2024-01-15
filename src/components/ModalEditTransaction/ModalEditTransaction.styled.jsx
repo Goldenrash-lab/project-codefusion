@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import backDesktop from '../../images/EditTransaction/backDesktop.png';
-import backMobile from '../../images/EditTransaction/backgroundMobile.png';
+import backDesktop from '../../images/ModalAddTransaction/background.png';
+// import backDesktop from '../../images/EditTransaction/backDesktop.png';
+import backMobile from '../../images/ModalAddTransaction/backgroundMob.png';
+// import backMobile from '../../images/EditTransaction/backgroundMobile.png';
 
 export const EditContainer = styled.div`
   display: flex;
@@ -8,7 +10,6 @@ export const EditContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #f0f0f0;
 `;
 
 export const FormContainer = styled.div`
@@ -24,7 +25,7 @@ export const FormContainer = styled.div`
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   @media only screen and (max-width: 480px) {
-    height: 691px;
+    height: 100vh;
     background-image: url(${backMobile});
     background-size: cover;
   }
@@ -109,7 +110,6 @@ export const Input = styled.input`
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   font-size: 18px;
   font-weight: 600;
-  -moz-appearance: textfield;
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -181,7 +181,10 @@ export const TextArea = styled.textarea`
   }
   @media only screen and (max-width: 480px) {
     width: 280px;
-    height: 76px;
+    /* height: 76px; */
+  }
+  @media only screen and (min-width: 481px) {
+    padding-top: 20px;
   }
 `;
 
@@ -239,7 +242,7 @@ export const ToggleButtonGroup = styled.div`
   gap: 12px;
 `;
 
-export const ToggleButton = styled.button`
+export const StyledText = styled.p`
   flex: 1;
   font-size: 16px;
   cursor: pointer;
@@ -247,14 +250,7 @@ export const ToggleButton = styled.button`
   //   border-radius: 4px;
   height: 24px;
   background: none;
-  color: #fff;
-  &:hover,
-  &:active,
-  &:focus {
-    color: var(--dashboard-text);
-    border: none;
-    outline: none;
-  }
+  color: ${props => props.$color || '#fff'};
 `;
 export const SpanButton = styled.span`
   font-size: 14px;

@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from 'react';
 
-import { StyledAddTransactionButton } from './TransactionsList.styled';
+import {
+  StyledAddTransactionButton,
+  StyledAlert,
+  StyledImg,
+  Wrapper,
+} from './TransactionsList.styled';
 import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import TransactionsDashboard from './TransactionDashboard/TransactionsDashboard';
 import { useMediaQuery } from 'react-responsive';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchTransactionsThunk } from 'store/Transactions/transactionsThunk';
+import { transactionsData } from 'store/Transactions/selectors';
+
+import coin from './coin.png';
+import ModalEditTransactions from 'components/ModalEditTransaction/ModalEditTransactions';
 
 export const formatCurrency = number => {
   return Math.abs(number)
@@ -16,21 +25,46 @@ export const formatCurrency = number => {
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
-
+  const transactions = useSelector(transactionsData);
   const [isAddTransactionOpen, setIsTransactionOpen] = useState(false);
+
+  const [isEditTransactionOpen, setIsEditTransactionOpen] = useState(false);
+  const [editTrans, setEditTrans] = useState(null);
 
   useEffect(() => {
     dispatch(fetchTransactionsThunk());
   }, [dispatch]);
 
-  //const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
   const isMobileScreen = useMediaQuery({ query: '(max-width: 767.98px)' });
 
+  function getEditTransaction(trans) {
+    setEditTrans(trans);
+  }
+
   return (
     <div>
-      {isTabletScreen && <TransactionsDashboard />}
-      {isMobileScreen && <TransactionMobile />}
+      {transactions.length === 0 ? (
+        <Wrapper>
+          <StyledImg src={coin} alt="coin" />
+          <StyledAlert>Add your first transaction </StyledAlert>
+        </Wrapper>
+      ) : (
+        <>
+          {isTabletScreen && (
+            <TransactionsDashboard
+              open={setIsEditTransactionOpen}
+              get={getEditTransaction}
+            />
+          )}
+          {isMobileScreen && (
+            <TransactionMobile
+              open={setIsEditTransactionOpen}
+              get={getEditTransaction}
+            />
+          )}
+        </>
+      )}
 
       <StyledAddTransactionButton onClick={() => setIsTransactionOpen(true)}>
         <svg
@@ -46,6 +80,12 @@ const TransactionsList = () => {
       </StyledAddTransactionButton>
       {isAddTransactionOpen && (
         <ModalAddTransactions close={setIsTransactionOpen} />
+      )}
+      {isEditTransactionOpen && (
+        <ModalEditTransactions
+          close={setIsEditTransactionOpen}
+          transaction={editTrans}
+        />
       )}
     </div>
   );

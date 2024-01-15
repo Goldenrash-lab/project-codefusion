@@ -62,12 +62,11 @@ const AddTransactionForm = ({ close }) => {
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
 
-  // console.log(categories);
+  const filteredCategories = categories.filter(item => item.type !== 'INCOME');
 
-  const options = categories.map(cat => {
+  const options = filteredCategories.map(cat => {
     return { value: cat.id, label: cat.name };
   });
-  // console.log(options);
 
   const {
     register,
@@ -80,7 +79,6 @@ const AddTransactionForm = ({ close }) => {
   });
 
   function submit(e) {
-    //console.log(startDate);
     const newTransaction = {
       transactionDate: getFormattedDate(startDate),
       type: checkTransactionType(isExpense),
@@ -90,7 +88,6 @@ const AddTransactionForm = ({ close }) => {
       comment: e.comment,
       amount: negOrPosNumber(e.sum, isExpense),
     };
-    // console.log(newTransaction);
 
     dispatch(addTransactionThunk(newTransaction))
       .unwrap()
@@ -172,6 +169,23 @@ const AddTransactionForm = ({ close }) => {
         };
       }
     },
+    menuList: base => ({
+      ...base,
+      height: '100%',
+
+      '::-webkit-scrollbar': {
+        width: '2px',
+      },
+      '::-webkit-scrollbar-track': {
+        background: 'inset 0 0 2px rgba(0, 0, 0, 0.2)',
+      },
+      '::-webkit-scrollbar-thumb': {
+        background: ' var(--transparency-20)',
+      },
+      '::-webkit-scrollbar-thumb:hover': {
+        background: ' var(--transparency-20)',
+      },
+    }),
   };
 
   const DropdownIndicator = props => {
@@ -226,6 +240,7 @@ const AddTransactionForm = ({ close }) => {
             rules={{ required: true }}
             render={({ field, value }) => (
               <Select
+                required
                 name="category"
                 {...register('category')}
                 id="category"
@@ -237,30 +252,10 @@ const AddTransactionForm = ({ close }) => {
                 placeholder="Select a category"
                 styles={selectStyle}
                 isSearchable={false}
-                // value={categories.find(category => category.value === value)}
                 onChange={option => field.onChange(option.value)}
               />
             )}
           />
-          //   <div>
-          //     <select
-          //       name="category"
-          //       id=""
-          //       required
-          //       defaultValue={''}
-          //       {...register('category')}
-          //     >
-          //       <option value={''} disabled hidden>
-          //         Select a category
-          //       </option>
-          //       {categories.map(({ name, id }) => (
-          //         <option key={id} value={id}>
-          //           {name}
-          //         </option>
-          //       ))}
-          //     </select>
-          //     <Arrow alt="" src={arrow}></Arrow>
-          //   </div>
         )}
 
         <SumDateContainer>

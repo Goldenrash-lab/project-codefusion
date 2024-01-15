@@ -15,13 +15,15 @@ export const StyledTitle = styled.h2`
   line-height: normal;
 
   @media only screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-left: 32px;
+    margin: 10px 0 20px 32px;
     width: 336px;
   }
 
   @media only screen and (min-width: 320px) and (max-width: 767px) {
     width: 280px;
-    margin-left: 20px;
+    margin: 0 auto;
+    margin-top: 0px;
+    padding: 8px;
   }
 `;
 
@@ -38,12 +40,16 @@ export const StyledContainer = styled.div`
   @media only screen and (min-width: 320px) and (max-width: 767px) {
     flex-direction: column;
     width: 280px;
-    margin-left: 0;
+    margin: 0 auto;
   }
 `;
 
 export const StyledStatsInfo = styled.div`
   flex-direction: column;
+
+  @media only screen and (min-width: 768px) and (max-width: 1279px) {
+    margin-top: -45px;
+  }
 `;
 
 export const StyledChartContainer = styled.div`
@@ -55,7 +61,7 @@ export const StyledChartContainer = styled.div`
   }
 
   @media only screen and (min-width: 320px) and (max-width: 767px) {
-    margin-bottom: 32px;
+    margin-bottom: 20px;
   }
 `;
 

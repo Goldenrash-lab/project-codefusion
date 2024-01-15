@@ -9,6 +9,15 @@ export const ExitContainer = styled.div`
   position: absolute;
 
   z-index: 21;
+  @media only screen and (max-width: 767px) {
+  }
+`;
+
+export const ExitContainerDivForm = styled.div`
+  @media only screen and (max-width: 767px) {
+    align-items: normal;
+    display: flex;
+  }
 `;
 
 export const ExitContainerBTNText = styled.div`
@@ -26,6 +35,10 @@ export const ExitContainerBTNText = styled.div`
   background: var(--Form-color, rgba(255, 255, 255, 0.1));
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(50px);
+  @media only screen and (max-width: 767px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const ExitContainerBTN = styled.div`
@@ -37,7 +50,7 @@ export const ExitContainerBTN = styled.div`
 `;
 
 export const ExitBTNLogout = styled.button`
-  min-width: 300px;
+  min-width: 280px;
   min-height: 50px;
   color: #fff;
   text-align: center;
@@ -56,11 +69,14 @@ export const ExitBTNLogout = styled.button`
   box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
   border: none;
   cursor: pointer;
+  @media only screen and (min-width: 768px) {
+    min-width: 300px;
+  }
 `;
 export const ExitBTNCancel = styled.button`
   color: #623f8b;
   text-align: center;
-  min-width: 300px;
+  min-width: 280px;
   min-height: 50px;
   font-size: 18px;
 
@@ -73,15 +89,22 @@ export const ExitBTNCancel = styled.button`
   box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
   border: none;
   cursor: pointer;
+  @media only screen and (min-width: 767px) {
+    min-width: 300px;
+  }
 `;
 
 export const ExitSpanText = styled.span`
   color: #fff;
-
+  width: 215px;
+  text-align: center;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  @media only screen and (min-width: 768px) {
+    min-width: 300px;
+  }
 `;
 export const ExitSpanMoneyGuard = styled.span`
   color: #fbfbfb;

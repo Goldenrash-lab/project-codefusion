@@ -25,6 +25,9 @@ export const Container = styled.div`
     padding: 0 32px;
   }
 
+  @media only screen and (max-width: 375px) {
+    padding: 0;
+  }
   @media only screen and (min-width: 1272px) {
     max-width: 1312px;
     padding: 0 16px;
@@ -44,6 +47,14 @@ export const WrapperLeft = styled.div`
   gap: 32px;
   display: flex;
   flex-direction: row;
+
+  @media only screen and (max-width: 767px) {
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
 
   @media only screen and (min-width: 1280px) {
     border-right: 1px solid rgba(255, 255, 255, 0.6);

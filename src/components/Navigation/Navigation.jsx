@@ -8,9 +8,8 @@ import NavigationCurenciMobail from 'images/Navigation/NavigationHomeCurensi';
 import {
   NavigationDivTest,
   NavigationDivTest2,
-  NavigationDivTest3,
+  NavigationIconDivFon,
   NavigationNavLink,
-  NavigationNavLinkCurrency,
   NavigationPText,
   NavigationSection,
 } from './NavigationStyles';
@@ -41,23 +40,30 @@ const Navigation = () => {
         <NavigationNavLink to="/">
           <NavigationDivTest2>
             <NavigationDivTest>
+              <NavigationIconDivFon></NavigationIconDivFon>
               {isMobile ? <NavigationHomeMobail /> : <NavigationHome />}
             </NavigationDivTest>
           </NavigationDivTest2>
           <NavigationPText>Home</NavigationPText>
         </NavigationNavLink>
         <NavigationNavLink to="/statistics">
-          <NavigationDivTest>
-            {isMobile ? <NavigationStatistictMobail /> : <StatisticsHome />}
-          </NavigationDivTest>
+          <NavigationDivTest2>
+            <NavigationDivTest>
+              <NavigationIconDivFon></NavigationIconDivFon>
+              {isMobile ? <NavigationStatistictMobail /> : <StatisticsHome />}
+            </NavigationDivTest>
+          </NavigationDivTest2>
           <NavigationPText>Statistics</NavigationPText>
         </NavigationNavLink>
         {isMobile && (
-          <NavigationNavLinkCurrency to="/currency">
-            <NavigationDivTest3>
-              <NavigationCurenciMobail />
-            </NavigationDivTest3>
-          </NavigationNavLinkCurrency>
+          <NavigationNavLink to="/currency">
+            <NavigationDivTest2>
+              <NavigationDivTest>
+                <NavigationIconDivFon></NavigationIconDivFon>
+                <NavigationCurenciMobail />
+              </NavigationDivTest>
+            </NavigationDivTest2>
+          </NavigationNavLink>
         )}
       </NavigationSection>
     </div>

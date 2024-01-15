@@ -1,28 +1,27 @@
 import styled from 'styled-components';
-import background from '../../images/ModalAddTransaction/background1.png';
+import background from '../../images/ModalAddTransaction/background.png';
 import backgroundMob from '../../images/ModalAddTransaction/backgroundMob.png';
-
 export const Backdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-
   width: 100%;
   height: 100%;
   background: rgba(34, 13, 91, 0.23);
-
-  backdrop-filter: blur(3.5px);
+  backdrop-filter: blur(45px);
   z-index: 20;
+  @media only screen and (max-width: 480px) {
+    backdrop-filter: blur(50px);
+  }
 `;
 
 export const Modal = styled.div`
   width: 540px;
-  /* max-height: 589px; */
   overflow: hidden;
   background-image: url(${background});
   background-position: center;
   background-repeat: no-repeat;
-  padding: 40px 73px;
+  padding: 24px 73px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -32,22 +31,16 @@ export const Modal = styled.div`
   align-items: center;
   border-radius: 8px;
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-  /* backdrop-filter: blur(50px); */
+  z-index: 2;
 
   @media only screen and (max-width: 480px) {
-    /* background-image: url(${backgroundMob});
-    max-width: 320px; */
-    /* width: 100%; */
-    /* max-height: 100%; */
     padding: 40px 20px;
     height: 100%;
     background-image: none;
-    background-color: purple;
-    background: var(--Form-color, rgba(255, 255, 255, 0.1));
+    background-image: url(${backgroundMob});
+    background-size: cover;
+    /* background: var(--Form-color, rgba(255, 255, 255, 0.1)); */
 
-    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(50px);
-    z-index: 100;
     form {
       display: flex;
       flex-direction: column;

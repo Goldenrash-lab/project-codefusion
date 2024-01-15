@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import TransactionsItem from '../TransactionsItem/TransactionsItem';
 import {
-  StyledAlert,
   StyledTable,
   StyledThead,
   StyledTheadItem,
@@ -11,16 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { transactionsData } from 'store/Transactions/selectors';
 import { categoriesThunk } from 'store/Categories/categoriesThunk';
 
-function sortByDate(array) {
-  array.sort((a, b) => {
-    const dateA = new Date(a.transactionDate).getTime();
-    const dateB = new Date(b.transactionDate).getTime();
-    console.log(a.transactionDate, b.transactionDate);
-    return dateA - dateB;
-  });
-}
-
-const TransactionsDashboard = () => {
+const TransactionsDashboard = ({ open, get }) => {
   const transactions = useSelector(transactionsData);
   const dispatch = useDispatch();
 
@@ -32,9 +22,6 @@ const TransactionsDashboard = () => {
   //console.log(sortByDate(transactions));
   return (
     <WrapTable>
-      {transactions.length === 0 && (
-        <StyledAlert>Add your first transaction </StyledAlert>
-      )}
       <StyledTable>
         <thead>
           <StyledThead>
@@ -53,6 +40,8 @@ const TransactionsDashboard = () => {
             ? transactions?.map(transaction => {
                 return (
                   <TransactionsItem
+                    get={get}
+                    open={open}
                     key={transaction.id}
                     transaction={transaction}
                   />
