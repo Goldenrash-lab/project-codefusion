@@ -57,7 +57,12 @@ const TransactionsList = () => {
               get={getEditTransaction}
             />
           )}
-          {isMobileScreen && <TransactionMobile />}
+          {isMobileScreen && (
+            <TransactionMobile
+              open={setIsEditTransactionOpen}
+              get={getEditTransaction}
+            />
+          )}
         </>
       )}
 

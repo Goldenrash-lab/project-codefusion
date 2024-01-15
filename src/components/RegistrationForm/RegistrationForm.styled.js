@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import backgroundDesk from '../../images/Register/deskRegister.jpg';
 import backgroundTablet from '../../images/Register/tabletRegister.jpg';
 import backgroundMobile from '../../images/Register/mobileRegister.jpg';
+import PasswordStrengthBar from 'react-password-strength-bar';
 
 export const WrapperReg = styled.div`
   display: flex;
@@ -57,6 +58,9 @@ export const TextLogo = styled.span`
 
   font-size: 26.963px;
   font-weight: 400;
+  @media only screen and (max-width: 555px) {
+    font-size: 19px;
+  }
 `;
 export const ButtonsDiv = styled.div`
   display: flex;
@@ -122,4 +126,31 @@ export const ErrorText = styled.p`
   padding-left: 30px;
   display: block;
   height: 14px;
+  @media only screen and (max-width: 555px) {
+    font-size: 12px;
+  }
+`;
+
+export const PasswordStrengthBarStyle = styled(PasswordStrengthBar)`
+  div {
+    div {
+      filter: drop-shadow(0px 1px 8px rgba(255, 182, 39, 0.5));
+      height: 4px !important;
+
+      &:nth-child(even) {
+        width: 0 !important;
+      }
+      &:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+      &:last-child {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+    }
+  }
+  p {
+    display: none;
+  }
 `;

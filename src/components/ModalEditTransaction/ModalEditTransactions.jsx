@@ -32,6 +32,7 @@ import { getFormattedDate } from 'components/ModalAddTransactions/helpers';
 import { updateTransactionThunk } from 'store/Transactions/transactionsThunk';
 import { toast } from 'react-toastify';
 import { changeBalance } from 'store/Auth/slice';
+import { TestDiv } from 'components/RegistrationForm/RegistrationForm.styled';
 
 export const ModalEditTransactions = ({ close, transaction }) => {
   const { handleSubmit, register } = useForm();
@@ -78,6 +79,7 @@ export const ModalEditTransactions = ({ close, transaction }) => {
     <Backdrop>
       <EditContainer>
         <FormContainer>
+          <TestDiv />
           <CloseBtn onClick={() => close(false)}>
             <img alt="close" src={closeImg}></img>
           </CloseBtn>
@@ -147,7 +149,9 @@ export const ModalEditTransactions = ({ close, transaction }) => {
 
             <ButtonsContainer>
               <SaveButton type="submit">Save</SaveButton>
-              <CancelButton>Cancel</CancelButton>
+              <CancelButton type="button" onClick={() => close(false)}>
+                Cancel
+              </CancelButton>
             </ButtonsContainer>
           </form>
         </FormContainer>

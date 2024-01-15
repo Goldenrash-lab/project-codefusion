@@ -18,11 +18,15 @@ import { deleteTransactionThunk } from 'store/Transactions/transactionsThunk';
 import { toast } from 'react-toastify';
 import { deleteTransaction } from 'store/Transactions/transactionsSlice';
 
-const TransactionMobile = () => {
+const TransactionMobile = ({ open, get }) => {
   const categories = useSelector(selectCategories);
   const transactions = useSelector(transactionsData);
   const dispatch = useDispatch();
 
+  function handleClick(trans) {
+    open(true);
+    get(trans);
+  }
   return (
     <div>
       <StyledUlWrap>
@@ -79,7 +83,10 @@ const TransactionMobile = () => {
                   >
                     Delete
                   </StyledButton>
-                  <EditButton>
+                  <EditButton
+                    type="button"
+                    onClick={() => handleClick(transaction)}
+                  >
                     <Edit />
                     <EditSpan>Edit</EditSpan>
                   </EditButton>
