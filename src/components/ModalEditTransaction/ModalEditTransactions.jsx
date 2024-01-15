@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import calendar from '../../images/ModalAddTransaction/calendar.svg';
 import slash from '../../images/EditTransaction/slash.svg';
@@ -45,7 +45,7 @@ export const ModalEditTransactions = ({ close, transaction }) => {
   const [transactionType] = useState(transaction.type);
 
   function submit({ amount, comment }) {
-    const newAmount = +amount;
+    const newAmount = transactionType === 'INCOME' ? +amount : +amount * -1;
     const amountChange = newAmount - transaction.amount;
 
     const updatedTransaction = {
@@ -75,9 +75,33 @@ export const ModalEditTransactions = ({ close, transaction }) => {
     return catName.name;
   }
 
+  function useEscapeKey(close) {
+    const handleEscKey = useCallback(
+      event => {
+        if (event.key === 'Escape') {
+          close(false);
+        }
+      },
+      [close]
+    );
+
+    useEffect(() => {
+      document.addEventListener('keydown', handleEscKey);
+      return () => {
+        document.removeEventListener('keydown', handleEscKey);
+      };
+    }, [handleEscKey]);
+  }
+
+  function onBackdropClick(e) {
+    if (e.target === e.currentTarget) {
+      close(false);
+    }
+  }
+
   return (
-    <Backdrop>
-      <EditContainer>
+    <Backdrop onKeyDown={useEscapeKey(close)}>
+      <EditContainer onClick={onBackdropClick}>
         <FormContainer>
           <TestDiv />
           <CloseBtn onClick={() => close(false)}>
@@ -116,7 +140,7 @@ export const ModalEditTransactions = ({ close, transaction }) => {
                   {...register('amount')}
                   type="number"
                   id="amount"
-                  defaultValue={transaction.amount}
+                  defaultValue={Math.abs(transaction.amount)}
                   placeholder="Amount"
                   name="amount"
                 />
@@ -130,6 +154,7 @@ export const ModalEditTransactions = ({ close, transaction }) => {
                   onChange={date => setStartDate(date)}
                   dateFormat="dd.MM.yyyy"
                   name="date"
+                  maxDate={new Date()}
                 />
               </DatePickerWrapper>
             </FormGroup>

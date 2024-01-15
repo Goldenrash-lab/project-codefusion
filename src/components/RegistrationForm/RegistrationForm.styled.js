@@ -122,6 +122,8 @@ export const TestDiv = styled.div`
   }
 `;
 export const ErrorText = styled.p`
+ color: #ff868d;
+
   font-size: 14px;
   padding-left: 30px;
   display: block;

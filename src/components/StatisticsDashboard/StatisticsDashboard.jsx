@@ -1,7 +1,8 @@
 import React from 'react';
-import Select from 'react-select';
+import Select, { components } from 'react-select';
 
 import { StyledContainer } from './StatisticsDashboard.styled';
+import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 
 export const StatisticsDashboard = ({
   selectedMonth,
@@ -75,18 +76,18 @@ export const StatisticsDashboard = ({
         background: ' var(--transparency-20)',
       },
     }),
-    dropdownIndicator: styles => ({
-      ...styles,
-      transform: 'rotate(180deg)',
-    }),
   };
 
-  const customStylesSecondSelect = {
-    ...customStyles,
-    dropdownIndicator: styles => ({
-      ...styles,
-      transform: 'rotate(0deg)',
-    }),
+  const DropdownIndicator = props => {
+    return (
+      <components.DropdownIndicator {...props}>
+        {props.selectProps.menuIsOpen ? (
+          <SlArrowUp size={18} label="Arrow up" color={'#FBFBFB'} />
+        ) : (
+          <SlArrowDown size={18} label="Arrow down" color={'#FBFBFB'} />
+        )}
+      </components.DropdownIndicator>
+    );
   };
 
   return (
@@ -100,6 +101,7 @@ export const StatisticsDashboard = ({
         styles={customStyles}
         isSearchable={false}
         components={{
+          DropdownIndicator,
           IndicatorSeparator: () => null,
         }}
       ></Select>
@@ -109,9 +111,10 @@ export const StatisticsDashboard = ({
         value={yearOptions.find(option => option.value === selectedYear)}
         onChange={handleYearChange}
         options={yearOptions}
-        styles={customStylesSecondSelect}
+        styles={customStyles}
         isSearchable={false}
         components={{
+          DropdownIndicator,
           IndicatorSeparator: () => null,
         }}
       ></Select>
