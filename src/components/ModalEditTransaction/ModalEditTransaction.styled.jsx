@@ -25,7 +25,7 @@ export const FormContainer = styled.div`
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   @media only screen and (max-width: 480px) {
-    height: 691px;
+    height: 100vh;
     background-image: url(${backMobile});
     background-size: cover;
   }

@@ -38,7 +38,7 @@ export const Modal = styled.div`
     height: 100%;
     background-image: none;
     background-image: url(${backgroundMob});
-    background-size: contain;
+    background-size: cover;
     /* background: var(--Form-color, rgba(255, 255, 255, 0.1)); */
 
     form {
