@@ -45,8 +45,9 @@ export const ModalEditTransactions = ({ close, transaction }) => {
   const [transactionType] = useState(transaction.type);
 
   function submit({ amount, comment }) {
-    const newAmount = +amount;
+    const newAmount = transactionType === 'INCOME' ? +amount : +amount * -1;
     const amountChange = newAmount - transaction.amount;
+    console.log(newAmount);
 
     const updatedTransaction = {
       amount: newAmount,
@@ -140,7 +141,7 @@ export const ModalEditTransactions = ({ close, transaction }) => {
                   {...register('amount')}
                   type="number"
                   id="amount"
-                  defaultValue={transaction.amount}
+                  defaultValue={Math.abs(transaction.amount)}
                   placeholder="Amount"
                   name="amount"
                 />
