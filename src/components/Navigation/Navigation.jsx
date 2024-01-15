@@ -8,10 +8,8 @@ import NavigationCurenciMobail from 'images/Navigation/NavigationHomeCurensi';
 import {
   NavigationDivTest,
   NavigationDivTest2,
-  NavigationDivTest3,
   NavigationIconDivFon,
   NavigationNavLink,
-  NavigationNavLinkCurrency,
   NavigationPText,
   NavigationSection,
 } from './NavigationStyles';

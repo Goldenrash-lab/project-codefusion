@@ -5,7 +5,6 @@ import {
   ExitContainer,
   ExitContainerBTN,
   ExitContainerBTNText,
-  ExitContainerDivTest,
   ExitContainerGradient,
   ExitContainerLogo,
   ExitSpanMoneyGuard,
