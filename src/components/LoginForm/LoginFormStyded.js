@@ -183,8 +183,7 @@ export const LoginButton = styled.button`
 
 export const LoginTextError = styled.p`
   font-size: 14px;
-  padding-left: 30px;
   display: block;
   height: 14px;
-   color: #ff868d;
+  color: #ff868d;
 `;
