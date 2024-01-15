@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import {
+  Eye,
   InputDiv,
   LoginButton,
   LoginDiv,
@@ -26,6 +27,8 @@ import EmailLogo from '../../images/Login/EmailLogo';
 import PasswordLogo from '../../images/Login/PasswordLogo';
 import LoginLogo from '../../images/Login/LoginLogo';
 import { Navigate } from 'react-router-dom';
+import SvgNoEye from 'images/Login/NoEye';
+import SvgEye from 'images/Login/Eye';
 
 const schema = yup
   .object({
@@ -42,6 +45,7 @@ const schema = yup
   .required();
 
 const LoginForm = () => {
+  const [eye, setEye] = useState(false);
   const {
     register,
     handleSubmit,
@@ -51,6 +55,14 @@ const LoginForm = () => {
     resolver: yupResolver(schema),
   });
   const dispatch = useDispatch();
+
+  function toggleEye() {
+    if (!eye) {
+      setEye(true);
+    } else {
+      setEye(false);
+    }
+  }
 
   function submit(data) {
     dispatch(loginThunk(data))
@@ -66,6 +78,8 @@ const LoginForm = () => {
   if (isAuthenticated) {
     return <Navigate to={'/'} />;
   }
+
+  const isEye = !eye ? { type: 'password' } : { type: 'text' };
 
   return (
     <LoginDiv>
@@ -90,10 +104,14 @@ const LoginForm = () => {
             <PasswordLogo />
             <LoginInput
               {...register('password')}
-              type="password"
+              {...isEye}
+              // type="password"
               name="password"
               placeholder="Password"
             />
+            <Eye type="button" onClick={toggleEye}>
+              {!eye ? <SvgNoEye /> : <SvgEye />}
+            </Eye>
             <LoginTextError>{errors.password?.message || ''}</LoginTextError>
           </InputDiv>
           <LoginDivButton>

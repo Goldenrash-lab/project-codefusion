@@ -3,6 +3,7 @@ import {
   Button,
   ButtonsDiv,
   ErrorText,
+  Eye,
   Form,
   Input,
   PasswordStrengthBarStyle,
@@ -27,6 +28,8 @@ import { Navigate, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { selectUser } from 'store/Auth/selectors';
 import { useMediaQuery } from 'react-responsive';
+import SvgEye from 'images/Register/Eye';
+import SvgNoEye from 'images/Register/NoEye';
 
 const schema = yup
   .object({
@@ -56,6 +59,7 @@ const schema = yup
 
 const RegistrationForm = () => {
   const [password, setPassword] = useState('');
+  const [eye, setEye] = useState(false);
   const mobileQuery = useMediaQuery({ query: '(max-width:555px)' });
   const navigate = useNavigate();
   const {
@@ -68,6 +72,14 @@ const RegistrationForm = () => {
   });
 
   const dispatch = useDispatch();
+
+  function toggleEye() {
+    if (!eye) {
+      setEye(true);
+    } else {
+      setEye(false);
+    }
+  }
 
   function submit({ username, email, password }) {
     const user = {
@@ -95,6 +107,7 @@ const RegistrationForm = () => {
   if (user) {
     return <Navigate to={'/'} />;
   }
+  const isEye = !eye ? { type: 'password' } : { type: 'text' };
 
   return (
     <WrapperReg>
@@ -129,21 +142,27 @@ const RegistrationForm = () => {
             <LockIcon />
             <Input
               {...register('password')}
-              type="password"
+              {...isEye}
               name="password"
               placeholder="Password"
               onChange={e => setPassword(e.target.value)}
             />
+            <Eye type="button" onClick={toggleEye}>
+              {!eye ? <SvgNoEye /> : <SvgEye />}
+            </Eye>
             <ErrorText>{errors.password?.message}</ErrorText>
           </InputWrapper>
           <InputWrapper>
             <LockIcon />
             <Input
               {...register('confirmPassword')}
-              type="password"
+              {...isEye}
               name="confirmPassword"
               placeholder="Confirm password"
             />
+            {/* <Eye type="button" onClick={toggleEye}>
+              {!eye ? <SvgNoEye /> : <SvgEye />}
+            </Eye> */}
             <PasswordStrengthBarStyle password={password} minLength={6} />
             <ErrorText>{errors.confirmPassword?.message}</ErrorText>
           </InputWrapper>
