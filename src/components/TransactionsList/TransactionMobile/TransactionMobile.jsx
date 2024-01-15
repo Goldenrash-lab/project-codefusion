@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Edit from '../helpers/Edit';
 import {
   EditButton,
@@ -17,6 +17,7 @@ import { transactionsData } from 'store/Transactions/selectors';
 import { deleteTransactionThunk } from 'store/Transactions/transactionsThunk';
 import { toast } from 'react-toastify';
 import { deleteTransaction } from 'store/Transactions/transactionsSlice';
+import { categoriesThunk } from 'store/Categories/categoriesThunk';
 
 const TransactionMobile = ({ open, get }) => {
   const categories = useSelector(selectCategories);
@@ -27,6 +28,10 @@ const TransactionMobile = ({ open, get }) => {
     open(true);
     get(trans);
   }
+  useEffect(() => {
+    dispatch(categoriesThunk());
+  }, [dispatch]);
+
   return (
     <div>
       <StyledUlWrap>
