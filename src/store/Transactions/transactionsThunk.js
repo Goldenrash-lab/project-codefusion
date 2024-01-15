@@ -12,7 +12,6 @@ export const fetchTransactionsThunk = createAsyncThunk(
     }
     try {
       const { data } = await api.get('api/transactions');
-      console.log(data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -32,7 +31,6 @@ export const deleteTransactionThunk = createAsyncThunk(
 
     try {
       const { data } = await api.delete(`api/transactions/${id}`);
-      console.log(data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -51,7 +49,7 @@ export const addTransactionThunk = createAsyncThunk(
     }
     try {
       const { data } = await api.post(`api/transactions`, newTransaction);
-      console.log(data);
+
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -61,7 +59,7 @@ export const addTransactionThunk = createAsyncThunk(
 
 export const updateTransactionThunk = createAsyncThunk(
   'updateTransaction',
-  async (id, thunkApi) => {
+  async ({ id, updatedTransaction }, thunkApi) => {
     const savedToken = thunkApi.getState().auth.token;
     if (savedToken) {
       setToken(savedToken);
@@ -69,8 +67,11 @@ export const updateTransactionThunk = createAsyncThunk(
       return thunkApi.rejectWithValue(`You're unauthorized`);
     }
     try {
-      const { data } = await api.patch(`api/transactions/${id}`);
-      console.log(data);
+      const { data } = await api.patch(
+        `api/transactions/${id}`,
+        updatedTransaction
+      );
+
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

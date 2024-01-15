@@ -11,6 +11,11 @@ const authSlice = createSlice({
     isError: null,
     user: null,
   },
+  reducers: {
+    changeBalance: (state, { payload }) => {
+      state.user.balance = state.user.balance + payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(logoutThunk.fulfilled, state => {
@@ -61,4 +66,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { changeBalance } = authSlice.actions;
 export const authReducer = authSlice.reducer;

@@ -1,7 +1,15 @@
 import * as React from 'react';
+import styled from 'styled-components';
+
+export const HomeIconSvg = styled.svg`
+  @media only screen and (max-width: 767px) {
+    width: 18px;
+    height: 18px;
+  }
+`;
 
 const HeaderLogo = props => (
-  <svg
+  <HomeIconSvg
     xmlns="http://www.w3.org/2000/svg"
     width="25"
     height="23"
@@ -50,7 +58,7 @@ const HeaderLogo = props => (
         />
       </clipPath>
     </defs>
-  </svg>
+  </HomeIconSvg>
 );
 
 export default HeaderLogo;

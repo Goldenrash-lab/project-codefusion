@@ -9,12 +9,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter basename="project-codefusion">
-      <Provider store={store}>
-        <App />
-        <ToastContainer autoClose={1500} theme="dark" />
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter basename="project-codefusion">
+    <Provider store={store}>
+      <App />
+      <ToastContainer autoClose={1500} theme="dark" />
+    </Provider>
+  </BrowserRouter>
 );

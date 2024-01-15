@@ -13,6 +13,13 @@ export const transactionsSlice = createSlice({
     loading: false,
     error: '',
   },
+  reducers: {
+    deleteTransaction: (state, action) => {
+      state.transactions = state.transactions.filter(
+        transaction => transaction.id !== action.payload
+      );
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchTransactionsThunk.fulfilled, (state, action) => {
@@ -21,14 +28,19 @@ export const transactionsSlice = createSlice({
       })
       .addCase(deleteTransactionThunk.fulfilled, (state, action) => {
         state.transactions = state.transactions.filter(
-          transaction => transaction.id !== action.payload
+          transaction => transaction.id !== action.payload.id
         );
       })
       .addCase(addTransactionThunk.fulfilled, (state, action) => {
-        state.transactions.push(action.payload);
+        state.transactions.unshift(action.payload);
       })
       .addCase(updateTransactionThunk.fulfilled, (state, action) => {
-        state.transactions = action.payload;
+        const index = state.transactions.findIndex(
+          transaction => transaction.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.transactions[index] = action.payload;
+        }
         state.loading = false;
       })
       .addCase(fetchTransactionsThunk.pending, state => {
@@ -37,10 +49,17 @@ export const transactionsSlice = createSlice({
       .addCase(updateTransactionThunk.pending, state => {
         state.loading = true;
       })
+      .addCase(addTransactionThunk.pending, state => {
+        state.loading = true;
+      })
       .addCase(deleteTransactionThunk.pending, state => {
         state.loading = true;
       })
       .addCase(fetchTransactionsThunk.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(addTransactionThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
@@ -54,5 +73,7 @@ export const transactionsSlice = createSlice({
       });
   },
 });
+
+export const { deleteTransaction } = transactionsSlice.actions;
 
 export const transactionsReducer = transactionsSlice.reducer;

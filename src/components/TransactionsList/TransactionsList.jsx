@@ -1,80 +1,65 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { StyledAddTransactionButton } from './TransactionsList.styled';
+import {
+  StyledAddTransactionButton,
+  StyledAlert,
+  StyledImg,
+  Wrapper,
+} from './TransactionsList.styled';
 import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
-import ModalEditTransactions from 'components/ModalEditTransaction/ModalEditTransaction';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import TransactionsDashboard from './TransactionDashboard/TransactionsDashboard';
 import { useMediaQuery } from 'react-responsive';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTransactionsThunk } from 'store/Transactions/transactionsThunk';
+import { transactionsData } from 'store/Transactions/selectors';
 
-const transactions = [
-  {
-    id: 1,
-    date: '04.01.23',
-    category: 'other',
-    comment: 'gift for a wife',
-    sum: 300,
-    type: '-',
-  },
-  {
-    id: 2,
-    date: '05.01.23',
-    category: 'income',
-    comment: 'salary from work',
-    sum: 4300,
-    type: '+',
-  },
-  {
-    id: 3,
-    date: '04.01.23',
-    category: 'other stuff',
-    comment: 'gift',
-    sum: 300,
-    type: '-',
-  },
-  {
-    id: 4,
-    date: '05.01.23',
-    category: 'income',
-    comment: 'salary',
-    sum: 4300,
-    type: '+',
-  },
-  {
-    id: 5,
-    date: '04.01.23',
-    category: 'other',
-    comment: 'gift for a wife',
-    sum: 300,
-    type: '-',
-  },
-  {
-    id: 6,
-    date: '05.01.23',
-    category: 'income',
-    comment: 'salary from work',
-    sum: 4300,
-    type: '+',
-  },
-];
+import coin from './coin.png';
+import ModalEditTransactions from 'components/ModalEditTransaction/ModalEditTransactions';
+
 export const formatCurrency = number => {
-  return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ');
+  return Math.abs(number)
+    .toFixed(2)
+    .replace(/\d(?=(\d{3})+\.)/g, '$& ');
 };
 
 const TransactionsList = () => {
-  // const transactions = useSelector(transactionsData);
-  // console.log(transactions);
+  const dispatch = useDispatch();
+  const transactions = useSelector(transactionsData);
   const [isAddTransactionOpen, setIsTransactionOpen] = useState(false);
-  const [isEditTransactionOpen, setIsEditTransactionOpen] = useState(false);
 
-  //const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
+  const [isEditTransactionOpen, setIsEditTransactionOpen] = useState(false);
+  const [editTrans, setEditTrans] = useState(null);
+
+  useEffect(() => {
+    dispatch(fetchTransactionsThunk());
+  }, [dispatch]);
+
   const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
   const isMobileScreen = useMediaQuery({ query: '(max-width: 767.98px)' });
 
+  function getEditTransaction(trans) {
+    setEditTrans(trans);
+  }
+
   return (
     <div>
-      {isTabletScreen && <TransactionsDashboard transactions={transactions} />}
-      {isMobileScreen && <TransactionMobile transactions={transactions} />}
+      {transactions.length === 0 ? (
+        <Wrapper>
+          <StyledImg src={coin} alt="coin" />
+          <StyledAlert>Add your first transaction </StyledAlert>
+        </Wrapper>
+      ) : (
+        <>
+          {isTabletScreen && (
+            <TransactionsDashboard
+              open={setIsEditTransactionOpen}
+              get={getEditTransaction}
+            />
+          )}
+          {isMobileScreen && <TransactionMobile />}
+        </>
+      )}
 
       <StyledAddTransactionButton onClick={() => setIsTransactionOpen(true)}>
         <svg
@@ -92,7 +77,10 @@ const TransactionsList = () => {
         <ModalAddTransactions close={setIsTransactionOpen} />
       )}
       {isEditTransactionOpen && (
-        <ModalEditTransactions close={setIsTransactionOpen} />
+        <ModalEditTransactions
+          close={setIsEditTransactionOpen}
+          transaction={editTrans}
+        />
       )}
     </div>
   );
