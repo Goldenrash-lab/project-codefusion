@@ -40,7 +40,7 @@ export const StyledCoin = styled.span`
   }
 `;
 export const StyledLoader = styled.div`
-  position: absolute;
+  position: fixed;
   display: flex;
   z-index: 9999;
   justify-content: center;
