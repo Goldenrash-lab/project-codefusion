@@ -20,8 +20,6 @@ export const FormContainer = styled.div`
   background-image: url(${backDesktop});
   background-position: center;
   background-repeat: no-repeat;
-  // background-size: cover;
-  background-color: teal;
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   @media only screen and (max-width: 480px) {
