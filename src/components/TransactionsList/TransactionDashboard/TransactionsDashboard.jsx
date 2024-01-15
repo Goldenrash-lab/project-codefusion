@@ -9,6 +9,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { transactionsData } from 'store/Transactions/selectors';
 import { categoriesThunk } from 'store/Categories/categoriesThunk';
+import { sortedTransactions } from '../helpers/helper';
 
 const TransactionsDashboard = ({ open, get }) => {
   const transactions = useSelector(transactionsData);
@@ -18,8 +19,6 @@ const TransactionsDashboard = ({ open, get }) => {
     dispatch(categoriesThunk());
   }, [dispatch]);
 
-  console.log(transactions);
-  //console.log(sortByDate(transactions));
   return (
     <WrapTable>
       <StyledTable>
@@ -37,7 +36,7 @@ const TransactionsDashboard = ({ open, get }) => {
         </thead>
         <tbody>
           {transactions.length !== 0
-            ? transactions?.map(transaction => {
+            ? sortedTransactions(transactions).map(transaction => {
                 return (
                   <TransactionsItem
                     get={get}
