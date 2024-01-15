@@ -62,12 +62,12 @@ const AddTransactionForm = ({ close }) => {
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
 
-  console.log(categories);
+  // console.log(categories);
 
   const options = categories.map(cat => {
     return { value: cat.id, label: cat.name };
   });
-  console.log(options);
+  // console.log(options);
 
   const {
     register,
@@ -80,7 +80,7 @@ const AddTransactionForm = ({ close }) => {
   });
 
   function submit(e) {
-    console.log(startDate);
+    //console.log(startDate);
     const newTransaction = {
       transactionDate: getFormattedDate(startDate),
       type: checkTransactionType(isExpense),
@@ -90,7 +90,7 @@ const AddTransactionForm = ({ close }) => {
       comment: e.comment,
       amount: negOrPosNumber(e.sum, isExpense),
     };
-    console.log(newTransaction);
+    // console.log(newTransaction);
 
     dispatch(addTransactionThunk(newTransaction))
       .unwrap()
