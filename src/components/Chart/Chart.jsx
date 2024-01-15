@@ -38,7 +38,7 @@ export const Chart = ({ categoriesSummary, expenseSummary }) => {
     data = {
       datasets: [
         {
-          data: [doughnutSize / 2.88],
+          data: [1],
           backgroundColor: ['transparent'],
           borderColor: ['#d8c5c5'],
           borderWidth: 1,
