@@ -5,13 +5,13 @@ import {
   ExitContainer,
   ExitContainerBTN,
   ExitContainerBTNText,
-  ExitContainerDivTest,
   ExitContainerGradient,
   ExitContainerLogo,
   ExitSpanMoneyGuard,
   ExitSpanText,
 } from './ModalExitBtnStyled';
 import ExitLogo from '../../images/Login/LoginLogo';
+import { Backdrop } from 'components/ModalAddTransactions/ModalAddTransaction.styled';
 
 const ModalExitBtn = ({ buttonExitClick, handleLogout }) => {
   const modalRef = useRef();
@@ -44,10 +44,12 @@ const ModalExitBtn = ({ buttonExitClick, handleLogout }) => {
 
   return (
     <>
-      <ExitContainerDivTest></ExitContainerDivTest>
+      <Backdrop />
+
       <ExitContainer>
         <ExitContainerBTNText ref={modalRef}>
           <ExitContainerGradient></ExitContainerGradient>
+
           <ExitContainerLogo>
             <ExitLogo />
             <ExitSpanMoneyGuard>Money Guard</ExitSpanMoneyGuard>

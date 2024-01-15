@@ -9,7 +9,7 @@ export const StyledBox = styled.div`
   max-width: ${props => props.$maxw || '480px'};
   /* margin-top: 32px; */
   margin-top: ${props => props.$mart || '32px'};
-  background-color: #4a56e21a;
+  background-color: ${props => props.$bgc || '#4a56e21a'};
 `;
 
 export const StyledTable = styled.div`
@@ -19,16 +19,20 @@ export const StyledTable = styled.div`
 
 export const StyledTableHead = styled.div`
   /* background: rgba(82, 59, 126, 0.6); */
-  background: rgba(255, 255, 255, 0.2);
+  background: ${props => props.$bgc || 'rgba(255, 255, 255, 0.2)'};
   padding-left: ${props => props.$padl || '62px'};
   margin-bottom: ${props => props.$marb || '24px'};
+  height: 48px;
+  display: flex;
+  align-items: center;
 `;
 
 export const StyledThBox = styled.div`
   display: flex;
   flex-direction: row;
   gap: 50px;
-  padding: 16px 0;
+  /* padding: 16px 0; */
+  padding: ${props => props.$pad || '16px 0'};
 `;
 
 export const StyledTdBox = styled.div`
@@ -44,7 +48,8 @@ export const StyledTBody = styled.div`
 
   padding-left: ${props => props.$padl || '62px'};
   gap: ${props => props.$gap || '24px'};
-  margin-bottom: 6px;
+  /* margin-bottom: 6px; */
+  margin-bottom: ${props => props.$marb || '6px'};
 `;
 
 export const StyledTh = styled.span`

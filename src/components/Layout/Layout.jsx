@@ -6,13 +6,13 @@ import Navigation from 'components/Navigation/Navigation';
 import { Balance } from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
 import { NavigBalanceContainerDiv } from 'components/Balance/Balance.styled';
+import { useMediaQuery } from 'react-responsive';
 
 const Layout = () => {
   const location = useLocation();
-  function statusLocation(location) {
-    if (location?.pathname === '/currency') return true;
-    else return false;
-  }
+
+  const showStatOnDesktop = useMediaQuery({ query: '(min-width: 768px)' });
+  const showOnLocation = location?.pathname === '/';
 
   return (
     <>
@@ -22,7 +22,8 @@ const Layout = () => {
           <WrapperLeft>
             <NavigBalanceContainerDiv>
               <Navigation />
-              {!statusLocation(location) && <Balance />}
+              {!showStatOnDesktop && showOnLocation && <Balance />}
+              {showStatOnDesktop && <Balance />}
             </NavigBalanceContainerDiv>
             <Currency />
           </WrapperLeft>

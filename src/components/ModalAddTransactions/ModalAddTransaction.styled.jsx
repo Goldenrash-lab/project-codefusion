@@ -8,7 +8,7 @@ export const Backdrop = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(34, 13, 91, 0.23);
-  backdrop-filter: blur(3.5px);
+  backdrop-filter: blur(45px);
   z-index: 20;
   @media only screen and (max-width: 480px) {
     backdrop-filter: blur(50px);
@@ -38,7 +38,7 @@ export const Modal = styled.div`
     height: 100%;
     background-image: none;
     background-image: url(${backgroundMob});
-    background-size: contain;
+    background-size: cover;
     /* background: var(--Form-color, rgba(255, 255, 255, 0.1)); */
 
     form {

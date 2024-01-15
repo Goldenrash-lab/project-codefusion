@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   ButtonsDiv,
   ErrorText,
   Form,
   Input,
+  PasswordStrengthBarStyle,
   TextLogo,
   WrapperForm,
   WrapperLogo,
@@ -25,6 +26,7 @@ import * as yup from 'yup';
 import { Navigate, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { selectUser } from 'store/Auth/selectors';
+import { useMediaQuery } from 'react-responsive';
 
 const schema = yup
   .object({
@@ -38,8 +40,8 @@ const schema = yup
       .required('Email is required'),
     password: yup
       .string()
-      .min(8, 'Password must be at least 8 characters')
-      .max(25)
+      .min(6, 'Password must be at least 6 characters')
+      .max(15)
       .required('Password is required'),
     confirmPassword: yup
       .string()
@@ -47,12 +49,14 @@ const schema = yup
         [yup.ref('password'), null],
         "Passwords don't match, please try again."
       )
-      .min(8, 'Password must be at least 8 characters')
+      .min(6, 'Password must be at least 6 characters')
       .required('Confirm password is required'),
   })
   .required();
 
 const RegistrationForm = () => {
+  const [password, setPassword] = useState('');
+  const mobileQuery = useMediaQuery({ query: '(max-width:555px)' });
   const navigate = useNavigate();
   const {
     register,
@@ -97,7 +101,7 @@ const RegistrationForm = () => {
       <WrapperForm>
         <TestDiv />
         <WrapperLogo>
-          <Logo />
+          <div>{!mobileQuery ? <Logo width="25" height="25" /> : <Logo />}</div>
           <TextLogo>Money Guard</TextLogo>
         </WrapperLogo>
         <Form onSubmit={handleSubmit(submit)}>
@@ -128,6 +132,7 @@ const RegistrationForm = () => {
               type="password"
               name="password"
               placeholder="Password"
+              onChange={e => setPassword(e.target.value)}
             />
             <ErrorText>{errors.password?.message}</ErrorText>
           </InputWrapper>
@@ -139,6 +144,7 @@ const RegistrationForm = () => {
               name="confirmPassword"
               placeholder="Confirm password"
             />
+            <PasswordStrengthBarStyle password={password} minLength={6} />
             <ErrorText>{errors.confirmPassword?.message}</ErrorText>
           </InputWrapper>
           <ButtonsDiv>

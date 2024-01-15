@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import backDesktop from '../../images/EditTransaction/Rectangle4.jpg';
+import backDesktop from '../../images/ModalAddTransaction/background.png';
+// import backDesktop from '../../images/EditTransaction/backDesktop.png';
 import backMobile from '../../images/ModalAddTransaction/backgroundMob.png';
+// import backMobile from '../../images/EditTransaction/backgroundMobile.png';
 
 export const EditContainer = styled.div`
   display: flex;
@@ -23,7 +25,7 @@ export const FormContainer = styled.div`
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   @media only screen and (max-width: 480px) {
-    height: 691px;
+    height: 100vh;
     background-image: url(${backMobile});
     background-size: cover;
   }
@@ -101,7 +103,6 @@ export const Input = styled.input`
   width: 181px;
   height: 38px;
   padding: 8px;
-  padding-left: 49px;
   color: #ffffff;
   box-sizing: border-box;
   background: none;
@@ -123,7 +124,6 @@ export const Input = styled.input`
   }
   @media only screen and (max-width: 480px) {
     width: 280px;
-    padding-left: 20px;
   }
 `;
 
@@ -139,7 +139,6 @@ export const DatePickerWrapper = styled.div`
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     padding: 8px;
-    padding-left: 20px;
     color: #ffffff;
     @media only screen and (max-width: 480px) {
       width: 280px;
@@ -182,7 +181,10 @@ export const TextArea = styled.textarea`
   }
   @media only screen and (max-width: 480px) {
     width: 280px;
-    height: 76px;
+    /* height: 76px; */
+  }
+  @media only screen and (min-width: 481px) {
+    padding-top: 20px;
   }
 `;
 

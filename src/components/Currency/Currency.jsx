@@ -95,17 +95,21 @@ const Currency = () => {
       )}
       {/* tablet */}
       {isTablet && (
-        <StyledBox $maxw="336px" $mart="0px">
+        <StyledBox $maxw="336px" $mart="0px" $bgc="#4a56e24d">
           <StyledTable>
-            <StyledTableHead $padl="20px" $marb="8px">
-              <StyledThBox>
+            <StyledTableHead
+              $padl="20px"
+              $marb="8px"
+              $bgc="rgba(103, 77, 166, 0.7)"
+            >
+              <StyledThBox $pad="12px 0">
                 <StyledTh>Currency</StyledTh>
                 <StyledTh>Purchase</StyledTh>
                 <StyledTh>Sale</StyledTh>
               </StyledThBox>
             </StyledTableHead>
 
-            <StyledTBody $padl="20px" $gap="12px">
+            <StyledTBody $padl="20px" $gap="12px" $marb="4px">
               {selectedCurrency?.length &&
                 selectedCurrency.map(el => {
                   return (
