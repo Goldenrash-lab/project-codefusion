@@ -22,6 +22,9 @@ export const StyledTableHead = styled.div`
   background: ${props => props.$bgc || 'rgba(255, 255, 255, 0.2)'};
   padding-left: ${props => props.$padl || '62px'};
   margin-bottom: ${props => props.$marb || '24px'};
+  height: 48px;
+  display: flex;
+  align-items: center;
 `;
 
 export const StyledThBox = styled.div`

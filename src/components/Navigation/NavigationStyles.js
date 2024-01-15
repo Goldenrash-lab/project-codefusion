@@ -40,6 +40,7 @@ export const NavigationNavLink = styled(NavLink)`
   align-content: center;
   align-items: center;
   gap: 20px;
+  padding: 3.5px 0;
   &:hover,
   &:focus {
     font-weight: 700;
