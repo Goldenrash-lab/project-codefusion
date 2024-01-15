@@ -104,6 +104,15 @@ export const Input = styled.input`
     min-width: 100%;
   }
 `;
+
+export const Eye = styled.button`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: transparent;
+  border: none;
+`;
+
 export const InputWrapper = styled.div`
   position: relative;
 `;

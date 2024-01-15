@@ -123,6 +123,14 @@ export const LoginInput = styled.input`
   }
 `;
 
+export const Eye = styled.button`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: transparent;
+  border: none;
+`;
+
 export const LoginNavLink = styled(NavLink)`
   width: 100%;
   padding-top: 13px;
