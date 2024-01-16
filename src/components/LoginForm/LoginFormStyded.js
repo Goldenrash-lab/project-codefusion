@@ -129,6 +129,7 @@ export const Eye = styled.button`
   right: 5px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 `;
 
 export const LoginNavLink = styled(NavLink)`

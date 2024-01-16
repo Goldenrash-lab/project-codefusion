@@ -10,6 +10,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { transactionsData } from 'store/Transactions/selectors';
 import { categoriesThunk } from 'store/Categories/categoriesThunk';
+import { sortedTransactions } from '../helpers/helper';
 
 const TransactionsDashboard = ({ open, get }) => {
   const transactions = useSelector(transactionsData);
