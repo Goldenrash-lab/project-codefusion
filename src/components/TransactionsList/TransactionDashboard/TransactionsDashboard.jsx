@@ -5,6 +5,7 @@ import {
   StyledThead,
   StyledTheadItem,
   WrapTable,
+  WrapperBlock,
 } from './TransactionDashboard.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { transactionsData } from 'store/Transactions/selectors';
@@ -19,7 +20,7 @@ const TransactionsDashboard = ({ open, get }) => {
   }, [dispatch]);
 
   return (
-    <WrapTable>
+    <WrapperBlock>
       <StyledTable>
         <thead>
           <StyledThead>
@@ -33,22 +34,26 @@ const TransactionsDashboard = ({ open, get }) => {
             <StyledTheadItem></StyledTheadItem>
           </StyledThead>
         </thead>
-        <tbody>
-          {transactions.length !== 0
-            ? transactions?.map(transaction => {
-                return (
-                  <TransactionsItem
-                    get={get}
-                    open={open}
-                    key={transaction.id}
-                    transaction={transaction}
-                  />
-                );
-              })
-            : null}
-        </tbody>
       </StyledTable>
-    </WrapTable>
+      <WrapTable>
+        <StyledTable>
+          <tbody>
+            {transactions.length !== 0
+              ? transactions?.map(transaction => {
+                  return (
+                    <TransactionsItem
+                      get={get}
+                      open={open}
+                      key={transaction.id}
+                      transaction={transaction}
+                    />
+                  );
+                })
+              : null}
+          </tbody>
+        </StyledTable>
+      </WrapTable>
+    </WrapperBlock>
   );
 };
 

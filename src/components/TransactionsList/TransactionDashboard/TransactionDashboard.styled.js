@@ -5,11 +5,15 @@ export const StyledThead = styled.tr`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  width: 704px;
   height: 56px;
   padding: 20px 0px 20px 16px;
   border-radius: 8px;
   background: rgba(82, 59, 126, 0.8);
+
+  @media screen and (min-width: 1280px) {
+    width: 715px;
+  }
 `;
 
 export const StyledTheadItem = styled.th`
@@ -23,26 +27,13 @@ export const StyledTheadItem = styled.th`
     width: 120px;
   }
 `;
-export const StyledTable = styled.table`
-  width: 704px;
-  margin: 0 auto;
-  margin-top: 20px;
-
-  @media screen and (min-width: 1280px) {
-    width: 715px;
-    padding-left: 59px;
-    padding-right: 16px;
-    margin-top: 46px;
-  }
-`;
+export const StyledTable = styled.table``;
 export const WrapTable = styled.div`
-  width: 706px;
   overflow-x: hidden;
   overflow-y: hidden;
 
   @media screen and (min-width: 1280px) {
-    height: 500px;
-    width: 100%;
+    height: 430px;
     overflow-x: hidden;
     overflow-y: auto;
     &::-webkit-scrollbar {
@@ -54,5 +45,16 @@ export const WrapTable = styled.div`
     &::-webkit-scrollbar-thumb {
       background-color: var(--transparency-20);
     }
+  }
+`;
+
+export const WrapperBlock = styled.div`
+  width: 704px;
+  margin-top: 20px;
+  @media screen and (min-width: 1280px) {
+    width: 100%;
+    padding-left: 49px;
+    padding-right: 16px;
+    margin-top: 46px;
   }
 `;

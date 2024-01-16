@@ -87,8 +87,4 @@ export const StyledButton = styled.button`
   &:hover {
     box-shadow: 1px 9px 15px 1px rgba(0, 0, 0, 0.4);
   }
-
-  @media screen and (max-width: 320px) {
-    margin-left: 8px;
-  }
 `;

@@ -4,7 +4,7 @@ export const StyledAddTransactionButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   right: 40px;
   bottom: 41px;
   width: 44px;
@@ -23,8 +23,8 @@ export const StyledAddTransactionButton = styled.button`
   &:hover {
     box-shadow: 1px 9px 15px 1px rgba(0, 0, 0, 0.4);
   }
-  @media screen and (max-width: 1280px) {
-    position: fixed;
+  @media screen and (min-width: 1280px) {
+    position: absolute;
   }
 `;
 export const StyledImg = styled.img`
@@ -37,7 +37,6 @@ export const StyledImg = styled.img`
   }
 `;
 export const Wrapper = styled.div`
-  width: 100%;
   margin-top: 75px;
   margin-bottom: 75px;
   display: flex;
