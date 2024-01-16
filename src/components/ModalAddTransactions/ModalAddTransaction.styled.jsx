@@ -10,7 +10,7 @@ export const Backdrop = styled.div`
   background: rgba(34, 13, 91, 0.23);
   backdrop-filter: blur(45px);
   z-index: 20;
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 540px) {
     backdrop-filter: blur(50px);
   }
 `;
@@ -33,7 +33,7 @@ export const Modal = styled.div`
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   z-index: 2;
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 540px) {
     padding: 40px 20px;
     height: 100%;
     background-image: none;
@@ -57,7 +57,7 @@ export const Modal = styled.div`
     line-height: normal;
     margin-bottom: 42px;
 
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 540px) {
       font-size: 24px;
     }
   }
@@ -84,7 +84,7 @@ export const CommentInput = styled.input`
     font-weight: 400;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 540px) {
     width: 280px;
     padding-bottom: 52px !important;
   }
@@ -142,7 +142,7 @@ export const Arrow = styled.img`
   right: 81px;
   pointer-events: none;
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 540px) {
     top: 206px;
     right: 40px;
   }
@@ -158,7 +158,7 @@ export const TestDiv = styled.div`
   z-index: -1;
   filter: blur(100px);
 
-  @media only screen and (min-width: 480px) {
+  @media only screen and (min-width: 540px) {
     width: 454px;
   }
 `;
