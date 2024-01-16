@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import backDesktop from '../../images/ModalAddTransaction/background.png';
-// import backDesktop from '../../images/EditTransaction/backDesktop.png';
 import backMobile from '../../images/ModalAddTransaction/backgroundMob.png';
 // import backMobile from '../../images/EditTransaction/backgroundMobile.png';
 
@@ -14,7 +13,9 @@ export const EditContainer = styled.div`
 
 export const FormContainer = styled.div`
   position: fixed;
-  width: 540px;
+  max-width: 540px;
+  min-width: 481px;
+
   height: 580px;
   padding: 40px 0;
   background-image: url(${backDesktop});
