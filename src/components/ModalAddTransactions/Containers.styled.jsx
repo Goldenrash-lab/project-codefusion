@@ -12,7 +12,7 @@ export const SumDateContainer = styled.div`
     font-weight: 600;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 540px) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -22,7 +22,7 @@ export const SumDateContainer = styled.div`
     width: 181px;
     outline: transparent;
 
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 540px) {
       width: 280px;
     }
   }
@@ -33,7 +33,7 @@ export const SumDateContainer = styled.div`
     font-size: 18px;
     font-weight: 700;
 
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 540px) {
       text-align: start;
     }
   }
@@ -53,7 +53,7 @@ export const ButtonsContainer = styled.div`
     border: none;
     box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
     color: #623f8b;
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 540px) {
       width: 280px;
     }
   }

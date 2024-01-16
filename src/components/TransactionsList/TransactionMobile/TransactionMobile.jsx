@@ -18,6 +18,7 @@ import { deleteTransactionThunk } from 'store/Transactions/transactionsThunk';
 import { toast } from 'react-toastify';
 import { deleteTransaction } from 'store/Transactions/transactionsSlice';
 import { categoriesThunk } from 'store/Categories/categoriesThunk';
+import { sortedTransactions } from '../helpers/helper';
 
 const TransactionMobile = ({ open, get }) => {
   const categories = useSelector(selectCategories);
@@ -35,7 +36,7 @@ const TransactionMobile = ({ open, get }) => {
   return (
     <div>
       <StyledUlWrap>
-        {transactions.map(transaction => {
+        {sortedTransactions(transactions).map(transaction => {
           const category = categories.find(
             category => category.id === transaction.categoryId
           );
