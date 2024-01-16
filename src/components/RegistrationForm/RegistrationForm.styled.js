@@ -74,7 +74,7 @@ export const Button = styled.button`
   background: ${props =>
     props.$gradient ? 'var(--button-gradient)' : 'var(--white)'};
   box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
-  padding: 13px 68px;
+  padding: 13px 55px;
   color: ${props => (props.$gradient ? '#fff' : 'var(--button-text-color)')};
 
   text-align: center;
@@ -111,6 +111,7 @@ export const Eye = styled.button`
   right: 5px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 `;
 
 export const InputWrapper = styled.div`
@@ -131,7 +132,7 @@ export const TestDiv = styled.div`
   }
 `;
 export const ErrorText = styled.p`
- color: #ff868d;
+  color: #ff868d;
 
   font-size: 14px;
   padding-left: 30px;

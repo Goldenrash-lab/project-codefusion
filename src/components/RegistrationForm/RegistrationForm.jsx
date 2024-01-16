@@ -114,7 +114,7 @@ const RegistrationForm = () => {
       <WrapperForm>
         <TestDiv />
         <WrapperLogo>
-          <div>{!mobileQuery ? <Logo width="25" height="25" /> : <Logo />}</div>
+          <div>{!mobileQuery ? <Logo width="36" height="36" /> : <Logo />}</div>
           <TextLogo>Money Guard</TextLogo>
         </WrapperLogo>
         <Form onSubmit={handleSubmit(submit)}>
