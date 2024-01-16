@@ -6,7 +6,6 @@ export const StyledDeleteButton = styled.button`
   color: #fbfbfb;
   padding: 4px 12px 4px 12px;
   margin-left: 8px;
-  //margin-right: 10px;
   border-radius: 20px;
   border: transparent;
   background: linear-gradient(
@@ -21,9 +20,9 @@ export const StyledDeleteButton = styled.button`
   &:hover {
     box-shadow: 1px 9px 15px 1px rgba(0, 0, 0, 0.4);
   }
-  /* @media screen and (max-width: 1280px) {
+  @media screen and (max-width: 1280px) {
     margin-right: 0px;
-  } */
+  }
 `;
 
 export const StyledTransaction = styled.tr`
@@ -63,8 +62,9 @@ export const StyledTh = styled.th`
     justify-content: center;
     align-items: center;
 
-    @media screen and (max-width: 1280px) {
+    @media screen and (min-width: 1280px) {
       padding-right: 0;
+      margin-right: 0;
     }
   }
 `;

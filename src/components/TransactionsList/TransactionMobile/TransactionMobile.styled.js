@@ -8,20 +8,30 @@ export const SpanName = styled.span`
 
 export const SpanItem = styled.span`
   text-align: right;
-  font-size: 16px;
+  font-size: ${props =>
+    props.$longcategory === true || props.$longcomment === true
+      ? '15.5px'
+      : props.$longcategory === false
+      ? '16px'
+      : null};
   color: ${props =>
     props.$type === '+'
       ? 'var(--yellow)'
       : props.$type === '-'
-      ? 'var(--dashboard-text)'
+      ? 'var (--dashboard-text)'
       : null};
+  padding-top: ${props => (props.$longcategory === true ? '3px' : null)};
 `;
 
 export const StyledLi = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
+  padding-left: 20px;
+  padding-top: ${props => (props.$longcomment === true ? '11px' : '12px')};
+  padding-right: 20px;
+  padding-bottom: ${props => (props.$longcomment === true ? '11px' : '12px')};
+
   border-bottom: 1px solid rgba(255, 255, 255, 0.41);
 
   &:last-child {
@@ -32,6 +42,7 @@ export const StyledLi = styled.li`
 export const TransactionCard = styled.li`
   width: 280px;
   height: 293px;
+  height: ${props => (props.$longcomment === true ? '303px' : '293px')};
   flex-shrink: 0;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.1);
@@ -86,9 +97,5 @@ export const StyledButton = styled.button`
   cursor: pointer;
   &:hover {
     box-shadow: 1px 9px 15px 1px rgba(0, 0, 0, 0.4);
-  }
-
-  @media screen and (max-width: 320px) {
-    margin-left: 8px;
   }
 `;
