@@ -40,7 +40,7 @@ const TransactionsDashboard = ({ open, get }) => {
         <StyledTable>
           <tbody>
             {transactions.length !== 0
-              ? transactions?.map(transaction => {
+              ? sortedTransactions(transactions).map(transaction => {
                   return (
                     <TransactionsItem
                       get={get}

@@ -49,7 +49,11 @@ const TransactionMobile = ({ open, get }) => {
 
           const transType = transaction.type === 'EXPENSE' ? '-' : '+';
           return (
-            <TransactionCard $type={transType} key={transaction.id}>
+            <TransactionCard
+              $type={transType}
+              key={transaction.id}
+              $longcomment={transaction?.comment.length >= 20 ? true : false}
+            >
               <ul>
                 <StyledLi>
                   <SpanName>Date</SpanName>
@@ -61,11 +65,22 @@ const TransactionMobile = ({ open, get }) => {
                 </StyledLi>
                 <StyledLi>
                   <SpanName>Category</SpanName>
-                  <SpanItem>{category?.name}</SpanItem>
+                  <SpanItem
+                    $longcategory={category?.name.length > 14 ? true : false}
+                  >
+                    {category?.name}
+                  </SpanItem>
                 </StyledLi>
                 <StyledLi>
                   <SpanName>Comment</SpanName>
-                  <SpanItem>{transaction.comment}</SpanItem>
+
+                  <SpanItem
+                    $longcomment={
+                      transaction?.comment.length > 10 ? true : false
+                    }
+                  >
+                    {transaction.comment}
+                  </SpanItem>
                 </StyledLi>
                 <StyledLi>
                   <SpanName>Sum</SpanName>
@@ -73,7 +88,9 @@ const TransactionMobile = ({ open, get }) => {
                     {formatCurrency(transaction.amount)}
                   </SpanItem>
                 </StyledLi>
-                <StyledLi>
+                <StyledLi
+                  $longcomment={transaction?.comment.length > 10 ? true : false}
+                >
                   <StyledButton
                     onClick={() =>
                       dispatch(deleteTransactionThunk(transaction.id))
